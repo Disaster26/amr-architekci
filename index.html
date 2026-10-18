@@ -188,8 +188,7 @@ section{padding:140px 0}
 .trasa{display:flex!important;width:max-content;align-items:center;gap:10px;margin-top:10px;font-size:12px!important;letter-spacing:.22em;text-transform:uppercase;color:var(--akcent)!important}
 .mapa-r{position:relative;min-height:520px;background:var(--tlo3);overflow:hidden}
 #mapa{position:absolute;inset:0;background:#1b1c1e;z-index:1}
-#mapa .leaflet-tile-pane{filter:brightness(1.18) contrast(1.05)}
-#mapa .leaflet-pane.etykiety{filter:brightness(1.9) contrast(1.15)}
+#mapa .leaflet-tile-pane img.leaflet-tile{filter:invert(1) hue-rotate(180deg) saturate(.25) brightness(.95) contrast(1.02)}
 .leaflet-container{font-family:Jost,system-ui,sans-serif}
 .leaflet-control-zoom{border:0!important;margin:0 18px 18px 0!important}
 .leaflet-control-zoom a{background:rgba(10,10,10,.85)!important;color:var(--jasny)!important;border:1px solid var(--linia2)!important;width:36px!important;height:36px!important;line-height:34px!important}
@@ -592,16 +591,14 @@ footer{background:var(--pas);border-top:1px solid var(--linia);color:var(--szary
 </script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-/* mapa: ciemny podklad Esri Dark Gray z rozjasnionymi etykietami, zgodny z kolorami strony */
+/* mapa: OSM odwrocona do ciemnej, z jasnymi napisami, zgodny z kolorami strony */
 (function(){
  var el=document.getElementById('mapa');if(!el||!window.L)return;
  var zrob=function(){
   var P=[51.26825,22.50471];
-  var m=L.map(el,{center:P,zoom:15,maxZoom:16,scrollWheelZoom:false,zoomControl:false,attributionControl:true});
+  var m=L.map(el,{center:P,zoom:16,maxZoom:19,scrollWheelZoom:false,zoomControl:false,attributionControl:true});
   L.control.zoom({position:'bottomright'}).addTo(m);
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:'Esri, HERE, Garmin, OpenStreetMap'}).addTo(m);
-  m.createPane('etykiety');m.getPane('etykiety').style.zIndex=450;m.getPane('etykiety').style.pointerEvents='none';
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,pane:'etykiety'}).addTo(m);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(m);
   L.marker(P,{icon:L.divIcon({className:'',html:'<div class="znacznik"><i></i></div>',iconSize:[18,18],iconAnchor:[9,9]}),keyboard:false}).addTo(m);
   m.on('click',function(){m.scrollWheelZoom.enable()});m.on('mouseout',function(){m.scrollWheelZoom.disable()});
  };
