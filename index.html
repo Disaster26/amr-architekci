@@ -592,16 +592,16 @@ footer{background:var(--pas);border-top:1px solid var(--linia);color:var(--szary
 </script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-/* mapa: ciemny podklad CARTO z jasnymi etykietami, zgodny z kolorami strony */
+/* mapa: ciemny podklad Esri Dark Gray z rozjasnionymi etykietami, zgodny z kolorami strony */
 (function(){
  var el=document.getElementById('mapa');if(!el||!window.L)return;
  var zrob=function(){
   var P=[51.26825,22.50471];
-  var m=L.map(el,{center:P,zoom:15,scrollWheelZoom:false,zoomControl:false,attributionControl:true});
+  var m=L.map(el,{center:P,zoom:15,maxZoom:16,scrollWheelZoom:false,zoomControl:false,attributionControl:true});
   L.control.zoom({position:'bottomright'}).addTo(m);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19,attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(m);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:'Esri, HERE, Garmin, OpenStreetMap'}).addTo(m);
   m.createPane('etykiety');m.getPane('etykiety').style.zIndex=450;m.getPane('etykiety').style.pointerEvents='none';
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19,pane:'etykiety'}).addTo(m);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,pane:'etykiety'}).addTo(m);
   L.marker(P,{icon:L.divIcon({className:'',html:'<div class="znacznik"><i></i></div>',iconSize:[18,18],iconAnchor:[9,9]}),keyboard:false}).addTo(m);
   m.on('click',function(){m.scrollWheelZoom.enable()});m.on('mouseout',function(){m.scrollWheelZoom.disable()});
  };
