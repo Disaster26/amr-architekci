@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pl">
+<html lang="pl" data-kolor="czern" data-menu="a">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -7,121 +7,107 @@
 <title>O pracowni · AMR Architekci &amp; Partnerzy · Lublin</title>
 <meta name="description" content="AMR Architekci &amp; Partnerzy: rodzinna pracownia architektoniczna z Lublina od 1997 roku. Mirosław Rossa, Agnieszka Rossa. ul. Zbożowa 6, tel. 501 061 258.">
 <meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="data:,">
+<script>try{var d=document.documentElement,k=localStorage.getItem('amr-kolor'),m=localStorage.getItem('amr-menu');if(k)d.setAttribute('data-kolor',k);if(m)d.setAttribute('data-menu',m)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/r/pracownia-22.webp" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="img/r/pracownia-22-m.webp 900w, img/r/pracownia-22-l.webp 1400w, img/r/pracownia-22.webp 2200w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="css/podstrony.css?v=1">
+<link rel="stylesheet" href="css/amr.css?v=4">
 <style>
 
-.glowa{position:relative;margin-top:var(--pg);height:calc(100vh - var(--pg));height:calc(100svh - var(--pg));min-height:520px;background:var(--pas);overflow:hidden}
+.glowa{position:relative;margin-top:var(--pg);height:calc(100vh - var(--pg));height:calc(100svh - var(--pg));min-height:520px;background:var(--pas);overflow:hidden;padding:0}
 .g-fot{position:absolute;inset:0;margin:0;overflow:hidden}
-.g-fot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;animation:kb 18s ease-out both}
-@keyframes kb{from{transform:scale(1.07)}to{transform:none}}
-.g-fot::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.3) 40%,rgba(0,0,0,0) 65%),linear-gradient(90deg,rgba(0,0,0,.45),rgba(0,0,0,0) 60%)}
+.g-fot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.g-fot::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.74) 0%,rgba(0,0,0,.28) 40%,rgba(0,0,0,0) 64%),linear-gradient(90deg,rgba(0,0,0,.38),rgba(0,0,0,0) 58%)}
 .g-txt{position:absolute;left:0;right:0;bottom:64px;z-index:2}
-.g-txt h1{font-size:clamp(42px,5.4vw,88px);line-height:1;letter-spacing:-.025em;max-width:11em}
-.g-txt p{margin-top:22px;font-size:19px;line-height:1.6;color:#D6D1C9;max-width:32em}
-.g-txt .btn{margin-top:32px}
-.ludzie{display:grid;grid-template-columns:5fr 7fr;gap:90px}
-.ludzie .lead{margin-top:28px}
-.osoby{border-top:1px solid var(--linia2)}
-.osoba{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:30px;padding:30px 0;border-bottom:1px solid var(--linia)}
-.osoba h3{font-size:clamp(24px,2vw,30px);line-height:1.15}
-.osoba h3 small{display:block;margin-top:8px;font-size:13.5px;color:var(--szary);letter-spacing:.02em}
-.osoba p{font-size:15.5px;line-height:1.7}
-.osoba a{color:var(--jasny);border-bottom:1px solid var(--linia2);transition:border-color .2s}
-.osoba a:hover{border-color:var(--akcent)}
-.jak{background:var(--tlo2)}
-.jak .wrap{display:grid;grid-template-columns:5fr 7fr;gap:90px;align-items:start}
-.jak .kol p+p{margin-top:18px}
-.zakres{margin-top:40px;list-style:none;border-top:1px solid var(--linia)}
-.zakres li{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--linia);font-size:16px;color:var(--jasny)}
-.zakres li span{font-size:13.5px;color:var(--szary);text-align:right}
-.os-w{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start;margin-top:60px}
-.os-fot{position:sticky;top:calc(var(--pg) + 40px);aspect-ratio:4/5;overflow:hidden;background:var(--tlo3)}
-.os-fot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .9s ease,transform 1.6s var(--e)}
-.os-fot img.on{opacity:1;transform:none}
-.os-fot figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:40px 22px 18px;background:linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,0));font-size:14px;color:var(--jasny)}
-.os-fot .aut{display:block;font-size:11px;color:rgba(230,226,219,.7);margin-top:4px}
-.os{list-style:none;border-top:1px solid var(--linia2)}
-.os li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;padding:26px 0;border-bottom:1px solid var(--linia);transition:opacity .4s}
-.os .rok{font-size:15px;letter-spacing:.06em;color:var(--szary);font-variant-numeric:tabular-nums;padding-top:4px;transition:color .4s}
-.os h3{font-size:clamp(21px,1.7vw,26px);line-height:1.25;color:var(--tekst);transition:color .4s}
-.os p{margin-top:4px;font-size:14.5px;color:var(--szary)}
-.os li.akt .rok{color:var(--akcent)}
-.os li.akt h3{color:var(--jasny)}
-.os-mob{display:none}
-.os-dalej{margin-top:40px}
-.siedz{background:var(--tlo2)}
-.siedz .gora{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:56px}
-.siedz .gora .lead{margin-top:20px}
-.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,15vw,240px);gap:12px}
-.bento button{position:relative;overflow:hidden;background:var(--tlo3);cursor:zoom-in}
-.bento img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.95);transition:transform 1.2s var(--e),filter .6s}
-.bento button:hover img{transform:scale(1.04);filter:none}
-.bento .b0{grid-column:span 2;grid-row:span 2}
-.bento .b3{grid-column:span 2}
-.bento .b6{grid-column:span 2}
-.kont{display:grid;grid-template-columns:5fr 7fr;gap:90px;align-items:stretch}
-.dane{margin-top:50px;border-top:1px solid var(--linia)}
-.dane>div{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--linia);align-items:baseline}
-.dane small{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--szary)}
-.dane a,.dane span{font-size:21px;color:var(--jasny);line-height:1.4;transition:color .2s}
-.dane a{display:block}
-.dane a:hover{color:var(--akcent)}
-.dane .drugi{font-size:16px;color:var(--tekst);margin-top:4px}
-.trasa{display:flex!important;width:max-content;align-items:center;gap:10px;margin-top:10px;font-size:12px!important;letter-spacing:.22em;text-transform:uppercase;color:var(--akcent)!important}
-.trasa svg{width:14px;height:14px}
-@media (max-width:1100px){
- .ludzie,.jak .wrap,.kont{grid-template-columns:1fr;gap:50px}
- .os-w{grid-template-columns:1fr;gap:0;margin-top:40px}
- .os-fot{display:none}
- .os li{grid-template-columns:120px minmax(0,1fr) 150px;align-items:center}
- .os-mob{display:block;width:150px;aspect-ratio:3/2;object-fit:cover;grid-column:3;grid-row:1}
-}
+.g-txt h1{font-size:clamp(46px,6.4vw,104px);line-height:1;letter-spacing:-.028em;color:var(--foto);max-width:12em}
+.g-txt p{margin-top:22px;font-size:19px;line-height:1.6;color:var(--foto2);max-width:31em}
+.g-txt .btn{margin-top:30px}
+.g-autor{position:absolute;right:16px;bottom:12px;z-index:2;font-size:13px;color:var(--foto2)}
+@media (min-width:761px) and (max-height:820px){.g-txt h1{font-size:clamp(42px,5.4vw,84px)}.g-txt{bottom:44px}}
 @media (max-width:760px){
  .glowa{display:flex;flex-direction:column;min-height:0}
  .g-fot{position:relative;flex:1 1 0;min-height:min(56vw,26svh);align-self:stretch;width:100%}
- .g-fot::after{background:linear-gradient(0deg,var(--pas) 0%,rgba(10,10,10,0) 40%)}
- .g-txt{position:relative;bottom:auto;flex:0 0 auto;padding:0 0 30px}
- .g-txt h1{font-size:clamp(30px,8.6vw,40px);line-height:1.08}
- .g-txt p{font-size:15.5px;margin-top:12px}
+ .g-fot::after{background:linear-gradient(0deg,var(--pas) 0%,transparent 34%)}
+ .g-txt{position:relative;bottom:auto;flex:0 0 auto;padding:4px 0 30px}
+ .g-txt h1{color:var(--jasny);font-size:clamp(36px,10.5vw,50px);line-height:1.04}
+ .g-txt p{color:var(--tekst);font-size:16px;margin-top:12px}
  .g-txt .btn{margin-top:20px;padding:15px 22px}
- .osoba{grid-template-columns:1fr;gap:12px;padding:24px 0}
- .os li{grid-template-columns:minmax(0,1fr) 96px;gap:4px 16px;padding:20px 0}
- .os .rok{grid-column:1;padding:0}
- .os li>div{grid-column:1}
- .os-mob{grid-column:2;grid-row:1/3;width:96px;align-self:center}
- .zakres li{flex-direction:column;gap:2px}.zakres li span{text-align:left}
- .bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:34vw;gap:6px}
- .bento .b0{grid-column:span 2;grid-row:span 2}
- .bento .b3,.bento .b6{grid-column:span 2}
- .dane>div{grid-template-columns:1fr;gap:6px}
- .dane a,.dane span{font-size:19px}
+ .g-autor{bottom:auto;top:10px;right:10px;font-size:12px;color:var(--foto);text-shadow:0 1px 4px rgba(0,0,0,.7)}
 }
-@media (min-width:761px) and (max-height:820px){.g-txt h1{font-size:clamp(40px,4.6vw,72px)}.g-txt{bottom:44px}}
+
+.g-fot img{object-position:50% 60%}
+.ludzie{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:90px}
+.ludzie .lead{margin-top:26px}
+.osoby{border-top:1px solid var(--linia2)}
+.osoba{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:30px;padding:28px 0;border-bottom:1px solid var(--linia)}
+.osoba h3{font-size:clamp(23px,1.9vw,28px);line-height:1.2}
+.osoba h3 small{display:block;margin-top:6px;font-size:16px;color:var(--szary);letter-spacing:0}
+.osoba p{font-size:16px;line-height:1.7}
+.osoba a{color:var(--jasny);border-bottom:1px solid var(--akcent)}
+.jak .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:90px;align-items:start}
+.zakres{margin-top:36px;list-style:none;border-top:1px solid var(--linia)}
+.zakres li{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--linia);font-size:17px;color:var(--jasny)}
+.zakres li span{font-size:16px;color:var(--szary);text-align:right}
+.os-w{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px;align-items:start}
+.os-fot{position:sticky;top:calc(var(--pg) + 40px);aspect-ratio:4/5;overflow:hidden;background:var(--tlo3);margin:0}
+.os-fot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
+.os-fot img.on{opacity:1}
+.os-fot figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:44px 20px 16px;background:linear-gradient(0deg,rgba(0,0,0,.72),rgba(0,0,0,0));font-size:16px;color:var(--foto)}
+.os-fot .aut{display:block;font-size:13px;color:var(--foto2);margin-top:2px}
+.os{list-style:none;border-top:1px solid var(--linia2)}
+.os li{display:grid;grid-template-columns:140px minmax(0,1fr);gap:24px;padding:24px 0;border-bottom:1px solid var(--linia)}
+.os .rok{font-size:16px;color:var(--szary);font-variant-numeric:tabular-nums;padding-top:3px;transition:color .4s}
+.os h3{font-size:clamp(20px,1.6vw,24px);line-height:1.3;color:var(--tekst);transition:color .4s}
+.os p{margin-top:4px;font-size:16px;color:var(--szary)}
+.os li.akt .rok{color:var(--akcent)}
+.os li.akt h3{color:var(--jasny)}
+.os-mob{display:none}
+.os-dalej{margin-top:36px}
+.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(160px,16vw,260px);gap:12px}
+.bento button{position:relative;overflow:hidden;background:var(--tlo3);cursor:zoom-in}
+.bento img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--e)}
+.bento button:hover img{transform:scale(1.04)}
+.bento .b0{grid-column:span 2;grid-row:span 2}
+.bento .b3,.bento .b6{grid-column:span 2}
+@media (max-width:1100px){
+ .ludzie,.jak .wrap{grid-template-columns:1fr;gap:44px}
+ .os-w{grid-template-columns:1fr;gap:0}
+ .os-fot{display:none}
+ .os li{grid-template-columns:110px minmax(0,1fr) 150px;align-items:center}
+ .os-mob{display:block;width:150px;aspect-ratio:3/2;object-fit:cover;grid-column:3;grid-row:1}
+}
+@media (max-width:760px){
+ .osoba{grid-template-columns:1fr;gap:10px;padding:22px 0}
+ .os li{grid-template-columns:minmax(0,1fr) 100px;gap:4px 16px;padding:18px 0}
+ .os .rok,.os li>div{grid-column:1;padding:0}
+ .os-mob{grid-column:2;grid-row:1/3;width:100px;align-self:center}
+ .zakres li{flex-direction:column;gap:2px}.zakres li span{text-align:left}
+ .bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:36vw;gap:6px}
+}
 
 </style>
 </head>
 <body>
 <header class="pas-g">
  <div class="wrap">
-  <a class="logo" href="index.html" aria-label="AMR Architekci &amp; Partnerzy, strona główna"><img class="logo-img" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272"></a>
-  <nav class="menu" aria-label="Menu główne"><a href="realizacje.html">Realizacje</a><a href="pracownia.html" class="akt" aria-current="page">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a><a href="pracownia.html#kontakt">Kontakt</a><a class="tel" href="tel:+48501061258">+48 501 061 258</a></nav>
+  <a class="logo" href="index.html" aria-label="AMR Architekci &amp; Partnerzy, strona główna"><img class="l-j" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272"><img class="l-c" src="img/logo-amr-ciemne.png?v=1" alt="AMR Architekci &amp; Partnerzy" width="640" height="272"></a>
+  <nav class="menu" aria-label="Menu główne"><a href="realizacje.html">Realizacje</a><a href="pracownia.html" class="akt" aria-current="page">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a><a href="#kontakt">Kontakt</a><a class="tel" href="tel:+48501061258">+48 501 061 258</a></nav>
   <button class="przel" type="button" aria-label="Otwórz menu" aria-expanded="false" data-otw>Menu <i></i></button>
  </div>
 </header>
-<nav class="pelne" aria-label="Menu"><a href="index.html">Strona główna</a><a href="realizacje.html">Realizacje</a><a href="pracownia.html" class="akt" aria-current="page">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a><a href="pracownia.html#kontakt">Kontakt</a><div class="stopka"><span>ul. Zbożowa 6, 20-827 Lublin</span><span>+48 501 061 258 · amr@rossa.pl</span></div></nav>
+<nav class="pelne" aria-label="Menu"><a href="index.html">Strona główna</a><a href="realizacje.html">Realizacje</a><a href="pracownia.html" class="akt" aria-current="page">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a><a href="#kontakt">Kontakt</a><div class="stopka"><span>ul. Zbożowa 6, 20-827 Lublin</span><a href="tel:+48501061258">+48 501 061 258</a></div></nav>
+<nav class="bok" aria-label="Menu boczne"><a href="index.html">Strona główna</a><a href="realizacje.html">Realizacje</a><a href="pracownia.html" class="akt" aria-current="page">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a><a href="#kontakt">Kontakt</a><div class="stopka">ul. Zbożowa 6, 20-827 Lublin<br>+48 501 061 258</div></nav>
 
 <main>
-<section class="glowa" style="padding:0" aria-label="Pracownia">
- <figure class="g-fot"><img src="img/r/pracownia-22.webp" width="1920" height="1076" alt="Pracownia AMR w Lublinie o zmierzchu" fetchpriority="high"></figure>
+<section class="glowa" aria-label="Pracownia">
+ <figure class="g-fot"><img src="img/r/pracownia-22-m.webp" srcset="img/r/pracownia-22-m.webp 900w, img/r/pracownia-22-l.webp 1400w, img/r/pracownia-22.webp 2200w" sizes="100vw" width="2200" height="1233" alt="Pracownia AMR w Lublinie" fetchpriority="high"></figure>
  <div class="g-txt"><div class="wrap">
   <h1>Rodzinna pracownia architektoniczna z Lublina</h1>
-  <p>AMR Architekci &amp; Partnerzy to Mirosław Rossa, Agnieszka Rossa i ich córka, wszyscy troje architekci. Projektujemy od 1997 roku.</p>
-  <a class="btn" href="#kontakt">Kontakt i dojazd <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <p>Mirosław Rossa, Agnieszka Rossa i ich córka, wszyscy troje architekci. Projektujemy od 1997 roku.</p>
+  <a class="btn" href="#kontakt">Kontakt i dojazd <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
  </div></div>
 </section>
 
@@ -134,16 +120,16 @@
   <div class="osoby">
    <div class="osoba"><h3>Mirosław Rossa<small>architekt, założyciel pracowni</small></h3><p>Prowadzi pracownię od 1997 roku. Wcześniej projektował w biurze Bieńkowski Lis Mierzwa Architekci, m.in. budynki SM Instalator w Lublinie: projekt wybrany w konkursie SARP i budynek nominowany do nagrody Premiera.</p></div>
    <div class="osoba"><h3>Agnieszka Rossa<small>architekt</small></h3><p>Współautorka projektów Galerii Venus 1 w Świdniku i Galerii Zana w Lublinie. Maluje i tworzy ceramikę: <a href="agnieszka-rossa.html">zobacz jej prace</a>.</p></div>
-   <div class="osoba"><h3>Córka<small>architekt</small></h3><p>Architekt, projektuje w rodzinnej pracowni razem z rodzicami.</p></div>
-   <div class="osoba"><h3>Branżyści<small>stałe zespoły</small></h3><p>Konstruktorzy, inżynierowie sanitarni i ochrony środowiska, elektrycy i teletechnicy, rzeczoznawcy i technolodzy. Współpracowaliśmy z wieloma biurami projektowymi w Polsce.</p></div>
+   <div class="osoba"><h3>Córka<small>architekt</small></h3><p>Projektuje w rodzinnej pracowni razem z rodzicami.</p></div>
+   <div class="osoba"><h3>Branżyści<small>stałe zespoły</small></h3><p>Konstruktorzy, inżynierowie sanitarni i ochrony środowiska, elektrycy i teletechnicy, rzeczoznawcy i technolodzy.</p></div>
   </div>
  </div>
 </section>
 
-<section class="jak">
+<section class="jak alt">
  <div class="wrap">
   <h2 class="duzy">Rośniemy razem z firmami, dla których projektujemy</h2>
-  <div class="kol">
+  <div>
    <p class="lead">Najlepiej pracuje nam się z lokalnymi firmami. Poznajemy specyfikę ich działalności i projektujemy budynki dopasowane do potrzeb i ekonomii biznesu. Z tymi samymi inwestorami pracujemy przy kolejnych etapach: Galerię Olimp projektowaliśmy w pięciu etapach w latach 1999-2013, Drukarnię DAKO w latach 2004-2013.</p>
    <ul class="zakres">
     <li>Budownictwo użyteczności publicznej<span>galerie handlowe, usługi, handel</span></li>
@@ -156,35 +142,34 @@
 
 <section id="historia">
  <div class="wrap">
-  <h2 class="duzy">Najważniejsze realizacje w czasie</h2>
+  <div class="gl"><h2 class="duzy">Najważniejsze realizacje w czasie</h2></div>
   <div class="os-w">
-   <figure class="os-fot" aria-hidden="true"><img data-w="pracownia-22" src="img/r/pracownia-22-m.webp" srcset="img/r/pracownia-22-m.webp 700w, img/r/pracownia-22.webp 1920w" sizes="40vw" alt="Początek pracowni" loading="lazy" class="on"><img data-w="olimp-05" src="img/r/olimp-05-m.webp" srcset="img/r/olimp-05-m.webp 700w, img/r/olimp-05.webp 1920w" sizes="40vw" alt="Galeria Olimp I" loading="lazy"><img data-w="dako-05" src="img/r/dako-05-m.webp" srcset="img/r/dako-05-m.webp 700w, img/r/dako-05.webp 1920w" sizes="40vw" alt="Rozbudowa i modernizacja Drukarni DAKO" loading="lazy"><img data-w="olimp-09" src="img/r/olimp-09-m.webp" srcset="img/r/olimp-09-m.webp 700w, img/r/olimp-09.webp 1920w" sizes="40vw" alt="Rozbudowa Galerii Olimp III" loading="lazy"><img data-w="venus-03" src="img/r/venus-03-m.webp" srcset="img/r/venus-03-m.webp 700w, img/r/venus-03.webp 1920w" sizes="40vw" alt="Galeria Venus 1" loading="lazy"><img data-w="olimp-04" src="img/r/olimp-04-m.webp" srcset="img/r/olimp-04-m.webp 700w, img/r/olimp-04.webp 1920w" sizes="40vw" alt="Galeria Olimp IV" loading="lazy"><img data-w="dako-03" src="img/r/dako-03-m.webp" srcset="img/r/dako-03-m.webp 700w, img/r/dako-03.webp 1920w" sizes="40vw" alt="Drukarnia DAKO NEXT" loading="lazy"><img data-w="venus-02" src="img/r/venus-02-m.webp" srcset="img/r/venus-02-m.webp 700w, img/r/venus-02.webp 1920w" sizes="40vw" alt="Galeria Venus 2" loading="lazy"><img data-w="olimp-01" src="img/r/olimp-01-m.webp" srcset="img/r/olimp-01-m.webp 700w, img/r/olimp-01.webp 1920w" sizes="40vw" alt="Galeria Olimp V z Multikinem" loading="lazy"><figcaption><span id="osP">Początek pracowni</span><span class="aut" id="osA" hidden>fot. Marcin Tarkowski / Piximo</span></figcaption></figure>
+   <figure class="os-fot" aria-hidden="true"><img data-w="pracownia-22" src="img/r/pracownia-22-m.webp" srcset="img/r/pracownia-22-m.webp 900w, img/r/pracownia-22-l.webp 1400w, img/r/pracownia-22.webp 2200w" sizes="40vw" alt="" loading="lazy" class="on"><img data-w="olimp-05" src="img/r/olimp-05-m.webp" srcset="img/r/olimp-05-m.webp 900w, img/r/olimp-05-l.webp 1400w, img/r/olimp-05.webp 2200w" sizes="40vw" alt="" loading="lazy"><img data-w="dako-06" src="img/r/dako-06-m.webp" srcset="img/r/dako-06-m.webp 900w, img/r/dako-06-l.webp 1400w, img/r/dako-06.webp 2200w" sizes="40vw" alt="" loading="lazy"><img data-w="olimp-09" src="img/r/olimp-09-m.webp" srcset="img/r/olimp-09-m.webp 900w, img/r/olimp-09-l.webp 1400w, img/r/olimp-09.webp 2200w" sizes="40vw" alt="" loading="lazy"><img data-w="venus-03" src="img/r/venus-03-m.webp" srcset="img/r/venus-03-m.webp 900w, img/r/venus-03-l.webp 1400w, img/r/venus-03.webp 2200w" sizes="40vw" alt="" loading="lazy"><img data-w="olimp-04" src="img/r/olimp-04-m.webp" srcset="img/r/olimp-04-m.webp 900w, img/r/olimp-04-l.webp 1400w, img/r/olimp-04.webp 2200w" sizes="40vw" alt="" loading="lazy"><img data-w="dako-04" src="img/r/dako-04-m.webp" srcset="img/r/dako-04-m.webp 900w, img/r/dako-04-l.webp 1400w, img/r/dako-04.webp 2200w" sizes="40vw" alt="" loading="lazy"><img data-w="venus-02" src="img/r/venus-02-m.webp" srcset="img/r/venus-02-m.webp 900w, img/r/venus-02-l.webp 1400w, img/r/venus-02.webp 2200w" sizes="40vw" alt="" loading="lazy"><img data-w="olimp-01" src="img/r/olimp-01-m.webp" srcset="img/r/olimp-01-m.webp 900w, img/r/olimp-01-l.webp 1400w, img/r/olimp-01.webp 2200w" sizes="40vw" alt="" loading="lazy"><figcaption><span id="osP">Początek pracowni</span><span class="aut" id="osA" hidden>fot. Marcin Tarkowski / Piximo</span></figcaption></figure>
    <div>
-    <ol class="os" id="os"><li data-f="pracownia-22"><span class="rok">1997</span><div><h3>Początek pracowni</h3><p>Pracownia wspiera większe biura projektowe</p></div><img class="os-mob" src="img/r/pracownia-22-m.webp" alt="" loading="lazy"></li><li data-f="pracownia-22"><span class="rok">1998</span><div><h3>Pełna samodzielność</h3><p>Od listopada 1998 roku</p></div></li><li data-f="olimp-05"><span class="rok">1999-2000</span><div><h3>Galeria Olimp I</h3><p>Lublin</p></div><img class="os-mob" src="img/r/olimp-05-m.webp" alt="" loading="lazy"></li><li data-f="olimp-05"><span class="rok">2002</span><div><h3>Rozbudowa Galerii Olimp II</h3><p>Lublin</p></div></li><li data-f="olimp-05"><span class="rok">2004-2005</span><div><h3>Modernizacja budynków maszyn wyciągowych i nadszybia</h3><p>Lubelski Węgiel Bogdanka S.A.</p></div></li><li data-f="dako-05"><span class="rok">2004-2006</span><div><h3>Rozbudowa i modernizacja Drukarni DAKO</h3><p>Lubartów</p></div><img class="os-mob" src="img/r/dako-05-m.webp" alt="" loading="lazy"></li><li data-f="olimp-09"><span class="rok">2005</span><div><h3>Rozbudowa Galerii Olimp III</h3><p>Lublin</p></div><img class="os-mob" src="img/r/olimp-09-m.webp" alt="" loading="lazy"></li><li data-f="venus-03"><span class="rok">2005-2006</span><div><h3>Galeria Venus 1</h3><p>Świdnik · otwarcie 18 marca 2006</p></div><img class="os-mob" src="img/r/venus-03-m.webp" alt="" loading="lazy"></li><li data-f="venus-03"><span class="rok">2007-2009</span><div><h3>Obiekt handlowo-usługowy z piekarnią</h3><p>Świdnik, ul. gen. Okulickiego</p></div></li><li data-f="olimp-04"><span class="rok">2007-2009</span><div><h3>Galeria Olimp IV</h3><p>Lublin · otwarcie w czerwcu 2009</p></div><img class="os-mob" src="img/r/olimp-04-m.webp" alt="" loading="lazy"></li><li data-f="dako-03"><span class="rok">2008-2013</span><div><h3>Drukarnia DAKO NEXT</h3><p>Lubartów · pierwszy etap zakończony w 2009</p></div><img class="os-mob" src="img/r/dako-03-m.webp" alt="" loading="lazy"></li><li data-f="venus-02"><span class="rok">2009-2012</span><div><h3>Galeria Venus 2</h3><p>Świdnik</p></div><img class="os-mob" src="img/r/venus-02-m.webp" alt="" loading="lazy"></li><li data-f="olimp-01"><span class="rok">2011-2013</span><div><h3>Galeria Olimp V z Multikinem</h3><p>Lublin</p></div><img class="os-mob" src="img/r/olimp-01-m.webp" alt="" loading="lazy"></li></ol>
-    <a class="lnk os-dalej" href="realizacje.html">Wszystkie realizacje ze zdjęciami <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <ol class="os" id="os"><li data-f="pracownia-22"><span class="rok">1997</span><div><h3>Początek pracowni</h3><p>Pracownia wspiera większe biura projektowe</p></div><img class="os-mob" src="img/r/pracownia-22-m.webp" alt="" loading="lazy"></li><li data-f="pracownia-22"><span class="rok">1998</span><div><h3>Pełna samodzielność</h3><p>Od listopada 1998 roku</p></div></li><li data-f="olimp-05"><span class="rok">1999-2000</span><div><h3>Galeria Olimp I</h3><p>Lublin</p></div><img class="os-mob" src="img/r/olimp-05-m.webp" alt="" loading="lazy"></li><li data-f="olimp-05"><span class="rok">2002</span><div><h3>Rozbudowa Galerii Olimp II</h3><p>Lublin</p></div></li><li data-f="olimp-05"><span class="rok">2004-2005</span><div><h3>Modernizacja budynków maszyn wyciągowych i nadszybia</h3><p>Lubelski Węgiel Bogdanka S.A.</p></div></li><li data-f="dako-06"><span class="rok">2004-2006</span><div><h3>Rozbudowa i modernizacja Drukarni DAKO</h3><p>Lubartów</p></div><img class="os-mob" src="img/r/dako-06-m.webp" alt="" loading="lazy"></li><li data-f="olimp-09"><span class="rok">2005</span><div><h3>Rozbudowa Galerii Olimp III</h3><p>Lublin</p></div><img class="os-mob" src="img/r/olimp-09-m.webp" alt="" loading="lazy"></li><li data-f="venus-03"><span class="rok">2005-2006</span><div><h3>Galeria Venus 1</h3><p>Świdnik · otwarcie 18 marca 2006</p></div><img class="os-mob" src="img/r/venus-03-m.webp" alt="" loading="lazy"></li><li data-f="venus-03"><span class="rok">2007-2009</span><div><h3>Obiekt handlowo-usługowy z piekarnią</h3><p>Świdnik, ul. gen. Okulickiego</p></div></li><li data-f="olimp-04"><span class="rok">2007-2009</span><div><h3>Galeria Olimp IV</h3><p>Lublin · otwarcie w czerwcu 2009</p></div><img class="os-mob" src="img/r/olimp-04-m.webp" alt="" loading="lazy"></li><li data-f="dako-04"><span class="rok">2008-2013</span><div><h3>Drukarnia DAKO NEXT</h3><p>Lubartów · pierwszy etap zakończony w 2009</p></div><img class="os-mob" src="img/r/dako-04-m.webp" alt="" loading="lazy"></li><li data-f="venus-02"><span class="rok">2009-2012</span><div><h3>Galeria Venus 2</h3><p>Świdnik</p></div><img class="os-mob" src="img/r/venus-02-m.webp" alt="" loading="lazy"></li><li data-f="olimp-01"><span class="rok">2011-2013</span><div><h3>Galeria Olimp V z Multikinem</h3><p>Lublin</p></div><img class="os-mob" src="img/r/olimp-01-m.webp" alt="" loading="lazy"></li></ol>
+    <a class="lnk os-dalej" href="realizacje.html">Wszystkie realizacje ze zdjęciami <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
    </div>
   </div>
  </div>
 </section>
 
-<section class="siedz" id="siedziba">
+<section class="alt" id="siedziba">
  <div class="wrap">
-  <div class="gora">
-   <div><h2 class="duzy">Pracownia</h2><p class="lead">Pracujemy w Lublinie przy ul. Zbożowej 6, w budynku otoczonym ogrodem, o każdej porze roku.</p></div>
-   <button type="button" class="lnk" data-i="0" id="wszSiedz">Wszystkie zdjęcia · 21 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+  <div class="gl">
+   <div><h2 class="duzy">Pracownia</h2><p class="lead">Pracujemy przy ul. Zbożowej 6 w Lublinie, w budynku otoczonym ogrodem.</p></div>
+   <button type="button" class="lnk" data-g="siedz" data-i="0">Wszystkie zdjęcia (24) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
   </div>
-  <div class="bento"><button type="button" class="b0 odkryj" data-i="18" aria-label="Zdjęcie pracowni 1"><img src="img/r/pracownia-22-m.webp" srcset="img/r/pracownia-22-m.webp 700w, img/r/pracownia-22.webp 1920w" sizes="(max-width:760px) 100vw, 50vw" width="1920" height="1076" alt="Pracownia AMR w Lublinie" loading="lazy"></button><button type="button" class="b1 odkryj" data-i="2" aria-label="Zdjęcie pracowni 2"><img src="img/r/pracownia-04-m.webp" srcset="img/r/pracownia-04-m.webp 700w, img/r/pracownia-04.webp 1920w" sizes="(max-width:760px) 100vw, 50vw" width="1920" height="1080" alt="Pracownia AMR w Lublinie" loading="lazy"></button><button type="button" class="b2 odkryj" data-i="10" aria-label="Zdjęcie pracowni 3"><img src="img/r/pracownia-13-m.webp" srcset="img/r/pracownia-13-m.webp 700w, img/r/pracownia-13.webp 1920w" sizes="(max-width:760px) 100vw, 50vw" width="1920" height="1079" alt="Pracownia AMR w Lublinie" loading="lazy"></button><button type="button" class="b3 odkryj" data-i="13" aria-label="Zdjęcie pracowni 4"><img src="img/r/pracownia-16-m.webp" srcset="img/r/pracownia-16-m.webp 700w, img/r/pracownia-16.webp 1920w" sizes="(max-width:760px) 100vw, 50vw" width="1920" height="1079" alt="Pracownia AMR w Lublinie" loading="lazy"></button><button type="button" class="b4 odkryj" data-i="0" aria-label="Zdjęcie pracowni 5"><img src="img/r/pracownia-02-m.webp" srcset="img/r/pracownia-02-m.webp 700w, img/r/pracownia-02.webp 1920w" sizes="(max-width:760px) 100vw, 50vw" width="1920" height="1080" alt="Pracownia AMR w Lublinie" loading="lazy"></button><button type="button" class="b5 odkryj" data-i="7" aria-label="Zdjęcie pracowni 6"><img src="img/r/pracownia-10-m.webp" srcset="img/r/pracownia-10-m.webp 700w, img/r/pracownia-10.webp 1920w" sizes="(max-width:760px) 100vw, 50vw" width="1920" height="1080" alt="Pracownia AMR w Lublinie" loading="lazy"></button><button type="button" class="b6 odkryj" data-i="15" aria-label="Zdjęcie pracowni 7"><img src="img/r/pracownia-19-m.webp" srcset="img/r/pracownia-19-m.webp 700w, img/r/pracownia-19.webp 1920w" sizes="(max-width:760px) 100vw, 50vw" width="1920" height="1079" alt="Pracownia AMR w Lublinie" loading="lazy"></button></div>
+  <div class="bento"><button type="button" class="b0 odkryj" data-g="siedz" data-i="3" aria-label="Pracownia, zdjęcie 4"><img src="img/r/pracownia-04-m.webp" srcset="img/r/pracownia-04-m.webp 900w, img/r/pracownia-04-l.webp 1400w, img/r/pracownia-04.webp 2200w" sizes="(max-width:760px) 100vw, 50vw" width="2200" height="1238" alt="Pracownia AMR w Lublinie" loading="lazy"></button><button type="button" class="b1 odkryj" data-g="siedz" data-i="1" aria-label="Pracownia, zdjęcie 2"><img src="img/r/pracownia-02-m.webp" srcset="img/r/pracownia-02-m.webp 900w, img/r/pracownia-02-l.webp 1400w, img/r/pracownia-02.webp 2200w" sizes="(max-width:760px) 100vw, 50vw" width="2200" height="1238" alt="Pracownia AMR w Lublinie" loading="lazy"></button><button type="button" class="b2 odkryj" data-g="siedz" data-i="10" aria-label="Pracownia, zdjęcie 11"><img src="img/r/pracownia-11-m.webp" srcset="img/r/pracownia-11-m.webp 900w, img/r/pracownia-11-l.webp 1400w, img/r/pracownia-11.webp 2200w" sizes="(max-width:760px) 100vw, 50vw" width="2200" height="1236" alt="Pracownia AMR w Lublinie" loading="lazy"></button><button type="button" class="b3 odkryj" data-g="siedz" data-i="12" aria-label="Pracownia, zdjęcie 13"><img src="img/r/pracownia-13-m.webp" srcset="img/r/pracownia-13-m.webp 900w, img/r/pracownia-13-l.webp 1400w, img/r/pracownia-13.webp 2200w" sizes="(max-width:760px) 100vw, 50vw" width="2200" height="1236" alt="Pracownia AMR w Lublinie" loading="lazy"></button><button type="button" class="b4 odkryj" data-g="siedz" data-i="15" aria-label="Pracownia, zdjęcie 16"><img src="img/r/pracownia-16-m.webp" srcset="img/r/pracownia-16-m.webp 900w, img/r/pracownia-16-l.webp 1400w, img/r/pracownia-16.webp 2200w" sizes="(max-width:760px) 100vw, 50vw" width="2200" height="1237" alt="Pracownia AMR w Lublinie" loading="lazy"></button><button type="button" class="b5 odkryj" data-g="siedz" data-i="9" aria-label="Pracownia, zdjęcie 10"><img src="img/r/pracownia-10-m.webp" srcset="img/r/pracownia-10-m.webp 900w, img/r/pracownia-10-l.webp 1400w, img/r/pracownia-10.webp 2200w" sizes="(max-width:760px) 100vw, 50vw" width="2200" height="1238" alt="Pracownia AMR w Lublinie" loading="lazy"></button><button type="button" class="b6 odkryj" data-g="siedz" data-i="18" aria-label="Pracownia, zdjęcie 19"><img src="img/r/pracownia-19-m.webp" srcset="img/r/pracownia-19-m.webp 900w, img/r/pracownia-19-l.webp 1400w, img/r/pracownia-19.webp 2200w" sizes="(max-width:760px) 100vw, 50vw" width="2200" height="1236" alt="Pracownia AMR w Lublinie" loading="lazy"></button></div>
  </div>
 </section>
-
-<section id="kontakt">
+<section id="kontakt" class="kontakt">
  <div class="wrap kont">
   <div>
    <h2 class="duzy">Zapraszamy<br>do pracowni.</h2>
    <div class="dane">
     <div><small>Telefon</small><span><a href="tel:+48501061258">+48 501 061 258</a><a class="drugi" href="tel:+48817428658">+48 81 742 86 58</a></span></div>
     <div><small>E-mail</small><a href="mailto:amr@rossa.pl">amr@rossa.pl</a></div>
-    <div><small>Adres</small><span>ul. Zbożowa 6<br>20-827 Lublin<a class="trasa" href="https://www.google.com/maps/dir/?api=1&amp;destination=Zbo%C5%BCowa+6%2C+20-827+Lublin" target="_blank" rel="noopener">Wyznacz trasę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></span></div>
+    <div><small>Adres</small><span>ul. Zbożowa 6, 20-827 Lublin<br><a class="trasa" href="https://www.google.com/maps/dir/?api=1&amp;destination=Zbo%C5%BCowa+6%2C+20-827+Lublin" target="_blank" rel="noopener">Wyznacz trasę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></span></div>
    </div>
   </div>
   <div class="mapa-r">
@@ -197,28 +182,27 @@
 <footer>
  <div class="wrap">
   <div class="st-g">
-   <div><a class="logo" href="index.html" style="display:inline-flex"><img class="logo-img logo-stopka" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272" loading="lazy"></a><p style="margin-top:22px;max-width:28em">Pracownia architektoniczna z Lublina. Galerie handlowe, obiekty usługowe, przemysłowe i mieszkalne od 1997 roku.</p></div>
-   <div><h4>Pracownia</h4><p>ul. Zbożowa 6<br>20-827 Lublin</p></div>
-   <div><h4>Kontakt</h4><a href="tel:+48501061258">+48 501 061 258</a><a href="tel:+48817428658">+48 81 742 86 58</a><a href="mailto:amr@rossa.pl">amr@rossa.pl</a></div>
-   <div><h4>Na stronie</h4><a href="index.html">Strona główna</a><a href="realizacje.html">Wszystkie realizacje</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a><a href="pracownia.html#kontakt">Kontakt i dojazd</a></div>
+   <div><a class="logo" href="index.html" aria-label="Strona główna"><img class="l-j" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272" loading="lazy"><img class="l-c" src="img/logo-amr-ciemne.png?v=1" alt="AMR Architekci &amp; Partnerzy" width="640" height="272" loading="lazy"></a></div>
+   <div></div>
+   <div><a href="index.html">Strona główna</a><a href="realizacje.html">Realizacje</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a></div>
   </div>
-  <div class="st-d"><span>© AMR Architekci &amp; Partnerzy · Mirosław Rossa Architekt · NIP 946 182 70 50</span><span>Wersja do uzgodnień · zdjęcia Galerii Olimp: Marcin Tarkowski, Piximo</span></div>
+  <div class="st-d"><span>© AMR Architekci &amp; Partnerzy · Mirosław Rossa Architekt · NIP 946 182 70 50</span><span>Zdjęcia Galerii Olimp: Marcin Tarkowski, Piximo · wersja do uzgodnień</span></div>
  </div>
 </footer>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Galeria zdjęć">
- <div class="lb-g"><span class="t"><b id="lbT"></b><span class="m" id="lbM"></span></span><span class="nr" id="lbN"></span><button type="button" aria-label="Zamknij galerię" id="lbZ"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
+ <div class="lb-g"><span class="t"><b id="lbT"></b><span class="m" id="lbM"></span></span><span class="nr" id="lbN"></span><button type="button" aria-label="Zamknij galerię" id="lbZ"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
  <div class="lb-s"><img id="lbI" alt=""><span class="lb-autor" id="lbA" hidden></span><span class="lb-podp" id="lbP" hidden></span>
   <button class="lb-str l" type="button" aria-label="Poprzednie zdjęcie" id="lbL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M15 5l-7 7 7 7"/></svg></button>
   <button class="lb-str p" type="button" aria-label="Następne zdjęcie" id="lbR"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 5l7 7-7 7"/></svg></button></div>
  <div class="lb-mini" id="lbMini"></div>
 </div>
-<script src="js/podstrony.js?v=1"></script>
+<script>window.AMRG={"siedz": {"t": "Pracownia", "m": "ul. Zbożowa 6, Lublin", "z": [{"s": "img/r/pracownia-01", "l": 1}, {"s": "img/r/pracownia-02", "l": 1}, {"s": "img/r/pracownia-03", "l": 1}, {"s": "img/r/pracownia-04", "l": 1}, {"s": "img/r/pracownia-05", "l": 1}, {"s": "img/r/pracownia-06", "l": 1}, {"s": "img/r/pracownia-07", "l": 1}, {"s": "img/r/pracownia-08", "l": 1}, {"s": "img/r/pracownia-09", "l": 1}, {"s": "img/r/pracownia-10", "l": 1}, {"s": "img/r/pracownia-11", "l": 1}, {"s": "img/r/pracownia-12", "l": 1}, {"s": "img/r/pracownia-13", "l": 1}, {"s": "img/r/pracownia-14", "l": 1}, {"s": "img/r/pracownia-15", "l": 1}, {"s": "img/r/pracownia-16", "l": 1}, {"s": "img/r/pracownia-17", "l": 1}, {"s": "img/r/pracownia-18", "l": 1}, {"s": "img/r/pracownia-19", "l": 1}, {"s": "img/r/pracownia-20", "l": 1}, {"s": "img/r/pracownia-21", "l": 1}, {"s": "img/r/pracownia-22", "l": 1}, {"s": "img/r/pracownia-23", "l": 1}, {"s": "img/r/pracownia-24", "l": 1}]}};</script>
+<script src="js/amr.js?v=4"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>AMRmapa()</script>
 <script>
 (function(){
- AMRmapa();
- var G={"t": "Pracownia", "m": "Lublin", "z": [{"s": "img/r/pracownia-02"}, {"s": "img/r/pracownia-03"}, {"s": "img/r/pracownia-04"}, {"s": "img/r/pracownia-05"}, {"s": "img/r/pracownia-07"}, {"s": "img/r/pracownia-08"}, {"s": "img/r/pracownia-09"}, {"s": "img/r/pracownia-10"}, {"s": "img/r/pracownia-11"}, {"s": "img/r/pracownia-12"}, {"s": "img/r/pracownia-13"}, {"s": "img/r/pracownia-14"}, {"s": "img/r/pracownia-15"}, {"s": "img/r/pracownia-16"}, {"s": "img/r/pracownia-17"}, {"s": "img/r/pracownia-19"}, {"s": "img/r/pracownia-20"}, {"s": "img/r/pracownia-21"}, {"s": "img/r/pracownia-22"}, {"s": "img/r/pracownia-23"}, {"s": "img/r/pracownia-24"}]},PIX=["olimp-01", "olimp-02", "olimp-03", "olimp-04", "olimp-05", "olimp-06", "olimp-07", "olimp-08", "olimp-09", "olimp-10", "olimp-11", "olimp-12", "olimp-13", "olimp-14", "olimp-15", "olimp-16", "olimp-17", "olimp-18", "olimp-19", "olimp-20", "olimp-21"];
- document.querySelectorAll('.bento button,#wszSiedz').forEach(function(b){b.addEventListener('click',function(){AMR.galeria(G,+b.dataset.i)})});
+ var PIX=["olimp-01", "olimp-02", "olimp-03", "olimp-04", "olimp-05", "olimp-06", "olimp-07", "olimp-08", "olimp-09", "olimp-10", "olimp-11", "olimp-12", "olimp-13", "olimp-14", "olimp-15", "olimp-16", "olimp-17", "olimp-18", "olimp-19", "olimp-20", "olimp-21"];
  var w=[].slice.call(document.querySelectorAll('.os-fot img')),li=[].slice.call(document.querySelectorAll('#os li')),pP=document.getElementById('osP'),pA=document.getElementById('osA');
  function akt(l){li.forEach(function(x){x.classList.toggle('akt',x===l)});var f=l.dataset.f;w.forEach(function(i){i.classList.toggle('on',i.dataset.w===f)});pP.textContent=l.querySelector('h3').textContent;pA.hidden=PIX.indexOf(f)<0}
  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting)akt(x.target)})},{rootMargin:'-48% 0px -48% 0px'});li.forEach(function(l){io.observe(l);l.addEventListener('mouseenter',function(){akt(l)})})}

@@ -1,619 +1,214 @@
 <!doctype html>
-<html lang="pl" data-menu="a" data-kolor="b">
+<html lang="pl" data-kolor="czern" data-menu="a">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>AMR Architekci &amp; Partnerzy · pracownia architektoniczna · Lublin</title>
-<meta name="description" content="AMR Architekci & Partnerzy, rodzinna pracownia architektoniczna z Lublina, od 1997 roku. Galerie handlowe, obiekty usługowe i przemysłowe. Realizacje, nie wizualizacje.">
+<meta name="description" content="AMR Architekci &amp; Partnerzy, rodzinna pracownia architektoniczna z Lublina, od 1997 roku. Galerie handlowe, obiekty usługowe i przemysłowe. Realizacje, nie wizualizacje.">
 <meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="data:,">
+<script>try{var d=document.documentElement,k=localStorage.getItem('amr-kolor'),m=localStorage.getItem('amr-menu');if(k)d.setAttribute('data-kolor',k);if(m)d.setAttribute('data-menu',m)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/dako-taras.webp" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="img/r/dako-03-m.webp 900w, img/r/dako-03-l.webp 1400w, img/r/dako-03.webp 2200w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="css/amr.css?v=4">
 <style>
-/* ===== kolory: trzy warianty do wyboru z klientem; tekst zawsze jasnoszary, nigdy czysto bialy ===== */
-:root{--pas:#0A0A0A;--tlo:#151413;--tlo2:#1C1B19;--tlo3:#232120;--linia:rgba(255,255,255,.085);--linia2:rgba(255,255,255,.16);--tekst:#C9C4BC;--jasny:#E6E2DB;--szary:#8A857E;--akcent:#B79C6E;--kropka:#C2362B;--e:cubic-bezier(.23,1,.32,1);--e2:cubic-bezier(.77,0,.175,1);--pg:72px;--pd:60px}
-html[data-kolor="a"]{--tlo:#131313;--tlo2:#1A1A1A;--tlo3:#222;--tekst:#C7C7C7;--jasny:#E4E4E4;--szary:#878787;--akcent:#D9D9D9}
-html[data-kolor="b"]{--tlo:#151413;--tlo2:#1C1B19;--tlo3:#232120;--tekst:#C9C4BC;--jasny:#E6E2DB;--szary:#8A857E;--akcent:#B79C6E}
-html[data-kolor="c"]{--tlo:#131517;--tlo2:#1A1D20;--tlo3:#212529;--tekst:#C5CACF;--jasny:#E0E4E8;--szary:#848B92;--akcent:#8FA0AE}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:var(--pg)}
-body{background:var(--tlo);color:var(--tekst);font:300 17px/1.7 Jost,system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;transition:background-color .5s,color .5s}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-::selection{background:var(--akcent);color:var(--pas)}
-.wrap{width:100%;max-width:1440px;margin:0 auto;padding:0 56px}
-.ocz{display:flex;align-items:center;gap:14px;font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--akcent);font-weight:400}
-.ocz::before{content:"";width:28px;height:1px;background:currentColor;opacity:.7}
-h2.duzy{font-weight:300;font-size:clamp(34px,4.2vw,64px);line-height:1.04;letter-spacing:-.015em;color:var(--jasny)}
 
-/* ===== gorny czarny pas ===== */
-.pas-g{position:fixed;inset:0 0 auto;z-index:60;height:var(--pg);background:var(--pas);border-bottom:1px solid var(--linia)}
-.pas-g .wrap{height:100%;display:flex;align-items:center;gap:40px}
-.logo{display:flex;flex-direction:column;line-height:1;color:var(--jasny);flex:none}
-.logo-img{display:block;height:52px;width:auto}.logo-stopka{height:64px}
-@media(max-width:760px){.logo-img{height:38px}.logo-stopka{height:54px}}
-
-.logo b{font-weight:400;font-size:25px;letter-spacing:.36em;display:flex;align-items:center}
-.logo b i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--kropka);margin:0 .52em 0 .08em;transform:translateY(-1px)}
-.logo small{font-size:8.8px;letter-spacing:.4em;color:var(--szary);margin-top:8px;text-transform:uppercase}
-.menu{margin-left:auto;white-space:nowrap;display:flex;align-items:center;gap:44px;font-size:12.5px;letter-spacing:.24em;text-transform:uppercase}
-.menu a{color:var(--tekst);position:relative;padding:8px 0;transition:color .2s}
-.menu a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:var(--akcent);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--e)}
-.menu a:hover{color:var(--jasny)}.menu a:hover::after,.menu a.akt::after{transform:scaleX(1);transform-origin:left}
-.menu a.akt{color:var(--jasny)}
-.menu .tel{letter-spacing:.08em;text-transform:none;font-size:14px;color:var(--szary);padding-left:44px;border-left:1px solid var(--linia)}
-.menu .tel::after{display:none}
-.przel{display:none;margin-left:auto;height:48px;align-items:center;justify-content:flex-end;gap:12px;font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--tekst)}
-.przel i{display:block;width:26px;height:9px;border-top:1px solid var(--jasny);border-bottom:1px solid var(--jasny);transition:transform .3s var(--e)}
-html.otw .przel i{transform:scaleX(.6)}
-
-/* menu B: menu na caly ekran */
-html[data-menu="b"] .pas-g .menu,html[data-menu="c"] .pas-g .menu{display:none}
-html[data-menu="b"] .przel,html[data-menu="c"] .przel{display:flex}
-.pelne{position:fixed;inset:var(--pg) 0 0;z-index:58;background:var(--pas);display:flex;flex-direction:column;justify-content:center;padding:0 56px;gap:6px;clip-path:inset(0 0 100% 0);transition:clip-path .55s var(--e2),visibility .55s;visibility:hidden}
-.pelne a{font-size:clamp(28px,6.2vw,84px);max-width:100%;font-weight:300;letter-spacing:-.01em;line-height:1.15;color:var(--jasny);display:flex;align-items:baseline;gap:24px;width:max-content;transition:color .2s}
-.pelne a small{font-size:13px;letter-spacing:.2em;color:var(--szary)}
-.pelne a:hover{color:var(--akcent)}
-.pelne .stopka{position:absolute;left:56px;right:56px;bottom:32px;display:flex;justify-content:space-between;gap:20px;font-size:14px;color:var(--szary);border-top:1px solid var(--linia);padding-top:20px}
-html.otw:not([data-menu="c"]) .pelne{clip-path:inset(0);visibility:visible}
-/* menu C: polprzezroczyste z boku */
-.bok{position:fixed;top:var(--pg);bottom:0;left:0;z-index:58;width:min(380px,86vw);background:rgba(10,10,10,.66);backdrop-filter:blur(18px) saturate(.8);-webkit-backdrop-filter:blur(18px) saturate(.8);border-right:1px solid var(--linia);padding:64px 48px;display:flex;flex-direction:column;gap:26px;transform:translateX(-101%);transition:transform .45s var(--e)}
-.bok a{font-size:28px;line-height:1.2;color:var(--jasny);transition:color .2s}
-.bok a:hover{color:var(--akcent)}
-.bok a small{display:block;font-size:11px;letter-spacing:.28em;color:var(--szary)}
-.bok .stopka{margin-top:auto;font-size:14px;color:var(--szary);line-height:1.8}
-html.otw[data-menu="c"] .bok{transform:none}
-
-/* ===== start ===== */
-.start{position:relative;height:100vh;height:100svh;min-height:560px;background:var(--pas);overflow:hidden}
+.start{position:relative;height:100vh;height:100svh;min-height:560px;background:var(--pas);overflow:hidden;padding:0;--pd:64px}
 .kadr{position:absolute;top:var(--pg);bottom:var(--pd);left:0;right:0;overflow:hidden}
-.slajd{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.06);transition:opacity 1.6s ease,transform 9s linear}
-.slajd.on{opacity:1;transform:scale(1)}
-.kadr::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.12) 34%,rgba(0,0,0,0) 55%),linear-gradient(90deg,rgba(0,0,0,.25),rgba(0,0,0,0) 50%);pointer-events:none}
-.haslo{position:absolute;left:0;right:0;bottom:calc(var(--pd) + 64px);z-index:2}
-.haslo h1{font-weight:300;font-size:clamp(40px,5.6vw,92px);line-height:.98;letter-spacing:-.025em;color:var(--jasny)}
-.haslo h1 span{display:block;overflow:hidden;padding-bottom:.06em}
-.haslo h1 span em{display:block;font-style:normal;transform:translateY(105%);animation:wjazd 1.1s var(--e) forwards}
-.haslo h1 span:nth-child(2) em{animation-delay:.12s}
-.haslo p{margin-top:22px;font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;color:#C4BFB7;opacity:0;animation:pojaw 1s ease .5s forwards}
-@keyframes wjazd{to{transform:none}}
-@keyframes pojaw{to{opacity:1}}
-.pas-d{position:absolute;left:0;right:0;bottom:0;height:var(--pd);background:var(--pas);z-index:3;border-top:1px solid var(--linia)}
-.postep{position:absolute;left:0;top:-1px;height:1px;background:var(--akcent);width:0}
-.pas-d .wrap{height:100%;display:flex;align-items:center;gap:22px;font-size:13.5px;color:var(--szary)}
-.pas-d .nr{font-variant-numeric:tabular-nums;letter-spacing:.14em;color:var(--szary);min-width:64px}
+.slajd{position:absolute;inset:0;opacity:0;transform:scale(1.05);transition:opacity 1.6s ease,transform 9s linear}
+.slajd.on{opacity:1;transform:none}
+.slajd img{width:100%;height:100%;object-fit:cover}
+.kadr::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.14) 36%,rgba(0,0,0,0) 56%),linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,0) 50%);pointer-events:none}
+.haslo{position:absolute;left:0;right:0;bottom:calc(var(--pd) + 60px);z-index:2}
+.haslo h1{font-size:clamp(44px,6vw,98px);line-height:.98;letter-spacing:-.028em;color:var(--foto)}
+.haslo h1 span{display:block}
+.haslo p{margin-top:20px;font-size:18px;color:var(--foto2)}
+.pas-d{position:absolute;left:0;right:0;bottom:0;height:var(--pd);background:var(--pas);z-index:3;border-top:1px solid var(--linia);transition:background-color .4s}
+.postep{position:absolute;left:0;top:-1px;height:2px;background:var(--akcent);width:0}
+.pas-d .wrap{height:100%;display:flex;align-items:center;gap:20px;font-size:15px;color:var(--tekst)}
+.pas-d .nr{font-variant-numeric:tabular-nums;letter-spacing:.1em;color:var(--szary);min-width:62px}
 .pas-d .nr b{font-weight:400;color:var(--jasny)}
 .strz{display:flex;gap:2px}
-.strz button{width:36px;height:36px;display:grid;place-items:center;color:var(--tekst);transition:color .2s,transform .16s var(--e)}
-.strz button:hover{color:var(--jasny)}.strz button:active{transform:scale(.92)}
-.strz svg{width:18px;height:18px}
-.pas-d .podp{color:var(--tekst);letter-spacing:.04em;transition:opacity .4s}
-.pas-d .kon{margin-left:auto;display:flex;gap:30px;letter-spacing:.04em}
-.pas-d .kon a{transition:color .2s}.pas-d .kon a:hover{color:var(--jasny)}
-.zjedz{position:absolute;right:56px;bottom:calc(var(--pd) + 64px);z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px;font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:#C4BFB7;writing-mode:vertical-rl}
-.zjedz::after{content:"";width:1px;height:56px;background:linear-gradient(#C4BFB7,transparent);animation:kreska 2.4s var(--e) infinite}
-@keyframes kreska{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-
-/* ===== sekcje ===== */
-section{padding:140px 0}
-.wstep{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:end}
+.strz button{width:44px;height:44px;display:grid;place-items:center;color:var(--tekst)}
+.strz button:hover{color:var(--jasny)}
+.strz svg{width:20px;height:20px}
+.pas-d .podp{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:opacity .4s}
+.pas-d .tel{margin-left:auto;flex:none;color:var(--jasny)}
+.wstep{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px;align-items:end}
 .wstep h2{max-width:11em}
-.wstep p{font-size:19px;line-height:1.75;max-width:34em}
-.liczby{display:grid;grid-template-columns:repeat(4,1fr);margin-top:90px;border-top:1px solid var(--linia)}
-.liczby div{padding:30px 24px 0 0}
-.liczby div+div{padding-left:28px;border-left:1px solid var(--linia)}
-.liczby b{display:block;font-weight:300;font-size:clamp(40px,4vw,60px);line-height:1;color:var(--jasny);letter-spacing:-.02em}
-.liczby span{display:block;margin-top:12px;font-size:14px;color:var(--szary);line-height:1.5}
-
-/* ===== realizacje ===== */
-.realizacje{background:var(--tlo2);padding-bottom:110px}
-.nagl{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:70px}
-.nagl h2{margin-top:22px}
-.filtry{display:flex;gap:28px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;overflow-x:auto;scrollbar-width:none;padding-bottom:6px}
-.filtry::-webkit-scrollbar{display:none}
-.filtry button{position:relative;padding:6px 0;color:var(--szary);white-space:nowrap;transition:color .2s}
-.filtry button sup{font-size:9px;letter-spacing:.05em;margin-left:4px;color:var(--szary)}
-.filtry button::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--akcent);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--e)}
-.filtry button:hover{color:var(--jasny)}
-.filtry button.on{color:var(--jasny)}.filtry button.on::after{transform:scaleX(1)}
-.projekty{display:grid;grid-template-columns:repeat(12,1fr);column-gap:28px;row-gap:90px}
-.proj{grid-column:span 12;cursor:zoom-in;outline:none}
-.proj.p7{grid-column:1/span 7}.proj.p5{grid-column:9/span 4;margin-top:140px}
-.proj.p5l{grid-column:1/span 5}.proj.p7r{grid-column:6/span 7;margin-top:100px}
-.proj.ukryty{display:none}
-.proj .ob{position:relative;overflow:hidden;background:var(--tlo3);aspect-ratio:16/9}
-.proj .ob img{width:100%;height:100%;object-fit:cover;transform:scale(1.001);transition:transform 1.2s var(--e),filter .8s;filter:saturate(.86) brightness(.94)}
-.proj:hover .ob img,.proj:focus-visible .ob img{transform:scale(1.03);filter:saturate(1) brightness(1)}
-.proj:focus-visible .ob{outline:1px solid var(--akcent);outline-offset:4px}
-.proj.p7 .ob,.proj.p7r .ob{aspect-ratio:4/3}
-.proj.p5 .ob,.proj.p5l .ob{aspect-ratio:4/5}
-.proj .zoom{position:absolute;right:18px;bottom:18px;display:flex;align-items:center;gap:10px;padding:9px 14px;background:rgba(10,10,10,.62);backdrop-filter:blur(6px);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--jasny);opacity:0;transform:translateY(6px);transition:opacity .35s var(--e),transform .35s var(--e)}
-.proj:hover .zoom{opacity:1;transform:none}
-.proj .opis{display:grid;grid-template-columns:auto 1fr auto;gap:6px 22px;align-items:baseline;padding-top:22px;border-bottom:1px solid var(--linia);padding-bottom:20px}
-.proj .opis em{font-style:normal;font-size:12px;letter-spacing:.2em;color:var(--akcent);grid-row:1/3}
-.proj .opis h3{font-weight:300;font-size:clamp(24px,2vw,32px);line-height:1.15;color:var(--jasny);letter-spacing:-.005em}
-.proj .opis .gdz{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--szary);text-align:right;white-space:nowrap}
-.proj .opis p{grid-column:2/4;font-size:15.5px;line-height:1.65;color:var(--tekst);max-width:38em}
-.brak{grid-column:1/-1;padding:80px 20px;text-align:center;color:var(--szary);border-top:1px solid var(--linia);border-bottom:1px solid var(--linia);display:none;font-size:15px;letter-spacing:.06em}
-
-/* odkrywanie zdjec */
-.odkryj{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s var(--e2)}
-.odkryj.on{clip-path:inset(0)}
-.wej{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s var(--e)}
-.wej.on{opacity:1;transform:none}
-
-/* ===== wykaz ===== */
-.wykaz .nagl{margin-bottom:46px}
+.kafle{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:64px 28px}
+.kaf{min-width:0}
+.kaf.w12{grid-column:1/-1}.kaf.w7{grid-column:span 7}.kaf.w5{grid-column:span 5}
+.kaf .ob{position:relative;display:block;width:100%;height:clamp(300px,36vw,600px);overflow:hidden;background:var(--tlo3);cursor:zoom-in}
+.kaf.w12 .ob{height:clamp(320px,42vw,700px)}
+.kaf .ob img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--e)}
+.kaf .ob:hover img{transform:scale(1.03)}
+.podp{display:flex;justify-content:space-between;align-items:baseline;gap:6px 20px;flex-wrap:wrap;padding-top:18px}
+.podp h3{font-size:clamp(24px,2vw,30px);line-height:1.2}
+.podp span{font-size:16px;color:var(--szary)}
+.dalej-r{margin-top:60px}
 .lista{border-top:1px solid var(--linia2)}
-.wiersz{display:grid;grid-template-columns:130px 1fr 220px 150px;gap:24px;padding:20px 0;border-bottom:1px solid var(--linia);align-items:baseline;transition:background .25s,padding .35s var(--e)}
-.wiersz:hover{background:rgba(255,255,255,.018);padding-left:12px;padding-right:12px}
-.wiersz .rok{font-variant-numeric:tabular-nums;color:var(--szary);font-size:14.5px;letter-spacing:.06em}
+.wiersz{display:grid;grid-template-columns:130px minmax(0,1fr) 180px 120px;gap:24px;padding:18px 0;border-bottom:1px solid var(--linia);align-items:baseline}
+.wiersz .rok{font-variant-numeric:tabular-nums;color:var(--szary);font-size:15px}
 .wiersz .naz{color:var(--jasny);font-size:18px}
-.wiersz .naz small{display:block;font-size:13.5px;color:var(--szary);margin-top:2px}
-.wiersz .msc{font-size:14.5px;color:var(--tekst)}
-.wiersz .st{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--szary);text-align:right}
-.wiersz .st.r{color:var(--akcent)}
+.wiersz .naz small{display:block;font-size:15px;color:var(--szary);margin-top:2px}
+.wiersz .msc{font-size:16px}
+.wiersz .st{font-size:15px;color:var(--szary);text-align:right}
+.wiersz .st.r{color:var(--tekst)}
 .lista .wiersz.dalej{display:none}
 .lista.cala .wiersz.dalej{display:grid}
-.wiecej{margin-top:34px;display:inline-flex;align-items:center;gap:14px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--jasny);padding:16px 26px;border:1px solid var(--linia2);transition:border-color .25s,transform .16s var(--e)}
-.wiecej:hover{border-color:var(--akcent)}.wiecej:active{transform:scale(.98)}
-
-/* ===== pracownia ===== */
-.pracownia{background:var(--tlo2)}
-.dwie{display:grid;grid-template-columns:6fr 5fr;gap:100px;align-items:center}
-.dwie .fot .ob{aspect-ratio:4/5;overflow:hidden}
-.dwie .fot img{width:100%;height:100%;object-fit:cover;object-position:35% 50%;filter:saturate(.88) brightness(.95)}
-.dwie .fot figcaption{margin-top:14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--szary)}
-.dwie h2{margin:22px 0 30px}
-.dwie p{margin-bottom:18px;max-width:34em}
-.zespol{margin-top:40px;border-top:1px solid var(--linia)}
-.zespol div{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--linia);font-size:15.5px}
-.zespol div span{color:var(--jasny)}
-.zespol div small{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--szary);align-self:center;text-align:right}
-.ig{display:inline-flex;align-items:center;gap:14px;margin-top:36px;font-size:14px;letter-spacing:.06em;color:var(--jasny);padding-bottom:6px;border-bottom:1px solid var(--linia2);transition:border-color .25s,gap .3s var(--e)}
-.ig:hover{border-color:var(--akcent);gap:18px}
-.ig svg{width:18px;height:18px}
-
-/* ===== kontakt ===== */
-.kont{display:grid;grid-template-columns:5fr 7fr;gap:90px;align-items:stretch}
-.kont h2{margin-top:22px}
-.dane{margin-top:56px;border-top:1px solid var(--linia)}
-.dane>div{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--linia);align-items:baseline}
-.dane small{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--szary)}
-.dane a,.dane span{font-size:21px;color:var(--jasny);line-height:1.4;transition:color .2s}
-.dane a{display:block}
-.dane a:hover{color:var(--akcent)}
-.dane .drugi{font-size:16px;color:var(--tekst);margin-top:4px}
-.trasa{display:flex!important;width:max-content;align-items:center;gap:10px;margin-top:10px;font-size:12px!important;letter-spacing:.22em;text-transform:uppercase;color:var(--akcent)!important}
-.mapa-r{position:relative;min-height:520px;background:var(--tlo3);overflow:hidden}
-#mapa{position:absolute;inset:0;background:#1b1c1e;z-index:1}
-#mapa .leaflet-tile-pane img.leaflet-tile{filter:invert(1) hue-rotate(180deg) saturate(.25) brightness(.95) contrast(1.02)}
-.leaflet-container{font-family:Jost,system-ui,sans-serif}
-.leaflet-control-zoom{border:0!important;margin:0 18px 18px 0!important}
-.leaflet-control-zoom a{background:rgba(10,10,10,.85)!important;color:var(--jasny)!important;border:1px solid var(--linia2)!important;width:36px!important;height:36px!important;line-height:34px!important}
-.leaflet-control-zoom a:hover{background:#000!important}
-.leaflet-control-attribution{background:rgba(10,10,10,.6)!important;color:#8a857e!important;font-size:10px!important}
-.leaflet-control-attribution a{color:#b5b0a8!important}
-.znacznik{position:relative;width:18px;height:18px}
-.znacznik i{position:absolute;inset:0;border-radius:50%;background:var(--kropka);border:3px solid #F1EDE6;box-shadow:0 2px 10px rgba(0,0,0,.6)}
-.znacznik::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px solid var(--kropka);opacity:0;animation:fala 2.4s var(--e) infinite}
-@keyframes fala{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.4);opacity:0}}
-.mapa-r .pin{position:absolute;z-index:500;left:24px;top:24px;background:var(--pas);border:1px solid var(--linia2);padding:14px 18px;font-size:13.5px;line-height:1.5;color:var(--tekst);pointer-events:none}
-.mapa-r .pin b{display:block;font-weight:400;color:var(--jasny);letter-spacing:.04em}
-
-/* ===== stopka ===== */
-footer{background:var(--pas);border-top:1px solid var(--linia);color:var(--szary);font-size:13.5px}
-.st-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding:70px 0 50px}
-.st-g h4{font-weight:400;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--tekst);margin-bottom:16px}
-.st-g p,.st-g a{display:block;line-height:1.9}
-.st-g a:hover{color:var(--jasny)}
-.st-d{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px 0 26px;border-top:1px solid var(--linia);font-size:12.5px}
-
-/* ===== powiekszenie ===== */
-.lb{position:fixed;inset:0;z-index:90;background:rgba(6,6,6,.985);display:grid;grid-template-rows:64px 1fr 92px;opacity:0;visibility:hidden;transition:opacity .3s var(--e),visibility .3s}
-.lb.on{opacity:1;visibility:visible}
-.lb-g{display:flex;align-items:center;gap:24px;padding:0 28px;border-bottom:1px solid var(--linia);color:var(--tekst);font-size:15px;min-width:0}
-.lb-g b{font-weight:400;color:var(--jasny)}
-.lb-g .nr{margin-left:auto;color:var(--szary);letter-spacing:.14em;font-variant-numeric:tabular-nums;font-size:13px}
-.lb-g button{width:44px;height:44px;display:grid;place-items:center;color:var(--jasny);transition:transform .16s var(--e)}
-.lb-g button:active{transform:scale(.9)}
-.lb-s{position:relative;display:flex;align-items:center;justify-content:center;min-height:0;padding:24px 84px}
-.lb-s img{max-width:100%;max-height:100%;object-fit:contain;transition:opacity .25s}
-.lb-s img.zmiana{opacity:0}
-.lb-autor{position:absolute;right:96px;bottom:34px;font-size:11.5px;letter-spacing:.08em;color:rgba(230,226,219,.78);background:rgba(0,0,0,.5);padding:5px 9px}
-.lb-str{position:absolute;top:50%;width:56px;height:56px;margin-top:-28px;display:grid;place-items:center;color:var(--jasny);opacity:.6;transition:opacity .2s,transform .16s var(--e)}
-.lb-str:hover{opacity:1}.lb-str:active{transform:scale(.9)}
-.lb-str svg{width:28px;height:28px}
-.lb-str.l{left:14px}.lb-str.p{right:14px}
-.lb-mini{display:flex;gap:10px;justify-content:center;align-items:center;padding:0 20px;border-top:1px solid var(--linia);overflow-x:auto;scrollbar-width:none}
-.lb-mini::-webkit-scrollbar{display:none}
-.lb-mini button{flex:none;width:86px;height:56px;opacity:.38;transition:opacity .25s,outline-color .25s;outline:1px solid transparent;outline-offset:3px}
-.lb-mini button img{width:100%;height:100%;object-fit:cover}
-.lb-mini button:hover{opacity:.7}
-.lb-mini button.on{opacity:1;outline-color:var(--akcent)}
-
-/* ===== panel wariantow (tylko na czas uzgodnien) ===== */
-.warianty{position:fixed;right:18px;bottom:calc(var(--pd) + 18px);z-index:80;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);border:1px solid var(--linia2);padding:14px 16px;font-size:12px;color:var(--szary);display:grid;gap:10px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
-.warianty b{font-weight:400;letter-spacing:.26em;text-transform:uppercase;color:var(--akcent);font-size:10px;padding-right:26px}
-.warianty div{display:flex;align-items:center;gap:6px}
-.warianty div span{width:54px;letter-spacing:.06em}
-.warianty button{min-width:30px;height:28px;border:1px solid var(--linia2);font-size:12px;color:var(--tekst);transition:background .2s,color .2s,transform .16s var(--e)}
-.warianty button:active{transform:scale(.94)}
-.warianty button.on{background:var(--jasny);color:var(--pas);border-color:var(--jasny)}
-.warianty .zw{position:absolute;top:8px;right:8px;min-width:22px;height:22px;border:0;font-size:15px;color:var(--szary)}
-.warianty.min div{display:none}
-.warianty.min{padding:10px 14px}
-
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.odkryj{clip-path:none}.wej{opacity:1;transform:none}}
-
-/* ===== tablet ===== */
+.wiecej{margin-top:32px}
+.dwie{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:90px;align-items:center}
+.dwie .ob{aspect-ratio:4/3;overflow:hidden}
+.dwie .ob img{width:100%;height:100%;object-fit:cover}
+.dwie .lead{margin-top:26px}
+.linki{display:flex;gap:16px 36px;flex-wrap:wrap;margin-top:30px}
+@media (min-width:761px) and (max-height:820px){.haslo h1{font-size:clamp(42px,5.2vw,80px)}.haslo{bottom:calc(var(--pd) + 40px)}}
 @media (max-width:1100px){
- .wrap{padding:0 36px}
- .menu{gap:30px}.menu .tel{display:none}
- .wstep,.dwie,.kont{grid-template-columns:1fr;gap:50px}
- .projekty{row-gap:70px}
- .proj.p7,.proj.p7r{grid-column:1/-1;margin-top:0}
- .proj.p5,.proj.p5l{grid-column:span 6;margin-top:0}
- .wiersz{grid-template-columns:110px 1fr 160px}
- .wiersz .st{display:none}
- .st-g{grid-template-columns:1fr 1fr}
+ .wstep,.dwie{grid-template-columns:1fr;gap:40px}
+ .wiersz{grid-template-columns:110px minmax(0,1fr) 140px}.wiersz .st{display:none}
 }
-@media (max-width:980px){html[data-menu="a"] .pas-g .menu{display:none}html[data-menu="a"] .przel{display:flex}}
-/* ===== telefon ===== */
 @media (max-width:760px){
- :root{--pg:62px;--pd:54px}
- body{font-size:16px}
- .wrap{padding:0 20px}
- .pas-g .menu{display:none}
- .przel{display:flex}
- .logo b{font-size:20px}.logo small{font-size:7.6px;margin-top:6px}
- .pelne{padding:0 24px}.pelne .stopka{left:24px;right:24px;flex-direction:column;gap:4px}
- .haslo{bottom:calc(var(--pd) + 34px)}
- .haslo p{font-size:10px;letter-spacing:.17em;margin-top:16px}
- .zjedz{display:none}
- .pas-d .podp,.pas-d .kon a+a{display:none}
- .pas-d .wrap{gap:10px}
- .pas-d .kon{gap:0}
- section{padding:84px 0}
- .wstep p{font-size:17px}
- .liczby{grid-template-columns:1fr 1fr;margin-top:56px}
- .liczby div{padding:24px 12px 22px 0!important;border-left:0!important}
- .liczby div:nth-child(2n){padding-left:20px!important;border-left:1px solid var(--linia)!important}
- .liczby div:nth-child(-n+2){border-bottom:1px solid var(--linia)}
- .nagl{flex-direction:column;align-items:flex-start;gap:30px;margin-bottom:44px}
- .filtry{gap:22px;width:calc(100% + 20px);margin-right:-20px;padding-right:20px;font-size:11px}
- .projekty{row-gap:56px}
- .proj,.proj.p5,.proj.p5l,.proj.p7,.proj.p7r{grid-column:1/-1;margin-top:0}
- .proj .ob,.proj.p5 .ob,.proj.p5l .ob,.proj.p7 .ob,.proj.p7r .ob{aspect-ratio:4/3}
- .proj .zoom{opacity:1;transform:none;right:12px;bottom:12px;padding:7px 11px;font-size:10px}
- .proj .opis{grid-template-columns:auto 1fr;padding-top:18px}
- .proj .opis .gdz{grid-column:2;text-align:left}
- .proj .opis em{grid-row:1/4}
- .proj .opis p{grid-column:2}
- .wiersz{grid-template-columns:76px 1fr;gap:4px 14px;padding:16px 0}
- .wiersz .msc{grid-column:2;font-size:13.5px;color:var(--szary)}
- .wiersz .naz{font-size:16.5px}
- .wiersz:hover{padding-left:0;padding-right:0}
- .dwie .fot .ob{aspect-ratio:4/3}
- .dane>div{grid-template-columns:1fr;gap:6px}
- .dane a,.dane span{font-size:19px}
- .mapa-r{min-height:340px}
- .st-g{grid-template-columns:1fr;gap:28px;padding:50px 0 34px}
- .lb{grid-template-rows:58px 1fr 76px}
- .lb-g{padding:0 10px 0 18px;gap:12px;font-size:14px}
- .lb-g #lbM{display:none}
- .lb-s{padding:8px}
- .lb-str{top:auto;bottom:14px;margin:0;background:rgba(10,10,10,.6);width:48px;height:48px}
- .lb-autor{right:10px;bottom:auto;top:12px}
- .lb-mini button{width:64px;height:44px}
- .warianty{right:10px;bottom:calc(var(--pd) + 10px);padding:10px 12px}
+ .start{display:flex;flex-direction:column;--pd:56px;min-height:0}
+ .kadr{position:relative;top:auto;bottom:auto;margin-top:var(--pg);flex:1 1 0;min-height:min(60vw,30svh)}
+ .kadr::after{background:linear-gradient(0deg,var(--pas) 0%,transparent 30%)}
+ .haslo{position:relative;bottom:auto;flex:0 0 auto;padding:2px 0 26px}
+ .haslo h1{color:var(--jasny);font-size:clamp(38px,11.4vw,54px);line-height:1.02}
+ .haslo p{color:var(--tekst);font-size:16px;margin-top:12px}
+ .pas-d{position:relative;flex:0 0 var(--pd)}
+ .pas-d .podp{display:none}
+ .pas-d .wrap{gap:8px}
+ .kafle{grid-template-columns:minmax(0,1fr);gap:44px}
+ .kaf.w12,.kaf.w7,.kaf.w5{grid-column:1}
+ .kaf .ob,.kaf.w12 .ob{height:auto;aspect-ratio:4/3}
+ .podp{padding-top:14px}
+ .wiersz{grid-template-columns:84px minmax(0,1fr);gap:2px 14px;padding:15px 0}
+ .wiersz .msc{grid-column:2;font-size:15px;color:var(--szary)}
+ .wiersz .naz{font-size:17px}
 }
+@media (max-width:760px) and (max-height:700px){.haslo p{display:none}}
+
 </style>
 </head>
 <body>
-
 <header class="pas-g">
  <div class="wrap">
-  <a class="logo" href="#start" aria-label="AMR Architekci &amp; Partnerzy, strona główna"><img class="logo-img" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272"></a>
-  <nav class="menu" aria-label="Menu główne">
-   <a href="#realizacje">Realizacje</a>
-   <a href="pracownia.html">O pracowni</a>
-   <a href="agnieszka-rossa.html">Agnieszka Rossa</a>
-   <a href="#kontakt">Kontakt</a>
-   <a class="tel" href="tel:+48501061258">+48 501 061 258</a>
-  </nav>
+  <a class="logo" href="index.html" aria-label="AMR Architekci &amp; Partnerzy, strona główna"><img class="l-j" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272"><img class="l-c" src="img/logo-amr-ciemne.png?v=1" alt="AMR Architekci &amp; Partnerzy" width="640" height="272"></a>
+  <nav class="menu" aria-label="Menu główne"><a href="realizacje.html">Realizacje</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a><a href="#kontakt">Kontakt</a><a class="tel" href="tel:+48501061258">+48 501 061 258</a></nav>
   <button class="przel" type="button" aria-label="Otwórz menu" aria-expanded="false" data-otw>Menu <i></i></button>
  </div>
 </header>
+<nav class="pelne" aria-label="Menu"><a href="index.html" class="akt" aria-current="page">Strona główna</a><a href="realizacje.html">Realizacje</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a><a href="#kontakt">Kontakt</a><div class="stopka"><span>ul. Zbożowa 6, 20-827 Lublin</span><a href="tel:+48501061258">+48 501 061 258</a></div></nav>
+<nav class="bok" aria-label="Menu boczne"><a href="index.html" class="akt" aria-current="page">Strona główna</a><a href="realizacje.html">Realizacje</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a><a href="#kontakt">Kontakt</a><div class="stopka">ul. Zbożowa 6, 20-827 Lublin<br>+48 501 061 258</div></nav>
 
-<nav class="pelne" aria-label="Menu">
- <a href="#realizacje"><small>01</small>Realizacje</a>
- <a href="realizacje.html"><small>02</small>Wszystkie realizacje</a>
- <a href="pracownia.html"><small>03</small>O pracowni</a>
- <a href="agnieszka-rossa.html"><small>04</small>Agnieszka Rossa</a>
- <a href="#kontakt"><small>05</small>Kontakt</a>
- <div class="stopka"><span>ul. Zbożowa 6, 20-827 Lublin</span><span>+48 501 061 258 · amr@rossa.pl</span></div>
-</nav>
-<nav class="bok" aria-label="Menu boczne">
- <a href="#realizacje"><small>01</small>Realizacje</a>
- <a href="realizacje.html"><small>02</small>Wszystkie realizacje</a>
- <a href="pracownia.html"><small>03</small>O pracowni</a>
- <a href="agnieszka-rossa.html"><small>04</small>Agnieszka Rossa</a>
- <a href="#kontakt"><small>05</small>Kontakt</a>
- <div class="stopka">ul. Zbożowa 6<br>20-827 Lublin<br>+48 501 061 258</div>
-</nav>
-
-<!-- ===== START ===== -->
-<section class="start" id="start" style="padding:0" aria-label="Wybrane realizacje">
- <div class="kadr">
-  <div class="slajd on" style="background-image:url(img/dako-taras.webp)" data-p="Drukarnia DAKO · Lubartów · ogród na dachu"></div>
-  <div class="slajd" data-src="img/olimp-2.webp" data-p="Galeria Olimp · Lublin" style="background-position:50% 62%"></div>
-  <div class="slajd" data-src="img/dako-2.webp" data-p="Drukarnia DAKO · Lubartów"></div>
-  <div class="slajd" data-src="img/venus-2.webp" data-p="Galeria Venus · Świdnik" style="background-position:50% 35%"></div>
-  <div class="slajd" data-src="img/olimp-1.webp" data-p="Galeria Olimp · Lublin · z lotu ptaka"></div>
-  <div class="slajd" data-src="img/pryzmet-1.webp" data-p="Pryzmet" style="background-position:60% 50%"></div>
- </div>
+<main>
+<section class="start" id="start" aria-label="Wybrane realizacje">
+ <div class="kadr"><div class="slajd on" data-p="Drukarnia DAKO · Lubartów · ogród na dachu" data-a=""><img src="img/r/dako-03-m.webp" srcset="img/r/dako-03-m.webp 900w, img/r/dako-03-l.webp 1400w, img/r/dako-03.webp 2200w" sizes="100vw" width="2200" height="990" alt="Drukarnia DAKO · Lubartów · ogród na dachu" fetchpriority="high" style="object-position:50% 60%"></div><div class="slajd" data-p="Galeria Olimp · Lublin" data-a="fot. Marcin Tarkowski / Piximo"><img data-srcset="img/r/olimp-02-m.webp 900w, img/r/olimp-02-l.webp 1400w, img/r/olimp-02.webp 2200w" sizes="100vw" alt="Galeria Olimp · Lublin" style="object-position:50% 62%"></div><div class="slajd" data-p="Drukarnia DAKO · Lubartów" data-a=""><img data-srcset="img/r/dako-01-m.webp 900w, img/r/dako-01-l.webp 1400w, img/r/dako-01.webp 2200w" sizes="100vw" alt="Drukarnia DAKO · Lubartów" style="object-position:50% 50%"></div><div class="slajd" data-p="Galeria Venus · Świdnik" data-a=""><img data-srcset="img/r/venus-02-m.webp 900w, img/r/venus-02-l.webp 1400w, img/r/venus-02.webp 2200w" sizes="100vw" alt="Galeria Venus · Świdnik" style="object-position:50% 40%"></div><div class="slajd" data-p="Kościół pw. św. Michała Archanioła · Lublin" data-a=""><img data-srcset="img/r/michal-01-m.webp 900w, img/r/michal-01-l.webp 1400w, img/r/michal-01.webp 2200w" sizes="100vw" alt="Kościół pw. św. Michała Archanioła · Lublin" style="object-position:50% 40%"></div><div class="slajd" data-p="Galeria Olimp · Lublin · z lotu ptaka" data-a="fot. Marcin Tarkowski / Piximo"><img data-srcset="img/r/olimp-03-m.webp 900w, img/r/olimp-03-l.webp 1400w, img/r/olimp-03.webp 2200w" sizes="100vw" alt="Galeria Olimp · Lublin · z lotu ptaka" style="object-position:50% 50%"></div><div class="slajd" data-p="Pryzmet · Lublin" data-a=""><img data-srcset="img/r/pryzmet-01-m.webp 900w, img/r/pryzmet-01-l.webp 1400w, img/r/pryzmet-01.webp 2200w" sizes="100vw" alt="Pryzmet · Lublin" style="object-position:60% 50%"></div></div>
  <div class="haslo"><div class="wrap">
-  <h1><span><em>Realizacje,</em></span><span><em>nie wizualizacje.</em></span></h1>
-  <p>Pracownia architektoniczna · Lublin · od 1997</p>
+  <h1><span>Realizacje,</span><span>nie wizualizacje.</span></h1>
+  <p>Pracownia architektoniczna z Lublina, od 1997 roku.</p>
  </div></div>
- <a class="zjedz" href="#o-nas">Przewiń</a>
  <div class="pas-d">
   <div class="postep" id="postep"></div>
   <div class="wrap">
-   <span class="nr" id="nr"><b>01</b> / 06</span>
+   <span class="nr" id="nr"><b>01</b> / 07</span>
    <div class="strz"><button type="button" aria-label="Poprzednie zdjęcie" id="sL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" aria-label="Następne zdjęcie" id="sP"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 5l7 7-7 7"/></svg></button></div>
    <span class="podp" id="podp">Drukarnia DAKO · Lubartów · ogród na dachu</span>
-   <div class="kon"><a href="tel:+48501061258">+48 501 061 258</a><a href="mailto:amr@rossa.pl">amr@rossa.pl</a></div>
+   <a class="tel" href="tel:+48501061258">+48 501 061 258</a>
   </div>
  </div>
 </section>
 
-<!-- ===== WSTEP ===== -->
 <section id="o-nas">
- <div class="wrap">
-  <div class="wstep">
-   <div class="wej"><div class="ocz">AMR Architekci &amp; Partnerzy</div><h2 class="duzy" style="margin-top:22px">Projektujemy budynki, które potem stoją i pracują.</h2></div>
-   <p class="wej">Rodzinna pracownia z Lublina. Od 1997 roku projektujemy galerie handlowe, zakłady produkcyjne, biurowce i budynki mieszkalne, od pierwszej koncepcji po projekt wykonawczy. Na tej stronie pokazujemy tylko to, co zostało zbudowane.</p>
-  </div>
-  <div class="liczby wej">
-   <div><b>1997</b><span>początek pracowni</span></div>
-   <div><b>7</b><span>zrealizowanych etapów galerii handlowych</span></div>
-   <div><b>24</b><span>projekty i koncepcje w wykazie</span></div>
-   <div><b>3</b><span>architektów w rodzinie</span></div>
-  </div>
+ <div class="wrap wstep">
+  <h2 class="duzy">Projektujemy budynki, które potem stoją i pracują.</h2>
+  <p class="lead">Rodzinna pracownia z Lublina. Od 1997 roku projektujemy galerie handlowe, zakłady produkcyjne, biurowce i budynki mieszkalne, od pierwszej koncepcji po projekt wykonawczy. Na tej stronie pokazujemy tylko to, co zostało zbudowane.</p>
  </div>
 </section>
 
-<!-- ===== REALIZACJE ===== -->
-<section id="realizacje" class="realizacje">
+<section id="realizacje" class="alt">
  <div class="wrap">
-  <div class="nagl">
-   <div class="wej"><div class="ocz">Realizacje</div><h2 class="duzy">Wybrane obiekty</h2></div>
-   <div class="filtry wej" role="group" aria-label="Rodzaj budownictwa">
-    <button class="on" data-f="*">Wszystkie<sup>05</sup></button>
-    <button data-f="usl">Usługowe i użyteczności publicznej<sup>02</sup></button>
-    <button data-f="prz">Przemysłowe<sup>03</sup></button>
-    <button data-f="mie">Mieszkaniowe<sup>00</sup></button>
-   </div>
-  </div>
-  <div class="projekty">
-   <article class="proj p7" data-k="usl" data-o="olimp">
-    <div class="ob odkryj"><img src="img/olimp-2-m.webp" srcset="img/olimp-2-m.webp 960w, img/olimp-2.webp 2400w" sizes="(max-width:760px) 100vw, 58vw" alt="Galeria Olimp w Lublinie o zmierzchu" loading="lazy"><span class="zoom">Galeria · 6</span></div>
-    <div class="opis wej"><em>01</em><h3>Galeria Olimp</h3><span class="gdz">Lublin · 1999-2013</span><p>Galeria handlowo-usługowa rozbudowywana w pięciu etapach, od pierwszego budynku po część z Multikinem.</p></div>
-   </article>
-   <article class="proj p5" data-k="prz" data-o="dako">
-    <div class="ob odkryj"><img src="img/dako-3-m.webp" alt="Drukarnia DAKO w Lubartowie z lotu ptaka" loading="lazy" style="object-position:30% 50%"><span class="zoom">Galeria · 7</span></div>
-    <div class="opis wej"><em>02</em><h3>Drukarnia DAKO</h3><span class="gdz">Lubartów · od 2004</span><p>Rozbudowa drukarni, a potem nowy zakład DAKO NEXT realizowany etapami: hale, biurowiec i ogród na dachu.</p></div>
-   </article>
-   <article class="proj p5l" data-k="usl" data-o="venus">
-    <div class="ob odkryj"><img src="img/venus-2-m.webp" alt="Wejście do Galerii Venus w Świdniku" loading="lazy"><span class="zoom">Galeria · 3</span></div>
-    <div class="opis wej"><em>03</em><h3>Galeria Venus</h3><span class="gdz">Świdnik · 2006, 2012</span><p>Galeria handlowo-usługowa w dwóch etapach. Venus 1 otwarta w marcu 2006, Venus 2 oddana w 2012 roku.</p></div>
-   </article>
-   <article class="proj p7r" data-k="prz" data-o="pryzmet">
-    <div class="ob odkryj"><img src="img/pryzmet-1-m.webp" srcset="img/pryzmet-1-m.webp 960w, img/pryzmet-1.webp 2400w" sizes="(max-width:760px) 100vw, 58vw" alt="Budynek firmy Pryzmet" loading="lazy" style="object-position:60% 50%"><span class="zoom">Galeria · 2</span></div>
-    <div class="opis wej"><em>04</em><h3>Pryzmet</h3><span class="gdz">Biuro i produkcja</span><p>Budynek biurowy z częścią techniczną i elewacją z żaluzji fasadowych.</p></div>
-   </article>
-   <article class="proj p7" data-k="prz" data-o="bury">
-    <div class="ob odkryj"><img src="img/bury-1-m.webp" srcset="img/bury-1-m.webp 960w, img/bury-1.webp 2400w" sizes="(max-width:760px) 100vw, 58vw" alt="Zakład Bury z częścią biurową" loading="lazy"><span class="zoom">Galeria · 2</span></div>
-    <div class="opis wej"><em>05</em><h3>Bury</h3><span class="gdz">Zakład produkcyjny</span><p>Hala z częścią biurową i strefą rozładunku.</p></div>
-   </article>
-   <article class="proj p5" data-k="usl" data-o="olimp" data-start="5">
-    <div class="ob odkryj"><img src="img/olimp-6-m.webp" alt="Pasaż Galerii Olimp" loading="lazy" style="object-position:35% 50%"><span class="zoom">Galeria · 6</span></div>
-    <div class="opis wej"><em>01</em><h3>Olimp, wnętrze</h3><span class="gdz">Lublin</span><p>Pasaż galerii z przeszklonym dachem.</p></div>
-   </article>
-   <div class="brak" id="brak">Zdjęcia budynków mieszkaniowych w przygotowaniu.</div>
-  </div>
-  <a class="wiecej wej" href="realizacje.html" style="margin-top:80px">Wszystkie realizacje <span>→</span></a>
+  <div class="gl"><h2 class="duzy">Wybrane realizacje</h2><a class="lnk" href="realizacje.html">Wszystkie realizacje <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  <div class="kafle"><article class="kaf w12"><button type="button" class="ob odkryj" data-g="olimp" aria-label="Otwórz galerię: Galeria Olimp, 25 zdjęć"><img src="img/r/olimp-02-m.webp" srcset="img/r/olimp-02-m.webp 900w, img/r/olimp-02-l.webp 1400w, img/r/olimp-02.webp 2200w" sizes="(max-width:760px) 100vw, 92vw" width="2200" height="1467" alt="Galeria Olimp" loading="lazy"></button><div class="podp"><h3>Galeria Olimp</h3><span>Lublin · 1999-2013</span></div></article><article class="kaf w7"><button type="button" class="ob odkryj" data-g="dako" aria-label="Otwórz galerię: Drukarnia DAKO, 35 zdjęć"><img src="img/r/dako-01-m.webp" srcset="img/r/dako-01-m.webp 900w, img/r/dako-01-l.webp 1400w, img/r/dako-01.webp 2200w" sizes="(max-width:760px) 100vw, 56vw" width="2200" height="1238" alt="Drukarnia DAKO" loading="lazy"></button><div class="podp"><h3>Drukarnia DAKO</h3><span>Lubartów · 2004-2013</span></div></article><article class="kaf w5"><button type="button" class="ob odkryj" data-g="venus" aria-label="Otwórz galerię: Galeria Venus, 14 zdjęć"><img src="img/r/venus-02-m.webp" srcset="img/r/venus-02-m.webp 900w, img/r/venus-02-l.webp 1400w, img/r/venus-02.webp 2200w" sizes="(max-width:760px) 100vw, 56vw" width="2200" height="1236" alt="Galeria Venus" loading="lazy"></button><div class="podp"><h3>Galeria Venus</h3><span>Świdnik · 2005-2012</span></div></article><article class="kaf w5"><button type="button" class="ob odkryj" data-g="michal" aria-label="Otwórz galerię: Kościół pw. św. Michała Archanioła, 13 zdjęć"><img src="img/r/michal-01-m.webp" srcset="img/r/michal-01-m.webp 900w, img/r/michal-01-l.webp 1400w, img/r/michal-01.webp 2200w" sizes="(max-width:760px) 100vw, 56vw" width="2200" height="1615" alt="Kościół pw. św. Michała Archanioła" loading="lazy"></button><div class="podp"><h3>Kościół pw. św. Michała Archanioła</h3><span>Lublin</span></div></article><article class="kaf w7"><button type="button" class="ob odkryj" data-g="pryzmet" aria-label="Otwórz galerię: Pryzmet, 13 zdjęć"><img src="img/r/pryzmet-01-m.webp" srcset="img/r/pryzmet-01-m.webp 900w, img/r/pryzmet-01-l.webp 1400w, img/r/pryzmet-01.webp 2200w" sizes="(max-width:760px) 100vw, 56vw" width="2200" height="992" alt="Pryzmet" loading="lazy"></button><div class="podp"><h3>Pryzmet</h3><span>Lublin</span></div></article></div>
  </div>
 </section>
 
-<!-- ===== WYKAZ ===== -->
-<section class="wykaz" id="wykaz">
+<section id="wykaz">
  <div class="wrap">
-  <div class="nagl wej"><div><div class="ocz">Doświadczenie</div><h2 class="duzy">Wykaz projektów</h2></div></div>
-  <div class="lista wej" id="lista">
-   <div class="wiersz"><span class="rok">2011-2013</span><span class="naz">Galeria handlowo-usługowa Olimp V<small>z Multikinem</small></span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div>
-   <div class="wiersz"><span class="rok">2009-2012</span><span class="naz">Galeria handlowo-usługowa Venus 2</span><span class="msc">Świdnik</span><span class="st r">Realizacja</span></div>
-   <div class="wiersz"><span class="rok">2008-2013</span><span class="naz">Drukarnia DAKO NEXT<small>etapy I i III</small></span><span class="msc">Lubartów</span><span class="st r">Realizacja</span></div>
-   <div class="wiersz"><span class="rok">2007-2009</span><span class="naz">Galeria handlowo-usługowa Olimp IV<small>otwarcie w czerwcu 2009</small></span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div>
-   <div class="wiersz"><span class="rok">2007-2009</span><span class="naz">Obiekt handlowo-usługowy z piekarnią</span><span class="msc">Świdnik</span><span class="st r">Realizacja</span></div>
-   <div class="wiersz"><span class="rok">2005-2006</span><span class="naz">Galeria handlowo-usługowa Venus 1<small>otwarcie 18 marca 2006</small></span><span class="msc">Świdnik</span><span class="st r">Realizacja</span></div>
-   <div class="wiersz"><span class="rok">2004-2006</span><span class="naz">Rozbudowa i modernizacja Drukarni DAKO</span><span class="msc">Lubartów</span><span class="st r">Realizacja</span></div>
-   <div class="wiersz"><span class="rok">2004-2005</span><span class="naz">Modernizacja budynków maszyn wyciągowych i nadszybia<small>Lubelski Węgiel Bogdanka S.A.</small></span><span class="msc">Bogdanka</span><span class="st r">Realizacja</span></div>
-   <div class="wiersz dalej"><span class="rok">2005</span><span class="naz">Rozbudowa Galerii Olimp III</span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div>
-   <div class="wiersz dalej"><span class="rok">2005</span><span class="naz">Galeria handlowa Zana, zmiana koncepcji</span><span class="msc">Lublin</span><span class="st">Koncepcja</span></div>
-   <div class="wiersz dalej"><span class="rok">2004-2005</span><span class="naz">Galeria handlowo-usługowa</span><span class="msc">Puławy</span><span class="st">Koncepcja</span></div>
-   <div class="wiersz dalej"><span class="rok">2004-2005</span><span class="naz">Baza handlowa i centrum logistyczne PPOCH Chemia</span><span class="msc">Warszawa</span><span class="st">Koncepcja</span></div>
-   <div class="wiersz dalej"><span class="rok">2002</span><span class="naz">Rozbudowa Galerii Olimp II</span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div>
-   <div class="wiersz dalej"><span class="rok">2001</span><span class="naz">Budynek zakładów naukowych Akademii Rolniczej</span><span class="msc">Lublin</span><span class="st">Koncepcja</span></div>
-   <div class="wiersz dalej"><span class="rok">2000-2001</span><span class="naz">Galeria handlowa Zana</span><span class="msc">Lublin</span><span class="st">Koncepcja</span></div>
-   <div class="wiersz dalej"><span class="rok">2000</span><span class="naz">Ośrodek sportowy</span><span class="msc">Warszawa</span><span class="st">Koncepcja</span></div>
-   <div class="wiersz dalej"><span class="rok">2000</span><span class="naz">Zespół mieszkalno-usługowy z budynkiem biurowym</span><span class="msc">Warszawa</span><span class="st">Koncepcja</span></div>
-   <div class="wiersz dalej"><span class="rok">2000</span><span class="naz">Stacja ASO</span><span class="msc">Kalinówka</span><span class="st">Koncepcja</span></div>
-   <div class="wiersz dalej"><span class="rok">2000</span><span class="naz">Modernizacja budynku TP SA</span><span class="msc">Lublin</span><span class="st">Koncepcja</span></div>
-   <div class="wiersz dalej"><span class="rok">2000</span><span class="naz">Centrum szkoleniowe ochrony przed bronią biologiczną</span><span class="msc">Puławy</span><span class="st">Koncepcja</span></div>
-   <div class="wiersz dalej"><span class="rok">1999-2000</span><span class="naz">Galeria Olimp I</span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div>
-   <div class="wiersz dalej"><span class="rok">1998</span><span class="naz">Zagospodarowanie hipermarketu Real</span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div>
-   <div class="wiersz dalej"><span class="rok">1995</span><span class="naz">Budynek mieszkaniowy dla SM Instalator<small>nominacja do nagrody Premiera</small></span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div>
-   <div class="wiersz dalej"><span class="rok">1995-1996</span><span class="naz">Budynek mieszkalno-usługowy SM Instalator<small>projekt wybrany w konkursie SARP</small></span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div>
-  </div>
-  <button class="wiecej" type="button" id="wiecej">Pokaż pełny wykaz <span>+</span></button>
+  <div class="gl"><h2 class="duzy">Wykaz projektów</h2></div>
+  <div class="lista" id="lista"><div class="wiersz"><span class="rok">2011-2013</span><span class="naz">Galeria handlowo-usługowa Olimp V<small>z Multikinem</small></span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div><div class="wiersz"><span class="rok">2009-2012</span><span class="naz">Galeria handlowo-usługowa Venus 2</span><span class="msc">Świdnik</span><span class="st r">Realizacja</span></div><div class="wiersz"><span class="rok">2008-2013</span><span class="naz">Drukarnia DAKO NEXT<small>etapy I i III</small></span><span class="msc">Lubartów</span><span class="st r">Realizacja</span></div><div class="wiersz"><span class="rok">2007-2009</span><span class="naz">Galeria handlowo-usługowa Olimp IV<small>otwarcie w czerwcu 2009</small></span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div><div class="wiersz"><span class="rok">2007-2009</span><span class="naz">Obiekt handlowo-usługowy z piekarnią</span><span class="msc">Świdnik</span><span class="st r">Realizacja</span></div><div class="wiersz"><span class="rok">2005-2006</span><span class="naz">Galeria handlowo-usługowa Venus 1<small>otwarcie 18 marca 2006</small></span><span class="msc">Świdnik</span><span class="st r">Realizacja</span></div><div class="wiersz"><span class="rok">2004-2006</span><span class="naz">Rozbudowa i modernizacja Drukarni DAKO</span><span class="msc">Lubartów</span><span class="st r">Realizacja</span></div><div class="wiersz"><span class="rok">2004-2005</span><span class="naz">Modernizacja budynków maszyn wyciągowych i nadszybia<small>Lubelski Węgiel Bogdanka S.A.</small></span><span class="msc">Bogdanka</span><span class="st r">Realizacja</span></div><div class="wiersz dalej"><span class="rok">2005</span><span class="naz">Rozbudowa Galerii Olimp III</span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div><div class="wiersz dalej"><span class="rok">2005</span><span class="naz">Galeria handlowa Zana, zmiana koncepcji</span><span class="msc">Lublin</span><span class="st">Koncepcja</span></div><div class="wiersz dalej"><span class="rok">2004-2005</span><span class="naz">Galeria handlowo-usługowa</span><span class="msc">Puławy</span><span class="st">Koncepcja</span></div><div class="wiersz dalej"><span class="rok">2004-2005</span><span class="naz">Baza handlowa i centrum logistyczne PPOCH Chemia</span><span class="msc">Warszawa</span><span class="st">Koncepcja</span></div><div class="wiersz dalej"><span class="rok">2002</span><span class="naz">Rozbudowa Galerii Olimp II</span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div><div class="wiersz dalej"><span class="rok">2001</span><span class="naz">Budynek zakładów naukowych Akademii Rolniczej</span><span class="msc">Lublin</span><span class="st">Koncepcja</span></div><div class="wiersz dalej"><span class="rok">2000-2001</span><span class="naz">Galeria handlowa Zana</span><span class="msc">Lublin</span><span class="st">Koncepcja</span></div><div class="wiersz dalej"><span class="rok">2000</span><span class="naz">Ośrodek sportowy</span><span class="msc">Warszawa</span><span class="st">Koncepcja</span></div><div class="wiersz dalej"><span class="rok">2000</span><span class="naz">Zespół mieszkalno-usługowy z budynkiem biurowym</span><span class="msc">Warszawa</span><span class="st">Koncepcja</span></div><div class="wiersz dalej"><span class="rok">2000</span><span class="naz">Stacja ASO</span><span class="msc">Kalinówka</span><span class="st">Koncepcja</span></div><div class="wiersz dalej"><span class="rok">2000</span><span class="naz">Modernizacja budynku TP SA</span><span class="msc">Lublin</span><span class="st">Koncepcja</span></div><div class="wiersz dalej"><span class="rok">2000</span><span class="naz">Centrum szkoleniowe ochrony przed bronią biologiczną</span><span class="msc">Puławy</span><span class="st">Koncepcja</span></div><div class="wiersz dalej"><span class="rok">1999-2000</span><span class="naz">Galeria Olimp I</span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div><div class="wiersz dalej"><span class="rok">1998</span><span class="naz">Zagospodarowanie hipermarketu Real</span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div><div class="wiersz dalej"><span class="rok">1995</span><span class="naz">Budynek mieszkaniowy dla SM Instalator<small>nominacja do nagrody Premiera</small></span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div><div class="wiersz dalej"><span class="rok">1995-1996</span><span class="naz">Budynek mieszkalno-usługowy SM Instalator<small>projekt wybrany w konkursie SARP</small></span><span class="msc">Lublin</span><span class="st r">Realizacja</span></div></div>
+  <button class="lnk wiecej" type="button" id="wiecej" aria-expanded="false">Pokaż pełny wykaz (24)</button>
  </div>
 </section>
 
-<!-- ===== PRACOWNIA ===== -->
-<section id="pracownia" class="pracownia">
+<section id="pracownia" class="alt">
  <div class="wrap dwie">
-  <figure class="fot"><div class="ob odkryj"><img src="img/dako-2-m.webp" srcset="img/dako-2-m.webp 960w, img/dako-2.webp 2400w" sizes="(max-width:1100px) 100vw, 50vw" alt="Biurowiec DAKO NEXT w Lubartowie z lotu ptaka" loading="lazy" style="object-position:42% 50%"></div><figcaption>Biurowiec DAKO NEXT · Lubartów</figcaption></figure>
+  <div class="ob odkryj"><img src="img/r/pracownia-04-m.webp" srcset="img/r/pracownia-04-m.webp 900w, img/r/pracownia-04-l.webp 1400w, img/r/pracownia-04.webp 2200w" sizes="(max-width:1100px) 100vw, 52vw" width="2200" height="1238" alt="Pracownia AMR przy ul. Zbożowej 6 w Lublinie" loading="lazy"></div>
   <div>
-   <div class="ocz wej">Pracownia</div>
-   <h2 class="duzy wej">Rodzinna pracownia, stałe zespoły.</h2>
-   <p class="wej">Pracownia powstała w 1997 roku, samodzielnie działa od listopada 1998. Przy każdym projekcie współpracujemy ze stałymi zespołami konstruktorów, instalatorów, elektryków i teletechników oraz z rzeczoznawcami.</p>
-   <p class="wej">Najlepiej pracuje nam się z lokalnymi firmami, z którymi rośniemy przez lata. Poznajemy specyfikę ich działalności i projektujemy budynki dopasowane do potrzeb i ekonomii biznesu.</p>
-   <div class="zespol wej">
-    <div><span>Mirosław Rossa</span><small>architekt</small></div>
-    <div><span>Agnieszka Rossa</span><small>architekt</small></div>
-    <div><span>Branżyści</span><small>konstrukcja · instalacje · elektryka</small></div>
-   </div>
-   <a class="ig wej" href="https://www.instagram.com/agaro.art/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7" fill="currentColor"/></svg>Agnieszka Rossa architekt · @agaro.art</a>
-   <div style="display:flex;gap:30px;flex-wrap:wrap;margin-top:30px"><a class="wiecej wej" href="pracownia.html" style="margin-top:0">O pracowni <span>→</span></a><a class="wiecej wej" href="agnieszka-rossa.html" style="margin-top:0">Agnieszka Rossa: malarstwo i ceramika <span>→</span></a></div>
+   <h2 class="duzy">Rodzinna pracownia, stałe zespoły.</h2>
+   <p class="lead">Pracownia powstała w 1997 roku, samodzielnie działa od listopada 1998. Przy każdym projekcie współpracujemy ze stałymi zespołami konstruktorów, instalatorów, elektryków i teletechników oraz z rzeczoznawcami.</p>
+   <div class="linki"><a class="lnk" href="pracownia.html">O pracowni <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="lnk" href="agnieszka-rossa.html">Prace Agnieszki Rossy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
   </div>
  </div>
 </section>
-
-<!-- ===== KONTAKT ===== -->
-<section id="kontakt">
+<section id="kontakt" class="kontakt">
  <div class="wrap kont">
   <div>
-   <div class="ocz wej">Kontakt</div>
-   <h2 class="duzy wej">Zapraszamy<br>do pracowni.</h2>
-   <div class="dane wej">
+   <h2 class="duzy">Zapraszamy<br>do pracowni.</h2>
+   <div class="dane">
     <div><small>Telefon</small><span><a href="tel:+48501061258">+48 501 061 258</a><a class="drugi" href="tel:+48817428658">+48 81 742 86 58</a></span></div>
     <div><small>E-mail</small><a href="mailto:amr@rossa.pl">amr@rossa.pl</a></div>
-    <div><small>Adres</small><span>ul. Zbożowa 6<br>20-827 Lublin<a class="trasa" href="https://www.google.com/maps/dir/?api=1&destination=Zbo%C5%BCowa+6%2C+20-827+Lublin" target="_blank" rel="noopener">Wyznacz trasę <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></span></div>
+    <div><small>Adres</small><span>ul. Zbożowa 6, 20-827 Lublin<br><a class="trasa" href="https://www.google.com/maps/dir/?api=1&amp;destination=Zbo%C5%BCowa+6%2C+20-827+Lublin" target="_blank" rel="noopener">Wyznacz trasę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></span></div>
    </div>
   </div>
-  <div class="mapa-r wej">
+  <div class="mapa-r">
    <div id="mapa" role="img" aria-label="Mapa dojazdu: ul. Zbożowa 6, Lublin"></div>
    <div class="pin"><b>AMR Architekci &amp; Partnerzy</b>ul. Zbożowa 6, Lublin</div>
   </div>
  </div>
 </section>
-
+</main>
 <footer>
  <div class="wrap">
   <div class="st-g">
-   <div><a class="logo" href="#start" style="display:inline-flex"><img class="logo-img logo-stopka" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272" loading="lazy"></a><p style="margin-top:22px;max-width:28em">Pracownia architektoniczna z Lublina. Galerie handlowe, obiekty usługowe, przemysłowe i mieszkalne od 1997 roku.</p></div>
-   <div><h4>Pracownia</h4><p>ul. Zbożowa 6<br>20-827 Lublin</p></div>
-   <div><h4>Kontakt</h4><a href="tel:+48501061258">+48 501 061 258</a><a href="tel:+48817428658">+48 81 742 86 58</a><a href="mailto:amr@rossa.pl">amr@rossa.pl</a></div>
-   <div><h4>Na stronie</h4><a href="#realizacje">Realizacje</a><a href="realizacje.html">Wszystkie realizacje</a><a href="#wykaz">Wykaz projektów</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a><a href="#kontakt">Kontakt</a></div>
+   <div><a class="logo" href="index.html" aria-label="Strona główna"><img class="l-j" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272" loading="lazy"><img class="l-c" src="img/logo-amr-ciemne.png?v=1" alt="AMR Architekci &amp; Partnerzy" width="640" height="272" loading="lazy"></a></div>
+   <div></div>
+   <div><a href="index.html">Strona główna</a><a href="realizacje.html">Realizacje</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a></div>
   </div>
-  <div class="st-d"><span>© AMR Architekci &amp; Partnerzy · Mirosław Rossa Architekt · NIP 946 182 70 50</span><span>Wersja do uzgodnień · zdjęcia Galerii Olimp: Marcin Tarkowski, Piximo</span></div>
+  <div class="st-d"><span>© AMR Architekci &amp; Partnerzy · Mirosław Rossa Architekt · NIP 946 182 70 50</span><span>Zdjęcia Galerii Olimp: Marcin Tarkowski, Piximo · wersja do uzgodnień</span></div>
  </div>
 </footer>
-
-<!-- ===== powiekszenie ===== -->
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Galeria zdjęć">
- <div class="lb-g"><span><b id="lbT"></b> <span id="lbM" style="color:var(--szary)"></span></span><span class="nr" id="lbN"></span><button type="button" aria-label="Zamknij galerię" id="lbZ"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
- <div class="lb-s"><img id="lbI" alt=""><span class="lb-autor" id="lbA" hidden></span>
-  <button class="lb-str l" type="button" aria-label="Poprzednie" id="lbL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M15 5l-7 7 7 7"/></svg></button>
-  <button class="lb-str p" type="button" aria-label="Następne" id="lbP"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 5l7 7-7 7"/></svg></button></div>
+ <div class="lb-g"><span class="t"><b id="lbT"></b><span class="m" id="lbM"></span></span><span class="nr" id="lbN"></span><button type="button" aria-label="Zamknij galerię" id="lbZ"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
+ <div class="lb-s"><img id="lbI" alt=""><span class="lb-autor" id="lbA" hidden></span><span class="lb-podp" id="lbP" hidden></span>
+  <button class="lb-str l" type="button" aria-label="Poprzednie zdjęcie" id="lbL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="lb-str p" type="button" aria-label="Następne zdjęcie" id="lbR"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 5l7 7-7 7"/></svg></button></div>
  <div class="lb-mini" id="lbMini"></div>
 </div>
-
-<div class="warianty" id="warianty" aria-label="Warianty do wyboru">
- <button class="zw" type="button" aria-label="Zwiń panel" id="wZw">–</button>
- <b>Do wyboru</b>
- <div><span>Menu</span><button data-m="a">A</button><button data-m="b">B</button><button data-m="c">C</button></div>
- <div><span>Kolory</span><button data-c="a">A</button><button data-c="b">B</button><button data-c="c">C</button></div>
-</div>
-
+<script>window.AMRG={"olimp": {"t": "Galeria Olimp", "m": "Lublin · 1999-2013", "z": [{"s": "img/r/olimp-01", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-02", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-03", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-04", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-05", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-06", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-07", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-08", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-09", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-10", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-11", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-12", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-13", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-14", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-15", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-16", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-17", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-18", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-19", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-20", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-21", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-22", "l": 1}, {"s": "img/r/olimp-23", "l": 1}, {"s": "img/r/olimp-24", "l": 1}, {"s": "img/r/olimp-25", "l": 1}]}, "dako": {"t": "Drukarnia DAKO", "m": "Lubartów · 2004-2013", "z": [{"s": "img/r/dako-01", "l": 1}, {"s": "img/r/dako-02", "l": 1}, {"s": "img/r/dako-03", "l": 1}, {"s": "img/r/dako-04", "l": 1}, {"s": "img/r/dako-05", "l": 1}, {"s": "img/r/dako-06", "l": 1}, {"s": "img/r/dako-07", "l": 1}, {"s": "img/r/dako-08", "l": 1}, {"s": "img/r/dako-09", "l": 1}, {"s": "img/r/dako-10", "l": 1}, {"s": "img/r/dako-11", "l": 1}, {"s": "img/r/dako-12", "l": 1}, {"s": "img/r/dako-13", "l": 1}, {"s": "img/r/dako-14", "l": 1}, {"s": "img/r/dako-15", "l": 1}, {"s": "img/r/dako-16", "l": 1}, {"s": "img/r/dako-17", "l": 1}, {"s": "img/r/dako-18", "l": 1}, {"s": "img/r/dako-19", "l": 1}, {"s": "img/r/dako-20", "l": 1}, {"s": "img/r/dako-21", "l": 1}, {"s": "img/r/dako-22", "l": 1}, {"s": "img/r/dako-23", "l": 1}, {"s": "img/r/dako-24", "l": 1}, {"s": "img/r/dako-25", "l": 1}, {"s": "img/r/dako-26", "l": 1}, {"s": "img/r/dako-27", "l": 1}, {"s": "img/r/dako-28", "l": 1}, {"s": "img/r/dako-29", "l": 1}, {"s": "img/r/dako-30", "l": 1}, {"s": "img/r/dako-31", "l": 1}, {"s": "img/r/dako-32", "l": 1}, {"s": "img/r/dako-33", "l": 1}, {"s": "img/r/dako-34", "l": 1}, {"s": "img/r/dako-35", "l": 1}]}, "venus": {"t": "Galeria Venus", "m": "Świdnik · 2005-2012", "z": [{"s": "img/r/venus-01", "l": 1}, {"s": "img/r/venus-02", "l": 1}, {"s": "img/r/venus-03", "l": 1}, {"s": "img/r/venus-04", "l": 1}, {"s": "img/r/venus-05", "l": 1}, {"s": "img/r/venus-06", "l": 1}, {"s": "img/r/venus-07", "l": 1}, {"s": "img/r/venus-08", "l": 1}, {"s": "img/r/venus-09", "l": 1}, {"s": "img/r/venus-10", "l": 1}, {"s": "img/r/venus-11", "l": 1}, {"s": "img/r/venus-12", "l": 1}, {"s": "img/r/venus-13", "l": 1}, {"s": "img/r/venus-14", "l": 1}]}, "michal": {"t": "Kościół pw. św. Michała Archanioła", "m": "Lublin", "z": [{"s": "img/r/michal-01", "l": 1}, {"s": "img/r/michal-02", "l": 1}, {"s": "img/r/michal-03", "l": 1}, {"s": "img/r/michal-04", "l": 1}, {"s": "img/r/michal-05", "l": 1}, {"s": "img/r/michal-06", "l": 1}, {"s": "img/r/michal-07", "l": 1}, {"s": "img/r/michal-08", "l": 1}, {"s": "img/r/michal-09", "l": 1}, {"s": "img/r/michal-10", "l": 1}, {"s": "img/r/michal-11", "l": 1}, {"s": "img/r/michal-12", "l": 1}, {"s": "img/r/michal-13", "l": 1}]}, "pryzmet": {"t": "Pryzmet", "m": "Lublin", "z": [{"s": "img/r/pryzmet-01", "l": 1}, {"s": "img/r/pryzmet-02", "l": 1}, {"s": "img/r/pryzmet-03", "l": 1}, {"s": "img/r/pryzmet-04", "l": 1}, {"s": "img/r/pryzmet-05", "l": 1}, {"s": "img/r/pryzmet-06", "l": 1}, {"s": "img/r/pryzmet-07", "l": 1}, {"s": "img/r/pryzmet-08", "l": 1}, {"s": "img/r/pryzmet-09", "l": 1}, {"s": "img/r/pryzmet-10", "l": 1}, {"s": "img/r/pryzmet-11", "l": 1}, {"s": "img/r/pryzmet-12", "l": 1}, {"s": "img/r/pryzmet-13", "l": 1}]}};</script>
+<script src="js/amr.js?v=4"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>AMRmapa()</script>
 <script>
 (function(){
- var H=document.documentElement,RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
- var PIX='fot. Marcin Tarkowski · Piximo';
- var O={
-  olimp:{t:'Galeria Olimp',m:'Lublin · 1999-2013',z:[['olimp-2',PIX],['olimp-1',PIX],['olimp-3',PIX],['olimp-4',PIX],['olimp-5',''],['olimp-6',PIX]]},
-  dako:{t:'Drukarnia DAKO',m:'Lubartów',z:[['dako-3',''],['dako-1',''],['dako-2',''],['dako-4',''],['dako-6',''],['dako-taras',''],['dako-5','']]},
-  venus:{t:'Galeria Venus',m:'Świdnik',z:[['venus-2',''],['venus-1',''],['venus-3','']]},
-  pryzmet:{t:'Pryzmet',m:'',z:[['pryzmet-1',''],['pryzmet-2','']]},
-  bury:{t:'Bury',m:'',z:[['bury-1',''],['bury-2','']]}
- };
- function d2(n){return ('0'+n).slice(-2)}
-
- /* --- slajdy startowe: pierwszy staly, reszta losowo --- */
+ var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,PIXT=' · fot. Marcin Tarkowski / Piximo';
  var s=[].slice.call(document.querySelectorAll('.slajd')),i=0,nr=document.getElementById('nr'),pd=document.getElementById('podp'),pg=document.getElementById('postep'),CZAS=6500,tm;
- s=[s[0]].concat(s.slice(1).sort(function(){return Math.random()-.5}));
- function wczytaj(e){if(e&&e.dataset.src){e.style.backgroundImage='url('+e.dataset.src+')';delete e.dataset.src}}
+ function d2(n){return n<10?'0'+n:''+n}
+ function wczytaj(e){var im=e&&e.querySelector('img[data-srcset]');if(im){im.srcset=im.dataset.srcset;im.removeAttribute('data-srcset')}}
+ function txt(e){return e.dataset.p+(e.dataset.a?PIXT:'')}
  function postep(){if(RM)return;pg.style.transition='none';pg.style.width='0';void pg.offsetWidth;pg.style.transition='width '+CZAS+'ms linear';pg.style.width='100%'}
- function pokaz(n){s[i].classList.remove('on');i=(n+s.length)%s.length;wczytaj(s[i]);s[i].classList.add('on');nr.innerHTML='<b>'+d2(i+1)+'</b> / '+d2(s.length);pd.style.opacity=0;setTimeout(function(){pd.textContent=s[i].dataset.p;pd.style.opacity=1},300);wczytaj(s[(i+1)%s.length]);start()}
+ function pokaz(n){s[i].classList.remove('on');i=(n+s.length)%s.length;wczytaj(s[i]);s[i].classList.add('on');nr.innerHTML='<b>'+d2(i+1)+'</b> / '+d2(s.length);pd.style.opacity=0;setTimeout(function(){pd.textContent=txt(s[i]);pd.style.opacity=1},300);wczytaj(s[(i+1)%s.length]);start()}
  function start(){clearTimeout(tm);if(RM)return;postep();tm=setTimeout(function(){pokaz(i+1)},CZAS)}
- nr.innerHTML='<b>01</b> / '+d2(s.length);
+ pd.textContent=txt(s[0]);
  document.getElementById('sL').onclick=function(){pokaz(i-1)};document.getElementById('sP').onclick=function(){pokaz(i+1)};
  setTimeout(function(){wczytaj(s[1])},1200);start();
  document.addEventListener('visibilitychange',function(){if(document.hidden)clearTimeout(tm);else start()});
-
- /* --- menu --- */
- var przel=document.querySelector('[data-otw]');
- function menu(o){H.classList.toggle('otw',o);przel.setAttribute('aria-expanded',o?'true':'false')}
- przel.addEventListener('click',function(){menu(!H.classList.contains('otw'))});
- document.querySelectorAll('.pelne a,.bok a').forEach(function(a){a.addEventListener('click',function(){menu(false)})});
- addEventListener('keydown',function(e){if(e.key==='Escape')menu(false)});
- var lk=[].slice.call(document.querySelectorAll('.menu a[href^="#"]'));
- if('IntersectionObserver' in window){var so=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){var id=x.target.id==='wykaz'?'realizacje':x.target.id;lk.forEach(function(a){a.classList.toggle('akt',a.getAttribute('href')==='#'+id)})}})},{rootMargin:'-45% 0px -50% 0px'});['o-nas','realizacje','wykaz','pracownia','kontakt'].forEach(function(id){var e=document.getElementById(id);e&&so.observe(e)})}
-
- /* --- filtry --- */
- var fb=[].slice.call(document.querySelectorAll('.filtry button')),pr=[].slice.call(document.querySelectorAll('.proj')),br=document.getElementById('brak');
- fb.forEach(function(b){b.addEventListener('click',function(){fb.forEach(function(x){x.classList.toggle('on',x===b)});var f=b.dataset.f,n=0;pr.forEach(function(p){var w=f==='*'||p.dataset.k===f;p.classList.toggle('ukryty',!w);if(w){n++;p.querySelectorAll('.odkryj,.wej').forEach(function(e){e.classList.add('on')})}});br.style.display=n?'none':'block'})});
-
- /* --- wykaz --- */
- var li=document.getElementById('lista'),wb=document.getElementById('wiecej');
- wb.onclick=function(){var c=li.classList.toggle('cala');wb.firstChild.textContent=c?'Zwiń wykaz ':'Pokaż pełny wykaz ';wb.lastElementChild.textContent=c?'−':'+';if(!c)li.scrollIntoView({block:'start'})};
-
- /* --- powiekszenie --- */
- var lb=document.getElementById('lb'),lI=document.getElementById('lbI'),lT=document.getElementById('lbT'),lM=document.getElementById('lbM'),lN=document.getElementById('lbN'),lA=document.getElementById('lbA'),mini=document.getElementById('lbMini'),cur=null,k=0,ost=null;
- function rys(){var z=cur.z[k];lI.classList.add('zmiana');var nw=new Image();nw.onload=function(){lI.src=nw.src;lI.classList.remove('zmiana')};nw.src='img/'+z[0]+'.webp';lI.alt=cur.t;lN.textContent=d2(k+1)+' / '+d2(cur.z.length);lA.hidden=!z[1];lA.textContent=z[1];[].forEach.call(mini.children,function(b,j){b.classList.toggle('on',j===k);if(j===k&&b.scrollIntoView)b.scrollIntoView({inline:'center',block:'nearest'})});new Image().src='img/'+cur.z[(k+1)%cur.z.length][0]+'.webp'}
- function otw(o,st){cur=O[o];k=st||0;ost=document.activeElement;lT.textContent=cur.t;lM.textContent=cur.m?'· '+cur.m:'';mini.innerHTML='';cur.z.forEach(function(z,j){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Zdjęcie '+(j+1));b.innerHTML='<img src="img/'+z[0]+'-m.webp" alt="">';b.onclick=function(){k=j;rys()};mini.appendChild(b)});lb.classList.add('on');document.body.style.overflow='hidden';rys();document.getElementById('lbZ').focus({preventScroll:true})}
- function zam(){lb.classList.remove('on');document.body.style.overflow='';ost&&ost.focus&&ost.focus({preventScroll:true})}
- function kr(d){k=(k+d+cur.z.length)%cur.z.length;rys()}
- pr.forEach(function(p){p.setAttribute('tabindex','0');p.setAttribute('role','button');p.setAttribute('aria-label','Otwórz galerię: '+p.querySelector('h3').textContent);p.addEventListener('click',function(){otw(p.dataset.o,+(p.dataset.start||0))});p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();otw(p.dataset.o,+(p.dataset.start||0))}})});
- document.getElementById('lbZ').onclick=zam;document.getElementById('lbL').onclick=function(){kr(-1)};document.getElementById('lbP').onclick=function(){kr(1)};
- lb.addEventListener('click',function(e){if(e.target.classList.contains('lb-s'))zam()});
- addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')zam();if(e.key==='ArrowLeft')kr(-1);if(e.key==='ArrowRight')kr(1)});
- var x0=null,y0=0;lb.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
- lb.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))kr(dx<0?1:-1);else if(dy>90)zam();x0=null});
-
- /* --- warianty do uzgodnien --- */
- function zazn(){document.querySelectorAll('[data-m]').forEach(function(b){b.classList.toggle('on',b.dataset.m===H.dataset.menu)});document.querySelectorAll('[data-c]').forEach(function(b){b.classList.toggle('on',b.dataset.c===H.dataset.kolor)})}
- document.querySelectorAll('[data-m]').forEach(function(b){b.onclick=function(){menu(false);H.dataset.menu=b.dataset.m;zazn();if(b.dataset.m!=='a')setTimeout(function(){menu(true)},120)}});
- document.querySelectorAll('[data-c]').forEach(function(b){b.onclick=function(){H.dataset.kolor=b.dataset.c;zazn()}});
- document.getElementById('wZw').onclick=function(){var w=document.getElementById('warianty');w.classList.toggle('min');this.textContent=w.classList.contains('min')?'+':'–'};
- zazn();
-
- /* --- pojawianie i odkrywanie --- */
- var el=document.querySelectorAll('.wej,.odkryj');
- if('IntersectionObserver' in window&&!RM){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});el.forEach(function(e){io.observe(e)})}else el.forEach(function(e){e.classList.add('on')});
-})();
-</script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-/* mapa: OSM odwrocona do ciemnej, z jasnymi napisami, zgodny z kolorami strony */
-(function(){
- var el=document.getElementById('mapa');if(!el||!window.L)return;
- var zrob=function(){
-  var P=[51.26825,22.50471];
-  var m=L.map(el,{center:P,zoom:16,maxZoom:19,scrollWheelZoom:false,zoomControl:false,attributionControl:true});
-  L.control.zoom({position:'bottomright'}).addTo(m);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(m);
-  L.marker(P,{icon:L.divIcon({className:'',html:'<div class="znacznik"><i></i></div>',iconSize:[18,18],iconAnchor:[9,9]}),keyboard:false}).addTo(m);
-  m.on('click',function(){m.scrollWheelZoom.enable()});m.on('mouseout',function(){m.scrollWheelZoom.disable()});
- };
- if('IntersectionObserver' in window){var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){o.disconnect();zrob()}},{rootMargin:'300px'});o.observe(el)}else zrob();
+ var li=document.getElementById('lista'),wb=document.getElementById('wiecej'),t0=wb.textContent;
+ wb.onclick=function(){var c=li.classList.toggle('cala');wb.textContent=c?'Zwiń wykaz':t0;wb.setAttribute('aria-expanded',c?'true':'false');if(!c)li.scrollIntoView({block:'start'})};
 })();
 </script>
 </body>

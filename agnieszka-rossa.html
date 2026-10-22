@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pl">
+<html lang="pl" data-kolor="czern" data-menu="a">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -7,104 +7,100 @@
 <title>Agnieszka Rossa · malarstwo i ceramika · AMR Architekci &amp; Partnerzy</title>
 <meta name="description" content="Agnieszka Rossa, architekt i artystka: malarstwo olejne, akrylowe, akwarela i ceramika. Prace na sprzedaż, kontakt agnieszka.rossa.art@gmail.com.">
 <meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="data:,">
+<script>try{var d=document.documentElement,k=localStorage.getItem('amr-kolor'),m=localStorage.getItem('amr-menu');if(k)d.setAttribute('data-kolor',k);if(m)d.setAttribute('data-menu',m)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/r/agaro-08.webp" fetchpriority="high">
-<link rel="stylesheet" href="css/podstrony.css?v=1">
+<link rel="preload" as="image" href="img/r/agaro-08-m.webp" fetchpriority="high">
+<link rel="stylesheet" href="css/amr.css?v=4">
 <style>
 
-.art{margin-top:var(--pg);min-height:calc(100vh - var(--pg));min-height:calc(100svh - var(--pg));display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);background:var(--pas)}
-.art-txt{display:flex;flex-direction:column;justify-content:center;padding:60px 64px 60px max(56px,calc((100vw - 1440px)/2 + 56px))}
-.art-txt h1{font-size:clamp(48px,6vw,104px);line-height:.98;letter-spacing:-.03em}
-.art-txt .rola{margin-top:22px;font-size:17px;color:var(--szary)}
-.art-txt blockquote{margin-top:34px;padding-left:24px;border-left:1px solid var(--akcent);font-size:clamp(19px,1.5vw,23px);line-height:1.55;color:var(--jasny);max-width:26em}
-.art-txt blockquote cite{display:block;margin-top:12px;font-style:normal;font-size:13.5px;color:var(--szary)}
-.akcje{display:flex;align-items:center;gap:30px;flex-wrap:wrap;margin-top:40px}
-.akcje .lnk{padding-top:6px}
-.art-fot{position:relative;margin:0;overflow:hidden;align-self:stretch;width:100%;min-height:0;background:#0d0c0b}
-.art-fot img{position:absolute;object-fit:cover;box-shadow:0 30px 60px rgba(0,0,0,.55)}
-.art-fot .a1{left:10%;top:11%;width:56%;height:70%;animation:wj 1.4s var(--e) both}
-.art-fot .a2{right:8%;top:24%;width:30%;height:34%;animation:wj 1.4s var(--e) .15s both}
-.art-fot .a3{right:14%;bottom:9%;width:36%;height:30%;animation:wj 1.4s var(--e) .3s both}
-@keyframes wj{from{transform:translateY(30px);opacity:.001}to{transform:none;opacity:1}}
-.prace .gora{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:50px}
-.zakl{display:flex;gap:30px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;overflow-x:auto;scrollbar-width:none}
-.zakl button{position:relative;flex:none;padding:8px 0;color:var(--szary);transition:color .2s}
-.zakl button sup{font-size:9.5px;margin-left:5px}
-.zakl button::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--akcent);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--e)}
+.art{margin-top:var(--pg);height:calc(100vh - var(--pg));height:calc(100svh - var(--pg));min-height:520px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);background:var(--pas);padding:0;transition:background-color .4s}
+.art-txt{display:flex;flex-direction:column;justify-content:center;padding:48px 56px 48px max(56px,calc((100vw - 1440px)/2 + 56px))}
+.art-txt h1{font-size:clamp(46px,5.6vw,96px);line-height:1;letter-spacing:-.028em}
+.art-txt .rola{margin-top:20px;font-size:18px;color:var(--tekst)}
+.art-txt blockquote{margin-top:30px;padding-left:22px;border-left:2px solid var(--akcent);font-size:clamp(18px,1.4vw,21px);line-height:1.6;color:var(--jasny);max-width:26em}
+.akcje{display:flex;align-items:center;gap:20px 30px;flex-wrap:wrap;margin-top:36px}
+.art-fot{position:relative;margin:0;overflow:hidden;align-self:stretch;width:100%;min-height:0}
+.art-fot img{position:absolute;object-fit:cover;box-shadow:0 26px 50px rgba(0,0,0,.4)}
+.art-fot .a1{left:8%;top:9%;width:50%;height:78%}
+.art-fot .a2{right:7%;top:9%;width:32%;height:37%}
+.art-fot .a3{right:7%;bottom:13%;width:32%;height:37%}
+.prace .gora{display:flex;justify-content:space-between;align-items:flex-end;gap:20px 30px;flex-wrap:wrap;margin-bottom:44px}
+.zakl{display:flex;gap:28px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;overflow-x:auto;scrollbar-width:none}
+.zakl button{position:relative;flex:none;padding:10px 0;color:var(--szary);transition:color .2s}
+.zakl button::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--akcent);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--e)}
 .zakl button.on,.zakl button:hover{color:var(--jasny)}.zakl button.on::after{transform:scaleX(1)}
-.mur{columns:3;column-gap:22px}
-.dz{break-inside:avoid;margin:0 0 30px}
+.mur{columns:3;column-gap:24px}
+.dz{break-inside:avoid;margin:0 0 32px}
 .dz.ukryty{display:none}
 .dz button{display:block;width:100%;overflow:hidden;background:var(--tlo3);cursor:zoom-in}
-.dz img{width:100%;height:auto;transition:transform 1.2s var(--e),filter .6s;filter:brightness(.96)}
-.dz button:hover img{transform:scale(1.035);filter:none}
-.dz figcaption{margin-top:12px;font-size:15px;color:var(--jasny);line-height:1.4}
-.dz figcaption span{display:block;margin-top:2px;font-size:13px;color:var(--szary)}
-.rodz{background:var(--tlo2)}
+.dz img{width:100%;height:auto;transition:transform 1.2s var(--e)}
+.dz button:hover img{transform:scale(1.03)}
+.dz figcaption{margin-top:12px;font-size:16px;color:var(--jasny);line-height:1.4}
+.dz figcaption span{display:block;margin-top:2px;font-size:15px;color:var(--szary)}
 .rodz .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:90px;align-items:center}
 .rodz .fot{margin:0}
 .rodz .fot .ob{aspect-ratio:4/3;overflow:hidden}
-.rodz .fot img{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
-.rodz .fot figcaption{margin-top:12px;font-size:13px;color:var(--szary)}
-.rodz .lead{margin-top:26px}
-.rodz .lnk{margin-top:26px}
+.rodz .fot img{width:100%;height:100%;object-fit:cover}
+.rodz .fot figcaption{margin-top:12px;font-size:15px;color:var(--szary)}
+.rodz .lead{margin-top:24px}
+.rodz .lnk{margin-top:24px}
 .zapr{text-align:center}
 .zapr h2{max-width:14em;margin:0 auto}
-.zapr .mail{display:inline-block;margin-top:30px;font-size:clamp(20px,2.4vw,34px);color:var(--jasny);border-bottom:1px solid var(--linia2);transition:border-color .25s;word-break:break-all}
-.zapr .mail:hover{border-color:var(--akcent)}
+.zapr .mail{display:inline-block;margin-top:28px;font-size:clamp(20px,2.4vw,32px);color:var(--jasny);border-bottom:1px solid var(--akcent);word-break:break-all}
 .zapr .akcje{justify-content:center}
 @media (max-width:1100px){
- .art-txt{padding:50px 36px}
+ .art-txt{padding:44px 36px}
  .mur{columns:2}
- .rodz .wrap{grid-template-columns:1fr;gap:44px}
+ .rodz .wrap{grid-template-columns:1fr;gap:40px}
 }
 @media (max-width:760px){
- .art{display:flex;flex-direction:column;height:calc(100vh - var(--pg));height:calc(100svh - var(--pg));min-height:0}
+ .art{display:flex;flex-direction:column;min-height:0}
  .art-fot{order:-1;flex:1 1 0;min-height:min(56vw,24svh)}
- .art-fot::after{content:"";position:absolute;inset:auto 0 0;height:30%;background:linear-gradient(0deg,var(--pas),rgba(10,10,10,0))}
- .art-fot .a1{left:6%;top:7%;width:52%;height:86%}
- .art-fot .a2{right:6%;top:7%;width:34%;height:40%}
- .art-fot .a3{right:6%;bottom:7%;top:auto;width:34%;height:40%;z-index:1}
- .art-txt{flex:0 0 auto;padding:6px 20px 28px}
- .art-txt h1{font-size:clamp(38px,11.5vw,52px)}
- .art-txt .rola{margin-top:10px;font-size:14.5px}
- .art-txt blockquote{margin-top:16px;padding-left:16px;font-size:15.5px;line-height:1.5}
- .art-txt blockquote cite{margin-top:6px;font-size:12.5px}
- .akcje{margin-top:20px;gap:20px}
+ .art-fot::after{content:"";position:absolute;inset:auto 0 0;height:22%;background:linear-gradient(0deg,var(--pas),transparent)}
+ .art-fot .a1{left:5%;top:6%;width:54%;height:88%}
+ .art-fot .a2{right:5%;top:6%;width:33%;height:42%}
+ .art-fot .a3{right:5%;bottom:6%;width:33%;height:42%;z-index:1}
+ .art-txt{flex:0 0 auto;padding:6px 20px 26px}
+ .art-txt h1{font-size:clamp(38px,11vw,52px)}
+ .art-txt .rola{margin-top:8px;font-size:16px}
+ .art-txt blockquote{margin-top:14px;padding-left:14px;font-size:16px;line-height:1.5}
+ .akcje{margin-top:18px;gap:14px 22px}
  .akcje .btn{padding:15px 20px}
  .mur{column-gap:12px}
  .dz{margin-bottom:22px}
- .dz figcaption{font-size:13.5px;margin-top:8px}.dz figcaption span{font-size:12px}
- .zakl{gap:22px;font-size:11px;letter-spacing:.14em;width:100%}
+ .dz figcaption{font-size:15px;margin-top:8px}.dz figcaption span{font-size:14px}
+ .zakl{gap:22px;font-size:12px;letter-spacing:.1em;width:100%}
 }
-@media (max-width:760px) and (max-height:700px){.art-txt blockquote cite{display:none}.art-txt .rola{display:none}}
+@media (max-width:760px) and (max-height:700px){.art-txt .rola{display:none}}
 
 </style>
 </head>
 <body>
 <header class="pas-g">
  <div class="wrap">
-  <a class="logo" href="index.html" aria-label="AMR Architekci &amp; Partnerzy, strona główna"><img class="logo-img" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272"></a>
-  <nav class="menu" aria-label="Menu główne"><a href="realizacje.html">Realizacje</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html" class="akt" aria-current="page">Agnieszka Rossa</a><a href="pracownia.html#kontakt">Kontakt</a><a class="tel" href="tel:+48501061258">+48 501 061 258</a></nav>
+  <a class="logo" href="index.html" aria-label="AMR Architekci &amp; Partnerzy, strona główna"><img class="l-j" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272"><img class="l-c" src="img/logo-amr-ciemne.png?v=1" alt="AMR Architekci &amp; Partnerzy" width="640" height="272"></a>
+  <nav class="menu" aria-label="Menu główne"><a href="realizacje.html">Realizacje</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html" class="akt" aria-current="page">Agnieszka Rossa</a><a href="index.html#kontakt">Kontakt</a><a class="tel" href="tel:+48501061258">+48 501 061 258</a></nav>
   <button class="przel" type="button" aria-label="Otwórz menu" aria-expanded="false" data-otw>Menu <i></i></button>
  </div>
 </header>
-<nav class="pelne" aria-label="Menu"><a href="index.html">Strona główna</a><a href="realizacje.html">Realizacje</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html" class="akt" aria-current="page">Agnieszka Rossa</a><a href="pracownia.html#kontakt">Kontakt</a><div class="stopka"><span>ul. Zbożowa 6, 20-827 Lublin</span><span>+48 501 061 258 · amr@rossa.pl</span></div></nav>
+<nav class="pelne" aria-label="Menu"><a href="index.html">Strona główna</a><a href="realizacje.html">Realizacje</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html" class="akt" aria-current="page">Agnieszka Rossa</a><a href="index.html#kontakt">Kontakt</a><div class="stopka"><span>ul. Zbożowa 6, 20-827 Lublin</span><a href="tel:+48501061258">+48 501 061 258</a></div></nav>
+<nav class="bok" aria-label="Menu boczne"><a href="index.html">Strona główna</a><a href="realizacje.html">Realizacje</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html" class="akt" aria-current="page">Agnieszka Rossa</a><a href="index.html#kontakt">Kontakt</a><div class="stopka">ul. Zbożowa 6, 20-827 Lublin<br>+48 501 061 258</div></nav>
 
 <main>
-<section class="art" style="padding:0" aria-label="Agnieszka Rossa">
+<section class="art" aria-label="Agnieszka Rossa">
  <div class="art-txt">
   <h1>Agnieszka Rossa</h1>
   <p class="rola">Architekt w AMR Architekci &amp; Partnerzy. Malarka i ceramiczka.</p>
-  <blockquote>„Moją pasją jest malarstwo olejne, akrylowe i akwarelowe oraz ceramika. Zapraszam do obejrzenia i zakupu moich prac.”<cite>@agaro.art · 3159 obserwujących na Instagramie</cite></blockquote>
-  <div class="akcje"><a class="btn" href="mailto:agnieszka.rossa.art@gmail.com?subject=Pytanie%20o%20prac%C4%99">Zapytaj o pracę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="lnk" href="https://www.instagram.com/agaro.art/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7" fill="currentColor"/></svg> Instagram</a></div>
+  <blockquote>„Moją pasją jest malarstwo olejne, akrylowe i akwarelowe oraz ceramika. Zapraszam do obejrzenia i zakupu moich prac.”</blockquote>
+  <div class="akcje"><a class="btn" href="mailto:agnieszka.rossa.art@gmail.com?subject=Pytanie%20o%20prac%C4%99">Zapytaj o pracę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="lnk" href="https://www.instagram.com/agaro.art/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7" fill="currentColor"/></svg> @agaro.art</a></div>
  </div>
  <figure class="art-fot" aria-hidden="true">
-  <img class="a1" src="img/r/agaro-08.webp" alt="" fetchpriority="high">
-  <img class="a2" src="img/r/agaro-05.webp" alt="">
-  <img class="a3" src="img/r/agaro-10.webp" alt="">
+  <img class="a1" src="img/r/agaro-08-m.webp" srcset="img/r/agaro-08-m.webp 749w, img/r/agaro-08-l.webp 1048w, img/r/agaro-08.webp 1348w" sizes="(max-width:760px) 55vw, 30vw" alt="" fetchpriority="high">
+  <img class="a2" src="img/r/agaro-05-m.webp" alt="">
+  <img class="a3" src="img/r/agaro-10-m.webp" alt="">
  </figure>
 </section>
 
@@ -112,58 +108,58 @@
  <div class="wrap">
   <div class="gora">
    <h2 class="duzy">Prace</h2>
-   <div class="zakl" role="group" aria-label="Rodzaj prac"><button class="on" data-f="*">Wszystkie<sup>18</sup></button><button data-f="mal">Malarstwo<sup>3</sup></button><button data-f="cer">Ceramika i rzeźba<sup>15</sup></button></div>
+   <div class="zakl" role="group" aria-label="Rodzaj prac"><button class="on" data-f="*">Wszystkie</button><button data-f="mal">Malarstwo</button><button data-f="cer">Ceramika i rzeźba</button></div>
   </div>
-  <div class="mur" id="mur"><figure class="dz" data-k="mal"><button type="button" data-i="0" aria-label="Powiększ: Lilie wodne, abstrakcyjnie"><img src="img/r/agaro-08.webp" width="557" height="744" alt="Lilie wodne, abstrakcyjnie, obraz olejny" loading="eager"></button><figcaption>Lilie wodne, abstrakcyjnie<span>Obraz olejny</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="1" aria-label="Powiększ: Czerwona donica z sukulentami"><img src="img/r/agaro-01.webp" width="993" height="744" alt="Czerwona donica z sukulentami, ceramika" loading="eager"></button><figcaption>Czerwona donica z sukulentami<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="mal"><button type="button" data-i="2" aria-label="Powiększ: Żaglówki, góry, woda"><img src="img/r/agaro-03.webp" width="745" height="744" alt="Żaglówki, góry, woda, obraz olejny" loading="eager"></button><figcaption>Żaglówki, góry, woda<span>Obraz olejny</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="3" aria-label="Powiększ: Kobieta w czerwonej sukni"><img src="img/r/agaro-13.webp" width="307" height="374" alt="Kobieta w czerwonej sukni, rzeźba ceramiczna" loading="eager"></button><figcaption>Kobieta w czerwonej sukni<span>Rzeźba ceramiczna</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="4" aria-label="Powiększ: Misa czerwona z czarnym brzegiem"><img src="img/r/agaro-05.webp" width="745" height="744" alt="Misa czerwona z czarnym brzegiem, ceramika" loading="lazy"></button><figcaption>Misa czerwona z czarnym brzegiem<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="mal"><button type="button" data-i="5" aria-label="Powiększ: Lilie wodne, kolor"><img src="img/r/agaro-16.webp" width="307" height="375" alt="Lilie wodne, kolor, obraz olejny" loading="lazy"></button><figcaption>Lilie wodne, kolor<span>Obraz olejny</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="6" aria-label="Powiększ: Para pod parasolem (pamiątka ślubna)"><img src="img/r/agaro-06.webp" width="419" height="558" alt="Para pod parasolem (pamiątka ślubna), rzeźba ceramiczna" loading="lazy"></button><figcaption>Para pod parasolem (pamiątka ślubna)<span>Rzeźba ceramiczna</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="7" aria-label="Powiększ: Dwa wazony z różą"><img src="img/r/agaro-10.webp" width="743" height="744" alt="Dwa wazony z różą, ceramika" loading="lazy"></button><figcaption>Dwa wazony z różą<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="8" aria-label="Powiększ: Anioł w ogrodzie"><img src="img/r/agaro-02.webp" width="419" height="558" alt="Anioł w ogrodzie, rzeźba ceramiczna" loading="lazy"></button><figcaption>Anioł w ogrodzie<span>Rzeźba ceramiczna</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="9" aria-label="Powiększ: Wazon z bzem i miseczka"><img src="img/r/agaro-07.webp" width="406" height="519" alt="Wazon z bzem i miseczka, ceramika" loading="lazy"></button><figcaption>Wazon z bzem i miseczka<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="10" aria-label="Powiększ: Patera czerwono-czarna z metką"><img src="img/r/agaro-18.webp" width="306" height="375" alt="Patera czerwono-czarna z metką, ceramika" loading="lazy"></button><figcaption>Patera czerwono-czarna z metką<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="11" aria-label="Powiększ: Forma ażurowa"><img src="img/r/agaro-09.webp" width="419" height="558" alt="Forma ażurowa, rzeźba ceramiczna" loading="lazy"></button><figcaption>Forma ażurowa<span>Rzeźba ceramiczna</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="12" aria-label="Powiększ: Medaliony na sznurach i forma z drewnem"><img src="img/r/agaro-04.webp" width="419" height="558" alt="Medaliony na sznurach i forma z drewnem, ceramika" loading="lazy"></button><figcaption>Medaliony na sznurach i forma z drewnem<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="13" aria-label="Powiększ: Doniczka pomarańczowa z sukulentem"><img src="img/r/agaro-15.webp" width="306" height="374" alt="Doniczka pomarańczowa z sukulentem, ceramika" loading="lazy"></button><figcaption>Doniczka pomarańczowa z sukulentem<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="14" aria-label="Powiększ: Lampiony-domki w śniegu"><img src="img/r/agaro-11.webp" width="419" height="558" alt="Lampiony-domki w śniegu, ceramika" loading="lazy"></button><figcaption>Lampiony-domki w śniegu<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="15" aria-label="Powiększ: Misa z odciskami liści"><img src="img/r/agaro-17.webp" width="305" height="375" alt="Misa z odciskami liści, ceramika" loading="lazy"></button><figcaption>Misa z odciskami liści<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="16" aria-label="Powiększ: Misy w zimowej scenie"><img src="img/r/agaro-12.webp" width="419" height="558" alt="Misy w zimowej scenie, ceramika" loading="lazy"></button><figcaption>Misy w zimowej scenie<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="17" aria-label="Powiększ: Zawieszki/płytki z otworami"><img src="img/r/agaro-14.webp" width="305" height="374" alt="Zawieszki/płytki z otworami, ceramika" loading="lazy"></button><figcaption>Zawieszki/płytki z otworami<span>Ceramika</span></figcaption></figure></div>
+  <div class="mur" id="mur"><figure class="dz" data-k="mal"><button type="button" data-i="0" aria-label="Powiększ: Lilie wodne, abstrakcyjnie"><img src="img/r/agaro-08-m.webp" srcset="img/r/agaro-08-m.webp 749w, img/r/agaro-08-l.webp 1048w, img/r/agaro-08.webp 1348w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1348" height="1800" alt="Lilie wodne, abstrakcyjnie, obraz olejny" fetchpriority="high"></button><figcaption>Lilie wodne, abstrakcyjnie<span>Obraz olejny</span></figcaption></figure><figure class="dz" data-k="mal"><button type="button" data-i="1" aria-label="Powiększ: Żaglówki, góry, woda"><img src="img/r/agaro-03-m.webp" srcset="img/r/agaro-03-m.webp 900w, img/r/agaro-03-l.webp 1400w, img/r/agaro-03.webp 1800w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1800" height="1798" alt="Żaglówki, góry, woda, obraz olejny" fetchpriority="high"></button><figcaption>Żaglówki, góry, woda<span>Obraz olejny</span></figcaption></figure><figure class="dz" data-k="mal"><button type="button" data-i="2" aria-label="Powiększ: Lilie wodne, kolor"><img src="img/r/agaro-16-m.webp" srcset="img/r/agaro-16-m.webp 819w, img/r/agaro-16.webp 1228w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1228" height="1500" alt="Lilie wodne, kolor, obraz olejny" fetchpriority="high"></button><figcaption>Lilie wodne, kolor<span>Obraz olejny</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="3" aria-label="Powiększ: Misa czerwona z czarnym brzegiem"><img src="img/r/agaro-05-m.webp" srcset="img/r/agaro-05-m.webp 900w, img/r/agaro-05-l.webp 1400w, img/r/agaro-05.webp 1800w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1800" height="1798" alt="Misa czerwona z czarnym brzegiem, ceramika" fetchpriority="high"></button><figcaption>Misa czerwona z czarnym brzegiem<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="4" aria-label="Powiększ: Czerwona donica z sukulentami"><img src="img/r/agaro-01-m.webp" srcset="img/r/agaro-01-m.webp 900w, img/r/agaro-01-l.webp 1400w, img/r/agaro-01.webp 1800w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1800" height="1349" alt="Czerwona donica z sukulentami, ceramika" loading="lazy"></button><figcaption>Czerwona donica z sukulentami<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="5" aria-label="Powiększ: Dwa wazony z różą"><img src="img/r/agaro-10-m.webp" srcset="img/r/agaro-10-m.webp 900w, img/r/agaro-10-l.webp 1398w, img/r/agaro-10.webp 1798w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1798" height="1800" alt="Dwa wazony z różą, ceramika" loading="lazy"></button><figcaption>Dwa wazony z różą<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="6" aria-label="Powiększ: Para pod parasolem (pamiątka ślubna)"><img src="img/r/agaro-06-m.webp" srcset="img/r/agaro-06-m.webp 751w, img/r/agaro-06-l.webp 1052w, img/r/agaro-06.webp 1352w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1352" height="1800" alt="Para pod parasolem (pamiątka ślubna), rzeźba ceramiczna" loading="lazy"></button><figcaption>Para pod parasolem (pamiątka ślubna)<span>Rzeźba ceramiczna</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="7" aria-label="Powiększ: Wazon z bzem i miseczka"><img src="img/r/agaro-07-m.webp" srcset="img/r/agaro-07-m.webp 782w, img/r/agaro-07-l.webp 1095w, img/r/agaro-07.webp 1408w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1408" height="1800" alt="Wazon z bzem i miseczka, ceramika" loading="lazy"></button><figcaption>Wazon z bzem i miseczka<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="8" aria-label="Powiększ: Anioł w ogrodzie"><img src="img/r/agaro-02-m.webp" srcset="img/r/agaro-02-m.webp 751w, img/r/agaro-02-l.webp 1052w, img/r/agaro-02.webp 1352w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1352" height="1800" alt="Anioł w ogrodzie, rzeźba ceramiczna" loading="lazy"></button><figcaption>Anioł w ogrodzie<span>Rzeźba ceramiczna</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="9" aria-label="Powiększ: Kobieta w czerwonej sukni"><img src="img/r/agaro-13-m.webp" srcset="img/r/agaro-13-m.webp 821w, img/r/agaro-13.webp 1228w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1228" height="1496" alt="Kobieta w czerwonej sukni, rzeźba ceramiczna" loading="lazy"></button><figcaption>Kobieta w czerwonej sukni<span>Rzeźba ceramiczna</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="10" aria-label="Powiększ: Forma ażurowa"><img src="img/r/agaro-09-m.webp" srcset="img/r/agaro-09-m.webp 751w, img/r/agaro-09-l.webp 1052w, img/r/agaro-09.webp 1352w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1352" height="1800" alt="Forma ażurowa, rzeźba ceramiczna" loading="lazy"></button><figcaption>Forma ażurowa<span>Rzeźba ceramiczna</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="11" aria-label="Powiększ: Medaliony na sznurach i forma z drewnem"><img src="img/r/agaro-04-m.webp" srcset="img/r/agaro-04-m.webp 751w, img/r/agaro-04-l.webp 1052w, img/r/agaro-04.webp 1352w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1352" height="1800" alt="Medaliony na sznurach i forma z drewnem, ceramika" loading="lazy"></button><figcaption>Medaliony na sznurach i forma z drewnem<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="12" aria-label="Powiększ: Lampiony-domki w śniegu"><img src="img/r/agaro-11-m.webp" srcset="img/r/agaro-11-m.webp 751w, img/r/agaro-11-l.webp 1052w, img/r/agaro-11.webp 1352w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1352" height="1800" alt="Lampiony-domki w śniegu, ceramika" loading="lazy"></button><figcaption>Lampiony-domki w śniegu<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="13" aria-label="Powiększ: Misy w zimowej scenie"><img src="img/r/agaro-12-m.webp" srcset="img/r/agaro-12-m.webp 751w, img/r/agaro-12-l.webp 1052w, img/r/agaro-12.webp 1352w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1352" height="1800" alt="Misy w zimowej scenie, ceramika" loading="lazy"></button><figcaption>Misy w zimowej scenie<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="14" aria-label="Powiększ: Misa z odciskami liści"><img src="img/r/agaro-17-m.webp" srcset="img/r/agaro-17-m.webp 813w, img/r/agaro-17.webp 1220w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1220" height="1500" alt="Misa z odciskami liści, ceramika" loading="lazy"></button><figcaption>Misa z odciskami liści<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="15" aria-label="Powiększ: Patera czerwono-czarna z metką"><img src="img/r/agaro-18-m.webp" srcset="img/r/agaro-18-m.webp 816w, img/r/agaro-18.webp 1224w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1224" height="1500" alt="Patera czerwono-czarna z metką, ceramika" loading="lazy"></button><figcaption>Patera czerwono-czarna z metką<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="16" aria-label="Powiększ: Doniczka pomarańczowa z sukulentem"><img src="img/r/agaro-15-m.webp" srcset="img/r/agaro-15-m.webp 818w, img/r/agaro-15.webp 1224w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1224" height="1496" alt="Doniczka pomarańczowa z sukulentem, ceramika" loading="lazy"></button><figcaption>Doniczka pomarańczowa z sukulentem<span>Ceramika</span></figcaption></figure><figure class="dz" data-k="cer"><button type="button" data-i="17" aria-label="Powiększ: Zawieszki/płytki z otworami"><img src="img/r/agaro-14-m.webp" srcset="img/r/agaro-14-m.webp 816w, img/r/agaro-14.webp 1220w" sizes="(max-width:760px) 50vw, (max-width:1100px) 45vw, 30vw" width="1220" height="1496" alt="Zawieszki/płytki z otworami, ceramika" loading="lazy"></button><figcaption>Zawieszki/płytki z otworami<span>Ceramika</span></figcaption></figure></div>
  </div>
 </section>
 
-<section class="rodz">
+<section class="rodz alt">
  <div class="wrap">
-  <figure class="fot"><div class="ob odkryj"><img src="img/r/venus-03-m.webp" srcset="img/r/venus-03-m.webp 700w, img/r/venus-03.webp 1920w" sizes="(max-width:1100px) 100vw, 55vw" width="1920" height="1037" alt="Galeria Venus w Świdniku nocą" loading="lazy"></div><figcaption>Galeria Venus 1 w Świdniku, otwarta w 2006 roku</figcaption></figure>
+  <figure class="fot"><div class="ob odkryj"><img src="img/r/venus-03-m.webp" srcset="img/r/venus-03-m.webp 900w, img/r/venus-03-l.webp 1400w, img/r/venus-03.webp 2200w" sizes="(max-width:1100px) 100vw, 55vw" width="2200" height="1189" alt="Galeria Venus w Świdniku nocą" loading="lazy"></div><figcaption>Galeria Venus 1 w Świdniku, otwarta w 2006 roku</figcaption></figure>
   <div>
    <h2 class="duzy">Architekt w rodzinnej pracowni</h2>
    <p class="lead">Z mężem, Mirosławem Rossą, i córką prowadzi pracownię AMR Architekci &amp; Partnerzy w Lublinie. Współtworzyła m.in. Galerię Venus 1 w Świdniku i projekt Galerii Zana w Lublinie.</p>
-   <a class="lnk" href="pracownia.html">O pracowni <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+   <a class="lnk" href="pracownia.html">O pracowni <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
  </div>
 </section>
 
-<section class="zapr">
+<section class="zapr" id="zapytaj">
  <div class="wrap">
   <h2 class="duzy">Spodobała się praca? Zapytaj o nią bezpośrednio.</h2>
   <a class="mail" href="mailto:agnieszka.rossa.art@gmail.com?subject=Pytanie%20o%20prac%C4%99">agnieszka.rossa.art@gmail.com</a>
-  <div class="akcje"><a class="btn" href="mailto:agnieszka.rossa.art@gmail.com?subject=Pytanie%20o%20prac%C4%99">Zapytaj o pracę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="lnk" href="https://www.instagram.com/agaro.art/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7" fill="currentColor"/></svg> Zobacz więcej na Instagramie</a></div>
+  <div class="akcje"><a class="lnk" href="https://www.instagram.com/agaro.art/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7" fill="currentColor"/></svg> Więcej prac na Instagramie</a></div>
  </div>
 </section>
 </main>
 <footer>
  <div class="wrap">
   <div class="st-g">
-   <div><a class="logo" href="index.html" style="display:inline-flex"><img class="logo-img logo-stopka" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272" loading="lazy"></a><p style="margin-top:22px;max-width:28em">Pracownia architektoniczna z Lublina. Galerie handlowe, obiekty usługowe, przemysłowe i mieszkalne od 1997 roku.</p></div>
-   <div><h4>Pracownia</h4><p>ul. Zbożowa 6<br>20-827 Lublin</p></div>
-   <div><h4>Kontakt</h4><a href="tel:+48501061258">+48 501 061 258</a><a href="tel:+48817428658">+48 81 742 86 58</a><a href="mailto:amr@rossa.pl">amr@rossa.pl</a></div>
-   <div><h4>Na stronie</h4><a href="index.html">Strona główna</a><a href="realizacje.html">Wszystkie realizacje</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a><a href="pracownia.html#kontakt">Kontakt i dojazd</a></div>
+   <div><a class="logo" href="index.html" aria-label="Strona główna"><img class="l-j" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272" loading="lazy"><img class="l-c" src="img/logo-amr-ciemne.png?v=1" alt="AMR Architekci &amp; Partnerzy" width="640" height="272" loading="lazy"></a></div>
+   <div><p>ul. Zbożowa 6<br>20-827 Lublin</p><a href="tel:+48501061258">+48 501 061 258</a><a href="tel:+48817428658">+48 81 742 86 58</a><a href="mailto:amr@rossa.pl">amr@rossa.pl</a></div>
+   <div><a href="index.html">Strona główna</a><a href="realizacje.html">Realizacje</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a></div>
   </div>
-  <div class="st-d"><span>© AMR Architekci &amp; Partnerzy · Mirosław Rossa Architekt · NIP 946 182 70 50</span><span>Wersja do uzgodnień · zdjęcia Galerii Olimp: Marcin Tarkowski, Piximo</span></div>
+  <div class="st-d"><span>© AMR Architekci &amp; Partnerzy · Mirosław Rossa Architekt · NIP 946 182 70 50</span><span>Zdjęcia Galerii Olimp: Marcin Tarkowski, Piximo · wersja do uzgodnień</span></div>
  </div>
 </footer>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Galeria zdjęć">
- <div class="lb-g"><span class="t"><b id="lbT"></b><span class="m" id="lbM"></span></span><span class="nr" id="lbN"></span><button type="button" aria-label="Zamknij galerię" id="lbZ"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
+ <div class="lb-g"><span class="t"><b id="lbT"></b><span class="m" id="lbM"></span></span><span class="nr" id="lbN"></span><button type="button" aria-label="Zamknij galerię" id="lbZ"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
  <div class="lb-s"><img id="lbI" alt=""><span class="lb-autor" id="lbA" hidden></span><span class="lb-podp" id="lbP" hidden></span>
   <button class="lb-str l" type="button" aria-label="Poprzednie zdjęcie" id="lbL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M15 5l-7 7 7 7"/></svg></button>
   <button class="lb-str p" type="button" aria-label="Następne zdjęcie" id="lbR"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 5l7 7-7 7"/></svg></button></div>
  <div class="lb-mini" id="lbMini"></div>
 </div>
-<script src="js/podstrony.js?v=1"></script>
+<script>window.AMRG={"agaro": {"t": "Agnieszka Rossa", "m": "@agaro.art", "z": [{"s": "img/r/agaro-08", "p": "Lilie wodne, abstrakcyjnie · obraz olejny", "l": 1}, {"s": "img/r/agaro-03", "p": "Żaglówki, góry, woda · obraz olejny", "l": 1}, {"s": "img/r/agaro-16", "p": "Lilie wodne, kolor · obraz olejny"}, {"s": "img/r/agaro-05", "p": "Misa czerwona z czarnym brzegiem · ceramika", "l": 1}, {"s": "img/r/agaro-01", "p": "Czerwona donica z sukulentami · ceramika", "l": 1}, {"s": "img/r/agaro-10", "p": "Dwa wazony z różą · ceramika", "l": 1}, {"s": "img/r/agaro-06", "p": "Para pod parasolem (pamiątka ślubna) · rzeźba ceramiczna", "l": 1}, {"s": "img/r/agaro-07", "p": "Wazon z bzem i miseczka · ceramika", "l": 1}, {"s": "img/r/agaro-02", "p": "Anioł w ogrodzie · rzeźba ceramiczna", "l": 1}, {"s": "img/r/agaro-13", "p": "Kobieta w czerwonej sukni · rzeźba ceramiczna"}, {"s": "img/r/agaro-09", "p": "Forma ażurowa · rzeźba ceramiczna", "l": 1}, {"s": "img/r/agaro-04", "p": "Medaliony na sznurach i forma z drewnem · ceramika", "l": 1}, {"s": "img/r/agaro-11", "p": "Lampiony-domki w śniegu · ceramika", "l": 1}, {"s": "img/r/agaro-12", "p": "Misy w zimowej scenie · ceramika", "l": 1}, {"s": "img/r/agaro-17", "p": "Misa z odciskami liści · ceramika"}, {"s": "img/r/agaro-18", "p": "Patera czerwono-czarna z metką · ceramika"}, {"s": "img/r/agaro-15", "p": "Doniczka pomarańczowa z sukulentem · ceramika"}, {"s": "img/r/agaro-14", "p": "Zawieszki/płytki z otworami · ceramika"}]}};</script>
+<script src="js/amr.js?v=4"></script>
 <script>
 (function(){
- var G={"t": "Agnieszka Rossa", "m": "@agaro.art", "z": [{"s": "img/r/agaro-08", "bez": 1, "p": "Lilie wodne, abstrakcyjnie · obraz olejny", "w": 557, "h": 744}, {"s": "img/r/agaro-01", "bez": 1, "p": "Czerwona donica z sukulentami · ceramika", "w": 993, "h": 744}, {"s": "img/r/agaro-03", "bez": 1, "p": "Żaglówki, góry, woda · obraz olejny", "w": 745, "h": 744}, {"s": "img/r/agaro-13", "bez": 1, "p": "Kobieta w czerwonej sukni · rzeźba ceramiczna", "w": 307, "h": 374}, {"s": "img/r/agaro-05", "bez": 1, "p": "Misa czerwona z czarnym brzegiem · ceramika", "w": 745, "h": 744}, {"s": "img/r/agaro-16", "bez": 1, "p": "Lilie wodne, kolor · obraz olejny", "w": 307, "h": 375}, {"s": "img/r/agaro-06", "bez": 1, "p": "Para pod parasolem (pamiątka ślubna) · rzeźba ceramiczna", "w": 419, "h": 558}, {"s": "img/r/agaro-10", "bez": 1, "p": "Dwa wazony z różą · ceramika", "w": 743, "h": 744}, {"s": "img/r/agaro-02", "bez": 1, "p": "Anioł w ogrodzie · rzeźba ceramiczna", "w": 419, "h": 558}, {"s": "img/r/agaro-07", "bez": 1, "p": "Wazon z bzem i miseczka · ceramika", "w": 406, "h": 519}, {"s": "img/r/agaro-18", "bez": 1, "p": "Patera czerwono-czarna z metką · ceramika", "w": 306, "h": 375}, {"s": "img/r/agaro-09", "bez": 1, "p": "Forma ażurowa · rzeźba ceramiczna", "w": 419, "h": 558}, {"s": "img/r/agaro-04", "bez": 1, "p": "Medaliony na sznurach i forma z drewnem · ceramika", "w": 419, "h": 558}, {"s": "img/r/agaro-15", "bez": 1, "p": "Doniczka pomarańczowa z sukulentem · ceramika", "w": 306, "h": 374}, {"s": "img/r/agaro-11", "bez": 1, "p": "Lampiony-domki w śniegu · ceramika", "w": 419, "h": 558}, {"s": "img/r/agaro-17", "bez": 1, "p": "Misa z odciskami liści · ceramika", "w": 305, "h": 375}, {"s": "img/r/agaro-12", "bez": 1, "p": "Misy w zimowej scenie · ceramika", "w": 419, "h": 558}, {"s": "img/r/agaro-14", "bez": 1, "p": "Zawieszki/płytki z otworami · ceramika", "w": 305, "h": 374}]},wid=[];
+ var G=window.AMRG.agaro;
  function lista(){return [].slice.call(document.querySelectorAll('.dz:not(.ukryty) button'))}
- document.getElementById('mur').addEventListener('click',function(e){var b=e.target.closest('.dz button');if(!b)return;var w=lista(),i=+b.dataset.i;
+ document.getElementById('mur').addEventListener('click',function(e){var b=e.target.closest('.dz button');if(!b)return;var w=lista();
   AMR.galeria({t:G.t,m:G.m,z:w.map(function(x){return G.z[+x.dataset.i]})},w.indexOf(b))});
  var zb=[].slice.call(document.querySelectorAll('.zakl button')),dz=[].slice.call(document.querySelectorAll('.dz'));
- zb.forEach(function(b){b.addEventListener('click',function(){zb.forEach(function(x){x.classList.toggle('on',x===b)});dz.forEach(function(d){d.classList.toggle('ukryty',b.dataset.f!=='*'&&d.dataset.k!==b.dataset.f)})})});
+ zb.forEach(function(b){b.addEventListener('click',function(){zb.forEach(function(x){x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b?'true':'false')});dz.forEach(function(d){d.classList.toggle('ukryty',b.dataset.f!=='*'&&d.dataset.k!==b.dataset.f)})})});
 })();
 </script>
 </body>
