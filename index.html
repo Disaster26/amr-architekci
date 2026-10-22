@@ -40,7 +40,7 @@ h2.duzy{font-weight:300;font-size:clamp(34px,4.2vw,64px);line-height:1.04;letter
 .logo b{font-weight:400;font-size:25px;letter-spacing:.36em;display:flex;align-items:center}
 .logo b i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--kropka);margin:0 .52em 0 .08em;transform:translateY(-1px)}
 .logo small{font-size:8.8px;letter-spacing:.4em;color:var(--szary);margin-top:8px;text-transform:uppercase}
-.menu{margin-left:auto;display:flex;align-items:center;gap:44px;font-size:12.5px;letter-spacing:.24em;text-transform:uppercase}
+.menu{margin-left:auto;white-space:nowrap;display:flex;align-items:center;gap:44px;font-size:12.5px;letter-spacing:.24em;text-transform:uppercase}
 .menu a{color:var(--tekst);position:relative;padding:8px 0;transition:color .2s}
 .menu a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:var(--akcent);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--e)}
 .menu a:hover{color:var(--jasny)}.menu a:hover::after,.menu a.akt::after{transform:scaleX(1);transform-origin:left}
@@ -55,7 +55,7 @@ html.otw .przel i{transform:scaleX(.6)}
 html[data-menu="b"] .pas-g .menu,html[data-menu="c"] .pas-g .menu{display:none}
 html[data-menu="b"] .przel,html[data-menu="c"] .przel{display:flex}
 .pelne{position:fixed;inset:var(--pg) 0 0;z-index:58;background:var(--pas);display:flex;flex-direction:column;justify-content:center;padding:0 56px;gap:6px;clip-path:inset(0 0 100% 0);transition:clip-path .55s var(--e2),visibility .55s;visibility:hidden}
-.pelne a{font-size:clamp(40px,7vw,96px);font-weight:300;letter-spacing:-.01em;line-height:1.15;color:var(--jasny);display:flex;align-items:baseline;gap:24px;width:max-content;transition:color .2s}
+.pelne a{font-size:clamp(28px,6.2vw,84px);max-width:100%;font-weight:300;letter-spacing:-.01em;line-height:1.15;color:var(--jasny);display:flex;align-items:baseline;gap:24px;width:max-content;transition:color .2s}
 .pelne a small{font-size:13px;letter-spacing:.2em;color:var(--szary)}
 .pelne a:hover{color:var(--akcent)}
 .pelne .stopka{position:absolute;left:56px;right:56px;bottom:32px;display:flex;justify-content:space-between;gap:20px;font-size:14px;color:var(--szary);border-top:1px solid var(--linia);padding-top:20px}
@@ -262,6 +262,7 @@ footer{background:var(--pas);border-top:1px solid var(--linia);color:var(--szary
  .wiersz .st{display:none}
  .st-g{grid-template-columns:1fr 1fr}
 }
+@media (max-width:980px){html[data-menu="a"] .pas-g .menu{display:none}html[data-menu="a"] .przel{display:flex}}
 /* ===== telefon ===== */
 @media (max-width:760px){
  :root{--pg:62px;--pd:54px}
@@ -320,7 +321,8 @@ footer{background:var(--pas);border-top:1px solid var(--linia);color:var(--szary
   <a class="logo" href="#start" aria-label="AMR Architekci &amp; Partnerzy, strona główna"><img class="logo-img" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272"></a>
   <nav class="menu" aria-label="Menu główne">
    <a href="#realizacje">Realizacje</a>
-   <a href="#pracownia">Pracownia</a>
+   <a href="pracownia.html">O pracowni</a>
+   <a href="agnieszka-rossa.html">Agnieszka Rossa</a>
    <a href="#kontakt">Kontakt</a>
    <a class="tel" href="tel:+48501061258">+48 501 061 258</a>
   </nav>
@@ -330,14 +332,18 @@ footer{background:var(--pas);border-top:1px solid var(--linia);color:var(--szary
 
 <nav class="pelne" aria-label="Menu">
  <a href="#realizacje"><small>01</small>Realizacje</a>
- <a href="#pracownia"><small>02</small>Pracownia</a>
- <a href="#kontakt"><small>03</small>Kontakt</a>
+ <a href="realizacje.html"><small>02</small>Wszystkie realizacje</a>
+ <a href="pracownia.html"><small>03</small>O pracowni</a>
+ <a href="agnieszka-rossa.html"><small>04</small>Agnieszka Rossa</a>
+ <a href="#kontakt"><small>05</small>Kontakt</a>
  <div class="stopka"><span>ul. Zbożowa 6, 20-827 Lublin</span><span>+48 501 061 258 · amr@rossa.pl</span></div>
 </nav>
 <nav class="bok" aria-label="Menu boczne">
  <a href="#realizacje"><small>01</small>Realizacje</a>
- <a href="#pracownia"><small>02</small>Pracownia</a>
- <a href="#kontakt"><small>03</small>Kontakt</a>
+ <a href="realizacje.html"><small>02</small>Wszystkie realizacje</a>
+ <a href="pracownia.html"><small>03</small>O pracowni</a>
+ <a href="agnieszka-rossa.html"><small>04</small>Agnieszka Rossa</a>
+ <a href="#kontakt"><small>05</small>Kontakt</a>
  <div class="stopka">ul. Zbożowa 6<br>20-827 Lublin<br>+48 501 061 258</div>
 </nav>
 
@@ -422,6 +428,7 @@ footer{background:var(--pas);border-top:1px solid var(--linia);color:var(--szary
    </article>
    <div class="brak" id="brak">Zdjęcia budynków mieszkaniowych w przygotowaniu.</div>
   </div>
+  <a class="wiecej wej" href="realizacje.html" style="margin-top:80px">Wszystkie realizacje <span>→</span></a>
  </div>
 </section>
 
@@ -474,6 +481,7 @@ footer{background:var(--pas);border-top:1px solid var(--linia);color:var(--szary
     <div><span>Branżyści</span><small>konstrukcja · instalacje · elektryka</small></div>
    </div>
    <a class="ig wej" href="https://www.instagram.com/agaro.art/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7" fill="currentColor"/></svg>Agnieszka Rossa architekt · @agaro.art</a>
+   <div style="display:flex;gap:30px;flex-wrap:wrap;margin-top:30px"><a class="wiecej wej" href="pracownia.html" style="margin-top:0">O pracowni <span>→</span></a><a class="wiecej wej" href="agnieszka-rossa.html" style="margin-top:0">Agnieszka Rossa: malarstwo i ceramika <span>→</span></a></div>
   </div>
  </div>
 </section>
@@ -503,7 +511,7 @@ footer{background:var(--pas);border-top:1px solid var(--linia);color:var(--szary
    <div><a class="logo" href="#start" style="display:inline-flex"><img class="logo-img logo-stopka" src="img/logo-amr.png?v=2" alt="AMR Architekci &amp; Partnerzy" width="640" height="272" loading="lazy"></a><p style="margin-top:22px;max-width:28em">Pracownia architektoniczna z Lublina. Galerie handlowe, obiekty usługowe, przemysłowe i mieszkalne od 1997 roku.</p></div>
    <div><h4>Pracownia</h4><p>ul. Zbożowa 6<br>20-827 Lublin</p></div>
    <div><h4>Kontakt</h4><a href="tel:+48501061258">+48 501 061 258</a><a href="tel:+48817428658">+48 81 742 86 58</a><a href="mailto:amr@rossa.pl">amr@rossa.pl</a></div>
-   <div><h4>Na stronie</h4><a href="#realizacje">Realizacje</a><a href="#wykaz">Wykaz projektów</a><a href="#pracownia">Pracownia</a><a href="#kontakt">Kontakt</a></div>
+   <div><h4>Na stronie</h4><a href="#realizacje">Realizacje</a><a href="realizacje.html">Wszystkie realizacje</a><a href="#wykaz">Wykaz projektów</a><a href="pracownia.html">O pracowni</a><a href="agnieszka-rossa.html">Agnieszka Rossa</a><a href="#kontakt">Kontakt</a></div>
   </div>
   <div class="st-d"><span>© AMR Architekci &amp; Partnerzy · Mirosław Rossa Architekt · NIP 946 182 70 50</span><span>Wersja do uzgodnień · zdjęcia Galerii Olimp: Marcin Tarkowski, Piximo</span></div>
  </div>
