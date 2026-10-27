@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="pl" data-kolor="czern" data-menu="a">
+<html lang="pl" data-kolor="bez" data-menu="a">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>O pracowni · AMR Architekci &amp; Partnerzy · Lublin</title>
-<meta name="description" content="AMR Architekci &amp; Partnerzy: rodzinna pracownia architektoniczna z Lublina od 1997 roku. Mirosław Rossa, Agnieszka Rossa. ul. Zbożowa 6, tel. 501 061 258.">
-<meta name="theme-color" content="#0A0A0A">
+<meta name="description" content="AMR Architekci &amp; Partnerzy: zespół architektów z Lublina, od 1997 roku. Mirosław Rossa, Agnieszka Rossa. ul. Zbożowa 6, tel. 501 061 258.">
+<meta name="theme-color" content="#080706">
 <link rel="icon" href="data:,">
-<script>try{var d=document.documentElement,k=localStorage.getItem('amr-kolor'),m=localStorage.getItem('amr-menu');if(k)d.setAttribute('data-kolor',k);if(m)d.setAttribute('data-menu',m)}catch(e){}</script>
+<script>try{var d=document.documentElement,q=location.search.match(/[?&]rossa=([01])/),k=localStorage.getItem('amr-kolor2'),m=localStorage.getItem('amr-menu'),r=localStorage.getItem('amr-rossa');if(q){r=q[1];localStorage.setItem('amr-rossa',r)}if(k)d.setAttribute('data-kolor',k);if(m)d.setAttribute('data-menu',m);d.setAttribute('data-rossa',r==='1'?'1':'0')}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <link rel="preload" as="image" imagesrcset="img/r/pracownia-22-m.webp 900w, img/r/pracownia-22-l.webp 1400w, img/r/pracownia-22.webp 2200w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="css/amr.css?v=4">
+<link rel="stylesheet" href="css/amr.css?v=5">
 <style>
 
 .glowa{position:relative;margin-top:var(--pg);height:calc(100vh - var(--pg));height:calc(100svh - var(--pg));min-height:520px;background:var(--pas);overflow:hidden;padding:0}
@@ -22,20 +22,20 @@
 .g-fot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .g-fot::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.74) 0%,rgba(0,0,0,.28) 40%,rgba(0,0,0,0) 64%),linear-gradient(90deg,rgba(0,0,0,.38),rgba(0,0,0,0) 58%)}
 .g-txt{position:absolute;left:0;right:0;bottom:64px;z-index:2}
-.g-txt h1{font-size:clamp(46px,6.4vw,104px);line-height:1;letter-spacing:-.028em;color:var(--foto);max-width:12em}
-.g-txt p{margin-top:22px;font-size:19px;line-height:1.6;color:var(--foto2);max-width:31em}
+.g-txt h1{font-size:var(--f1);line-height:1;color:var(--foto);max-width:12em}
+.g-txt p{margin-top:22px;font-size:var(--f4);line-height:1.6;color:var(--foto2);max-width:31em}
 .g-txt .btn{margin-top:30px}
-.g-autor{position:absolute;right:16px;bottom:12px;z-index:2;font-size:13px;color:var(--foto2)}
-@media (min-width:761px) and (max-height:820px){.g-txt h1{font-size:clamp(42px,5.4vw,84px)}.g-txt{bottom:44px}}
+.g-autor{position:absolute;right:16px;bottom:12px;z-index:2;font-size:var(--f5);color:var(--foto2)}
+@media (min-width:761px) and (max-height:820px){.g-txt h1{font-size:var(--f1)}.g-txt{bottom:44px}}
 @media (max-width:760px){
  .glowa{display:flex;flex-direction:column;min-height:0}
  .g-fot{position:relative;flex:1 1 0;min-height:min(56vw,26svh);align-self:stretch;width:100%}
  .g-fot::after{background:linear-gradient(0deg,var(--pas) 0%,transparent 34%)}
  .g-txt{position:relative;bottom:auto;flex:0 0 auto;padding:4px 0 30px}
- .g-txt h1{color:var(--jasny);font-size:clamp(36px,10.5vw,50px);line-height:1.04}
- .g-txt p{color:var(--tekst);font-size:16px;margin-top:12px}
+ .g-txt h1{color:var(--jasny);font-size:var(--f1);line-height:1.04}
+ .g-txt p{color:var(--tekst);font-size:var(--f4);margin-top:12px}
  .g-txt .btn{margin-top:20px;padding:15px 22px}
- .g-autor{bottom:auto;top:10px;right:10px;font-size:12px;color:var(--foto);text-shadow:0 1px 4px rgba(0,0,0,.7)}
+ .g-autor{bottom:auto;top:10px;right:10px;font-size:var(--f5);color:var(--foto);text-shadow:0 1px 4px rgba(0,0,0,.7)}
 }
 
 .g-fot img{object-position:50% 60%}
@@ -43,25 +43,25 @@
 .ludzie .lead{margin-top:26px}
 .osoby{border-top:1px solid var(--linia2)}
 .osoba{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:30px;padding:28px 0;border-bottom:1px solid var(--linia)}
-.osoba h3{font-size:clamp(23px,1.9vw,28px);line-height:1.2}
-.osoba h3 small{display:block;margin-top:6px;font-size:16px;color:var(--szary);letter-spacing:0}
-.osoba p{font-size:16px;line-height:1.7}
+.osoba h3{font-size:var(--f3);line-height:1.2}
+.osoba h3 small{display:block;margin-top:6px;font-size:var(--f4);color:var(--szary)}
+.osoba p{font-size:var(--f4);line-height:1.7}
 .osoba a{color:var(--jasny);border-bottom:1px solid var(--akcent)}
 .jak .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:90px;align-items:start}
 .zakres{margin-top:36px;list-style:none;border-top:1px solid var(--linia)}
-.zakres li{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--linia);font-size:17px;color:var(--jasny)}
-.zakres li span{font-size:16px;color:var(--szary);text-align:right}
+.zakres li{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--linia);font-size:var(--f4);color:var(--jasny)}
+.zakres li span{font-size:var(--f4);color:var(--szary);text-align:right}
 .os-w{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px;align-items:start}
 .os-fot{position:sticky;top:calc(var(--pg) + 40px);aspect-ratio:4/5;overflow:hidden;background:var(--tlo3);margin:0}
 .os-fot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
 .os-fot img.on{opacity:1}
-.os-fot figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:44px 20px 16px;background:linear-gradient(0deg,rgba(0,0,0,.72),rgba(0,0,0,0));font-size:16px;color:var(--foto)}
-.os-fot .aut{display:block;font-size:13px;color:var(--foto2);margin-top:2px}
+.os-fot figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:44px 20px 16px;background:linear-gradient(0deg,rgba(0,0,0,.72),rgba(0,0,0,0));font-size:var(--f4);color:var(--foto)}
+.os-fot .aut{display:block;font-size:var(--f5);color:var(--foto2);margin-top:2px}
 .os{list-style:none;border-top:1px solid var(--linia2)}
 .os li{display:grid;grid-template-columns:140px minmax(0,1fr);gap:24px;padding:24px 0;border-bottom:1px solid var(--linia)}
-.os .rok{font-size:16px;color:var(--szary);font-variant-numeric:tabular-nums;padding-top:3px;transition:color .4s}
-.os h3{font-size:clamp(20px,1.6vw,24px);line-height:1.3;color:var(--tekst);transition:color .4s}
-.os p{margin-top:4px;font-size:16px;color:var(--szary)}
+.os .rok{font-size:var(--f4);color:var(--szary);font-variant-numeric:tabular-nums;padding-top:3px;transition:color .4s}
+.os h3{font-size:var(--f3);line-height:1.3;color:var(--tekst);transition:color .4s}
+.os p{margin-top:4px;font-size:var(--f4);color:var(--szary)}
 .os li.akt .rok{color:var(--akcent)}
 .os li.akt h3{color:var(--jasny)}
 .os-mob{display:none}
@@ -105,8 +105,8 @@
 <section class="glowa" aria-label="Pracownia">
  <figure class="g-fot"><img src="img/r/pracownia-22-m.webp" srcset="img/r/pracownia-22-m.webp 900w, img/r/pracownia-22-l.webp 1400w, img/r/pracownia-22.webp 2200w" sizes="100vw" width="2200" height="1233" alt="Pracownia AMR w Lublinie" fetchpriority="high"></figure>
  <div class="g-txt"><div class="wrap">
-  <h1>Rodzinna pracownia architektoniczna z Lublina</h1>
-  <p>Mirosław Rossa, Agnieszka Rossa i ich córka, wszyscy troje architekci. Projektujemy od 1997 roku.</p>
+  <h1>Zespół architektów z Lublina</h1>
+  <p>AMR Architekci &amp; Partnerzy. Projektujemy od 1997 roku.</p>
   <a class="btn" href="#kontakt">Kontakt i dojazd <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
  </div></div>
 </section>
@@ -119,8 +119,8 @@
   </div>
   <div class="osoby">
    <div class="osoba"><h3>Mirosław Rossa<small>architekt, założyciel pracowni</small></h3><p>Prowadzi pracownię od 1997 roku. Wcześniej projektował w biurze Bieńkowski Lis Mierzwa Architekci, m.in. budynki SM Instalator w Lublinie: projekt wybrany w konkursie SARP i budynek nominowany do nagrody Premiera.</p></div>
-   <div class="osoba"><h3>Agnieszka Rossa<small>architekt</small></h3><p>Współautorka projektów Galerii Venus 1 w Świdniku i Galerii Zana w Lublinie. Maluje i tworzy ceramikę: <a href="agnieszka-rossa.html">zobacz jej prace</a>.</p></div>
-   <div class="osoba"><h3>Córka<small>architekt</small></h3><p>Projektuje w rodzinnej pracowni razem z rodzicami.</p></div>
+   <div class="osoba"><h3>Agnieszka Rossa<small>architekt</small></h3><p>Maluje i tworzy ceramikę: <a href="agnieszka-rossa.html">zobacz jej prace</a>.</p></div>
+   <div class="osoba"><h3>Karolina Kołodziejczyk-Rossa<small>architekt</small></h3><p>Projektuje w zespole pracowni.</p></div>
    <div class="osoba"><h3>Branżyści<small>stałe zespoły</small></h3><p>Konstruktorzy, inżynierowie sanitarni i ochrony środowiska, elektrycy i teletechnicy, rzeczoznawcy i technolodzy.</p></div>
   </div>
  </div>
@@ -130,7 +130,7 @@
  <div class="wrap">
   <h2 class="duzy">Rośniemy razem z firmami, dla których projektujemy</h2>
   <div>
-   <p class="lead">Najlepiej pracuje nam się z lokalnymi firmami. Poznajemy specyfikę ich działalności i projektujemy budynki dopasowane do potrzeb i ekonomii biznesu. Z tymi samymi inwestorami pracujemy przy kolejnych etapach: Galerię Olimp projektowaliśmy w pięciu etapach w latach 1999-2013, Drukarnię DAKO w latach 2004-2013.</p>
+   <p class="lead">Najlepiej pracuje nam się z lokalnymi firmami. Poznajemy specyfikę ich działalności i projektujemy budynki dopasowane do potrzeb i ekonomii biznesu. Przez wiele lat prowadziliśmy kolejne etapy dużych zespołów: Galerii Olimp (pięć etapów, 1999-2013), Drukarni DAKO (2004-2013) i Galerii Venus (2005-2012). To duże i trudne obiekty.</p>
    <ul class="zakres">
     <li>Budownictwo użyteczności publicznej<span>galerie handlowe, usługi, handel</span></li>
     <li>Budownictwo przemysłowe<span>zakłady produkcyjne, hale, biurowce</span></li>
@@ -197,7 +197,7 @@
  <div class="lb-mini" id="lbMini"></div>
 </div>
 <script>window.AMRG={"siedz": {"t": "Pracownia", "m": "ul. Zbożowa 6, Lublin", "z": [{"s": "img/r/pracownia-01", "l": 1}, {"s": "img/r/pracownia-02", "l": 1}, {"s": "img/r/pracownia-03", "l": 1}, {"s": "img/r/pracownia-04", "l": 1}, {"s": "img/r/pracownia-05", "l": 1}, {"s": "img/r/pracownia-06", "l": 1}, {"s": "img/r/pracownia-07", "l": 1}, {"s": "img/r/pracownia-08", "l": 1}, {"s": "img/r/pracownia-09", "l": 1}, {"s": "img/r/pracownia-10", "l": 1}, {"s": "img/r/pracownia-11", "l": 1}, {"s": "img/r/pracownia-12", "l": 1}, {"s": "img/r/pracownia-13", "l": 1}, {"s": "img/r/pracownia-14", "l": 1}, {"s": "img/r/pracownia-15", "l": 1}, {"s": "img/r/pracownia-16", "l": 1}, {"s": "img/r/pracownia-17", "l": 1}, {"s": "img/r/pracownia-18", "l": 1}, {"s": "img/r/pracownia-19", "l": 1}, {"s": "img/r/pracownia-20", "l": 1}, {"s": "img/r/pracownia-21", "l": 1}, {"s": "img/r/pracownia-22", "l": 1}, {"s": "img/r/pracownia-23", "l": 1}, {"s": "img/r/pracownia-24", "l": 1}]}};</script>
-<script src="js/amr.js?v=4"></script>
+<script src="js/amr.js?v=5"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>AMRmapa()</script>
 <script>

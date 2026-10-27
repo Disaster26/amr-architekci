@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="pl" data-kolor="czern" data-menu="a">
+<html lang="pl" data-kolor="bez" data-menu="a">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Realizacje · AMR Architekci &amp; Partnerzy · Lublin</title>
 <meta name="description" content="Zrealizowane obiekty pracowni AMR Architekci &amp; Partnerzy: Galeria Olimp, Galeria Venus, Drukarnia DAKO, kościół św. Michała Archanioła i zakłady w Lublinie.">
-<meta name="theme-color" content="#0A0A0A">
+<meta name="theme-color" content="#080706">
 <link rel="icon" href="data:,">
-<script>try{var d=document.documentElement,k=localStorage.getItem('amr-kolor'),m=localStorage.getItem('amr-menu');if(k)d.setAttribute('data-kolor',k);if(m)d.setAttribute('data-menu',m)}catch(e){}</script>
+<script>try{var d=document.documentElement,q=location.search.match(/[?&]rossa=([01])/),k=localStorage.getItem('amr-kolor2'),m=localStorage.getItem('amr-menu'),r=localStorage.getItem('amr-rossa');if(q){r=q[1];localStorage.setItem('amr-rossa',r)}if(k)d.setAttribute('data-kolor',k);if(m)d.setAttribute('data-menu',m);d.setAttribute('data-rossa',r==='1'?'1':'0')}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <link rel="preload" as="image" imagesrcset="img/r/olimp-02-m.webp 900w, img/r/olimp-02-l.webp 1400w, img/r/olimp-02.webp 2200w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="css/amr.css?v=4">
+<link rel="stylesheet" href="css/amr.css?v=5">
 <style>
 
 .glowa{position:relative;margin-top:var(--pg);height:calc(100vh - var(--pg));height:calc(100svh - var(--pg));min-height:520px;background:var(--pas);overflow:hidden;padding:0}
@@ -22,27 +22,27 @@
 .g-fot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .g-fot::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.74) 0%,rgba(0,0,0,.28) 40%,rgba(0,0,0,0) 64%),linear-gradient(90deg,rgba(0,0,0,.38),rgba(0,0,0,0) 58%)}
 .g-txt{position:absolute;left:0;right:0;bottom:64px;z-index:2}
-.g-txt h1{font-size:clamp(46px,6.4vw,104px);line-height:1;letter-spacing:-.028em;color:var(--foto);max-width:12em}
-.g-txt p{margin-top:22px;font-size:19px;line-height:1.6;color:var(--foto2);max-width:31em}
+.g-txt h1{font-size:var(--f1);line-height:1;color:var(--foto);max-width:12em}
+.g-txt p{margin-top:22px;font-size:var(--f4);line-height:1.6;color:var(--foto2);max-width:31em}
 .g-txt .btn{margin-top:30px}
-.g-autor{position:absolute;right:16px;bottom:12px;z-index:2;font-size:13px;color:var(--foto2)}
-@media (min-width:761px) and (max-height:820px){.g-txt h1{font-size:clamp(42px,5.4vw,84px)}.g-txt{bottom:44px}}
+.g-autor{position:absolute;right:16px;bottom:12px;z-index:2;font-size:var(--f5);color:var(--foto2)}
+@media (min-width:761px) and (max-height:820px){.g-txt h1{font-size:var(--f1)}.g-txt{bottom:44px}}
 @media (max-width:760px){
  .glowa{display:flex;flex-direction:column;min-height:0}
  .g-fot{position:relative;flex:1 1 0;min-height:min(56vw,26svh);align-self:stretch;width:100%}
  .g-fot::after{background:linear-gradient(0deg,var(--pas) 0%,transparent 34%)}
  .g-txt{position:relative;bottom:auto;flex:0 0 auto;padding:4px 0 30px}
- .g-txt h1{color:var(--jasny);font-size:clamp(36px,10.5vw,50px);line-height:1.04}
- .g-txt p{color:var(--tekst);font-size:16px;margin-top:12px}
+ .g-txt h1{color:var(--jasny);font-size:var(--f1);line-height:1.04}
+ .g-txt p{color:var(--tekst);font-size:var(--f4);margin-top:12px}
  .g-txt .btn{margin-top:20px;padding:15px 22px}
- .g-autor{bottom:auto;top:10px;right:10px;font-size:12px;color:var(--foto);text-shadow:0 1px 4px rgba(0,0,0,.7)}
+ .g-autor{bottom:auto;top:10px;right:10px;font-size:var(--f5);color:var(--foto);text-shadow:0 1px 4px rgba(0,0,0,.7)}
 }
 
 .g-fot img{object-position:50% 58%}
 .filtr{position:sticky;top:var(--pg);z-index:40;height:60px;background:var(--pas);border-bottom:1px solid var(--linia);padding:0;transition:background-color .4s}
 .filtr .wrap{height:100%;display:flex;align-items:center;gap:34px;overflow-x:auto;scrollbar-width:none}
 .filtr .wrap::-webkit-scrollbar{display:none}
-.filtr button{position:relative;flex:none;height:100%;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--szary);transition:color .2s}
+.filtr button{position:relative;flex:none;height:100%;font-size:var(--f5);color:var(--szary);transition:color .2s}
 .filtr button::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--akcent);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--e)}
 .filtr button:hover,.filtr button.on{color:var(--jasny)}
 .filtr button.on::after{transform:scaleX(1)}
@@ -51,37 +51,39 @@
 .pr.ukryty{display:none}
 .pr-fot{grid-column:1/span 8;min-width:0}
 .pr-opis{grid-column:9/span 4;min-width:0;padding-bottom:4px}
-.pr.odw .pr-fot{grid-column:5/span 8;grid-row:1}
-.pr.odw .pr-opis{grid-column:1/span 4;grid-row:1}
+.pr:nth-of-type(even) .pr-fot{grid-column:5/span 8;grid-row:1}
+.pr:nth-of-type(even) .pr-opis{grid-column:1/span 4;grid-row:1}
+.gdz .msc:empty,.gdz .lata:empty{display:none}
+.gdz .msc:not(:empty)+.lata:not(:empty)::before{content:" · "}
 .pr-ob{position:relative;display:block;width:100%;aspect-ratio:3/2;overflow:hidden;background:var(--tlo3);cursor:zoom-in}
 .pr-ob img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--e)}
 .pr-ob:hover img{transform:scale(1.03)}
-.zoom{position:absolute;right:14px;bottom:14px;padding:7px 12px;background:rgba(10,10,10,.68);font-size:14px;color:var(--foto)}
+.zoom{position:absolute;right:14px;bottom:14px;padding:7px 12px;background:rgba(10,10,10,.68);font-size:var(--f5);color:var(--foto)}
 .pr-min{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}
 .pr-min button{position:relative;aspect-ratio:3/2;overflow:hidden;background:var(--tlo3);cursor:zoom-in}
 .pr-min img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--e)}
 .pr-min button:hover img{transform:scale(1.05)}
-.pr-min span{position:absolute;inset:0;display:grid;place-items:center;background:rgba(10,10,10,.55);color:var(--foto);font-size:18px}
-.pr-opis h2{font-size:clamp(30px,2.6vw,42px);line-height:1.1}
-.gdz{margin-top:12px;font-size:16px;color:var(--szary)}
-.txt{margin-top:20px;font-size:16px;line-height:1.7;padding-top:20px;border-top:1px solid var(--linia)}
+.pr-min span{position:absolute;inset:0;display:grid;place-items:center;background:rgba(10,10,10,.55);color:var(--foto);font-size:var(--f4)}
+.pr-opis h2{font-size:var(--f2);line-height:1.1}
+.gdz{margin-top:12px;font-size:var(--f4);color:var(--szary)}
+.txt{margin-top:20px;font-size:var(--f4);line-height:1.7;padding-top:20px;border-top:1px solid var(--linia)}
 .pr-opis .lnk{margin-top:20px}
-.kred{margin-top:14px;font-size:14px;color:var(--szary)}
+.kred{margin-top:14px;font-size:var(--f5);color:var(--szary)}
 @media (max-width:1100px){
- .pr,.pr.odw{grid-template-columns:minmax(0,1fr);row-gap:24px}
- .pr .pr-fot,.pr.odw .pr-fot{grid-column:1;grid-row:1}
- .pr .pr-opis,.pr.odw .pr-opis{grid-column:1;grid-row:2;max-width:46em}
+ .pr,.pr:nth-of-type(even){grid-template-columns:minmax(0,1fr);row-gap:24px}
+ .pr .pr-fot,.pr:nth-of-type(even) .pr-fot{grid-column:1;grid-row:1}
+ .pr .pr-opis,.pr:nth-of-type(even) .pr-opis{grid-column:1;grid-row:2;max-width:46em}
 }
 @media (max-width:760px){
  .filtr{height:54px}
  .filtr .wrap{gap:24px}
- .filtr button{font-size:15px;letter-spacing:0;text-transform:none}
+ .filtr button{font-size:var(--f5)}
  .filtr .wrap{gap:15px}
  .lista{padding:52px 0 0}
  .pr{row-gap:18px}
  .pr-ob{aspect-ratio:4/3}
  .pr-min{gap:6px;margin-top:6px}
- .zoom{right:8px;bottom:8px;padding:5px 9px;font-size:13px}
+ .zoom{right:8px;bottom:8px;padding:5px 9px;font-size:var(--f5)}
 }
 
 </style>
@@ -102,112 +104,136 @@
  <figure class="g-fot"><img src="img/r/olimp-02-m.webp" srcset="img/r/olimp-02-m.webp 900w, img/r/olimp-02-l.webp 1400w, img/r/olimp-02.webp 2200w" sizes="100vw" width="2200" height="1467" alt="Galeria Olimp w Lublinie wieczorem" fetchpriority="high"><figcaption class="g-autor">fot. Marcin Tarkowski / Piximo</figcaption></figure>
  <div class="g-txt"><div class="wrap">
   <h1>Realizacje</h1>
-  <p>Galerie handlowe, kościół, zakłady i biurowce w Lublinie, Lubartowie i Świdniku. Zdjęcia budynków, które stoją i pracują.</p>
+  <p>Galerie handlowe, kościół, zakłady, biurowce i budynki mieszkalne. Zdjęcia budynków, które stoją i pracują.</p>
  </div></div>
 </section>
 <nav class="filtr" aria-label="Rodzaj budownictwa"><div class="wrap" role="group"><button class="on" data-f="*">Wszystkie</button><button data-f="usl">Usługi i handel</button><button data-f="prz">Przemysł</button><button data-f="mie">Mieszkaniowe</button></div></nav>
 <section class="lista" id="lista">
  <div class="wrap">
+  <!-- Kolejność realizacji na stronie = kolejność bloków <article> poniżej (przenieś cały blok, żeby zmienić kolejność).
+       Daty: wpisz lata w <span class="lata"></span>, np. <span class="lata">2010-2012</span>. Kropka i układ lewo/prawo ustawią się same. -->
+  <!-- ===== Galeria Olimp ===== -->
   <article class="pr" id="olimp" data-k="usl">
    <div class="pr-fot">
-    <button type="button" class="pr-ob odkryj" data-g="olimp" data-i="0" aria-label="Otwórz galerię: Galeria Olimp, 25 zdjęć"><img src="img/r/olimp-02-m.webp" srcset="img/r/olimp-02-m.webp 900w, img/r/olimp-02-l.webp 1400w, img/r/olimp-02.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="1467" alt="Galeria Olimp w Lublinie wieczorem" fetchpriority="high" style="object-position:50% 60%"><span class="zoom">25 zdjęć</span></button>
+    <button type="button" class="pr-ob odkryj" data-g="olimp" data-i="0" aria-label="Otwórz galerię: Galeria Olimp, 25 zdjęć"><img src="img/r/olimp-02-m.webp" srcset="img/r/olimp-02-m.webp 900w, img/r/olimp-02-l.webp 1400w, img/r/olimp-02.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="1467" alt="Galeria Olimp w Lublinie wieczorem" fetchpriority="high" style="object-position:50% 60%"></button>
     <div class="pr-min"><button type="button" data-g="olimp" data-i="1" aria-label="Galeria Olimp, zdjęcie 2"><img src="img/r/olimp-02-m.webp" alt="" loading="lazy"></button><button type="button" data-g="olimp" data-i="2" aria-label="Galeria Olimp, zdjęcie 3"><img src="img/r/olimp-03-m.webp" alt="" loading="lazy"></button><button type="button" data-g="olimp" data-i="3" aria-label="Galeria Olimp, zdjęcie 4"><img src="img/r/olimp-04-m.webp" alt="" loading="lazy"></button><button type="button" data-g="olimp" data-i="4" aria-label="Galeria Olimp, zdjęcie 5"><img src="img/r/olimp-05-m.webp" alt="" loading="lazy"><span>+21</span></button></div>
    </div>
    <div class="pr-opis">
     <h2>Galeria Olimp</h2>
-    <p class="gdz">Lublin · 1999-2013 · usługi i handel</p>
+    <p class="gdz"><span class="msc">Lublin</span><span class="lata">1999-2013</span></p>
     <p class="txt">Galeria handlowo-usługowa budowana etapami: Olimp I w latach 1999-2000, rozbudowy w 2002 i 2005 roku, Olimp IV otwarta w czerwcu 2009, Olimp V z Multikinem w latach 2011-2013.</p>
     <button type="button" class="lnk" data-g="olimp" data-i="0">Otwórz galerię <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     <p class="kred">fot. Marcin Tarkowski / Piximo</p>
    </div>
   </article>
-  <article class="pr odw" id="dako" data-k="prz">
+  <!-- ===== Drukarnia DAKO ===== -->
+  <article class="pr" id="dako" data-k="prz">
    <div class="pr-fot">
-    <button type="button" class="pr-ob odkryj" data-g="dako" data-i="0" aria-label="Otwórz galerię: Drukarnia DAKO, 35 zdjęć"><img src="img/r/dako-01-m.webp" srcset="img/r/dako-01-m.webp 900w, img/r/dako-01-l.webp 1400w, img/r/dako-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="1238" alt="Biurowiec Drukarni DAKO w Lubartowie" loading="lazy" style="object-position:50% 50%"><span class="zoom">35 zdjęć</span></button>
+    <button type="button" class="pr-ob odkryj" data-g="dako" data-i="0" aria-label="Otwórz galerię: Drukarnia DAKO, 35 zdjęć"><img src="img/r/dako-01-m.webp" srcset="img/r/dako-01-m.webp 900w, img/r/dako-01-l.webp 1400w, img/r/dako-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="1238" alt="Biurowiec Drukarni DAKO w Lubartowie" loading="lazy" style="object-position:50% 50%"></button>
     <div class="pr-min"><button type="button" data-g="dako" data-i="1" aria-label="Drukarnia DAKO, zdjęcie 2"><img src="img/r/dako-02-m.webp" alt="" loading="lazy"></button><button type="button" data-g="dako" data-i="2" aria-label="Drukarnia DAKO, zdjęcie 3"><img src="img/r/dako-03-m.webp" alt="" loading="lazy"></button><button type="button" data-g="dako" data-i="3" aria-label="Drukarnia DAKO, zdjęcie 4"><img src="img/r/dako-04-m.webp" alt="" loading="lazy"></button><button type="button" data-g="dako" data-i="4" aria-label="Drukarnia DAKO, zdjęcie 5"><img src="img/r/dako-05-m.webp" alt="" loading="lazy"><span>+31</span></button></div>
    </div>
    <div class="pr-opis">
     <h2>Drukarnia DAKO</h2>
-    <p class="gdz">Lubartów · 2004-2013 · przemysł</p>
+    <p class="gdz"><span class="msc">Lubartów</span><span class="lata">2004-2013</span></p>
     <p class="txt">Rozbudowa i modernizacja drukarni w latach 2004-2006, potem nowy zakład DAKO NEXT, projektowany etapami w latach 2008-2013. Pierwszy etap zakończono w 2009 roku.</p>
     <button type="button" class="lnk" data-g="dako" data-i="0">Otwórz galerię <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     
    </div>
   </article>
+  <!-- ===== Galeria Venus ===== -->
   <article class="pr" id="venus" data-k="usl">
    <div class="pr-fot">
-    <button type="button" class="pr-ob odkryj" data-g="venus" data-i="0" aria-label="Otwórz galerię: Galeria Venus, 14 zdjęć"><img src="img/r/venus-01-m.webp" srcset="img/r/venus-01-m.webp 900w, img/r/venus-01-l.webp 1400w, img/r/venus-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="1407" alt="Galeria Venus w Świdniku nocą" loading="lazy" style="object-position:50% 55%"><span class="zoom">14 zdjęć</span></button>
+    <button type="button" class="pr-ob odkryj" data-g="venus" data-i="0" aria-label="Otwórz galerię: Galeria Venus, 14 zdjęć"><img src="img/r/venus-01-m.webp" srcset="img/r/venus-01-m.webp 900w, img/r/venus-01-l.webp 1400w, img/r/venus-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="1407" alt="Galeria Venus w Świdniku nocą" loading="lazy" style="object-position:50% 55%"></button>
     <div class="pr-min"><button type="button" data-g="venus" data-i="1" aria-label="Galeria Venus, zdjęcie 2"><img src="img/r/venus-02-m.webp" alt="" loading="lazy"></button><button type="button" data-g="venus" data-i="2" aria-label="Galeria Venus, zdjęcie 3"><img src="img/r/venus-03-m.webp" alt="" loading="lazy"></button><button type="button" data-g="venus" data-i="3" aria-label="Galeria Venus, zdjęcie 4"><img src="img/r/venus-04-m.webp" alt="" loading="lazy"></button><button type="button" data-g="venus" data-i="4" aria-label="Galeria Venus, zdjęcie 5"><img src="img/r/venus-05-m.webp" alt="" loading="lazy"><span>+10</span></button></div>
    </div>
    <div class="pr-opis">
     <h2>Galeria Venus</h2>
-    <p class="gdz">Świdnik · 2005-2012 · usługi i handel</p>
+    <p class="gdz"><span class="msc">Świdnik</span><span class="lata">2005-2012</span></p>
     <p class="txt">Galeria handlowo-usługowa w dwóch etapach. Venus 1 otwarta 18 marca 2006 roku, Venus 2 zaprojektowana i zrealizowana w latach 2009-2012.</p>
     <button type="button" class="lnk" data-g="venus" data-i="0">Otwórz galerię <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     
    </div>
   </article>
-  <article class="pr odw" id="michal" data-k="usl">
+  <!-- ===== Kościół pw. św. Michała Archanioła ===== -->
+  <article class="pr" id="michal" data-k="usl">
    <div class="pr-fot">
-    <button type="button" class="pr-ob odkryj" data-g="michal" data-i="0" aria-label="Otwórz galerię: Kościół pw. św. Michała Archanioła, 13 zdjęć"><img src="img/r/michal-01-m.webp" srcset="img/r/michal-01-m.webp 900w, img/r/michal-01-l.webp 1400w, img/r/michal-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="1615" alt="Kościół pw. św. Michała Archanioła w Lublinie" loading="lazy" style="object-position:50% 55%"><span class="zoom">13 zdjęć</span></button>
+    <button type="button" class="pr-ob odkryj" data-g="michal" data-i="0" aria-label="Otwórz galerię: Kościół pw. św. Michała Archanioła, 13 zdjęć"><img src="img/r/michal-01-m.webp" srcset="img/r/michal-01-m.webp 900w, img/r/michal-01-l.webp 1400w, img/r/michal-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="1615" alt="Kościół pw. św. Michała Archanioła w Lublinie" loading="lazy" style="object-position:50% 55%"></button>
     <div class="pr-min"><button type="button" data-g="michal" data-i="1" aria-label="Kościół pw. św. Michała Archanioła, zdjęcie 2"><img src="img/r/michal-02-m.webp" alt="" loading="lazy"></button><button type="button" data-g="michal" data-i="2" aria-label="Kościół pw. św. Michała Archanioła, zdjęcie 3"><img src="img/r/michal-03-m.webp" alt="" loading="lazy"></button><button type="button" data-g="michal" data-i="3" aria-label="Kościół pw. św. Michała Archanioła, zdjęcie 4"><img src="img/r/michal-04-m.webp" alt="" loading="lazy"></button><button type="button" data-g="michal" data-i="4" aria-label="Kościół pw. św. Michała Archanioła, zdjęcie 5"><img src="img/r/michal-05-m.webp" alt="" loading="lazy"><span>+9</span></button></div>
    </div>
    <div class="pr-opis">
     <h2>Kościół pw. św. Michała Archanioła</h2>
-    <p class="gdz">Lublin · usługi i handel</p>
+    <p class="gdz"><span class="msc">Lublin</span><span class="lata"></span></p>
     
     <button type="button" class="lnk" data-g="michal" data-i="0">Otwórz galerię <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     
    </div>
   </article>
+  <!-- ===== Pryzmet ===== -->
   <article class="pr" id="pryzmet" data-k="prz">
    <div class="pr-fot">
-    <button type="button" class="pr-ob odkryj" data-g="pryzmet" data-i="0" aria-label="Otwórz galerię: Pryzmet, 13 zdjęć"><img src="img/r/pryzmet-01-m.webp" srcset="img/r/pryzmet-01-m.webp 900w, img/r/pryzmet-01-l.webp 1400w, img/r/pryzmet-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="992" alt="Budynek firmy Pryzmet w Lublinie" loading="lazy" style="object-position:55% 50%"><span class="zoom">13 zdjęć</span></button>
+    <button type="button" class="pr-ob odkryj" data-g="pryzmet" data-i="0" aria-label="Otwórz galerię: Pryzmet, 13 zdjęć"><img src="img/r/pryzmet-01-m.webp" srcset="img/r/pryzmet-01-m.webp 900w, img/r/pryzmet-01-l.webp 1400w, img/r/pryzmet-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="992" alt="Budynek firmy Pryzmet w Lublinie" loading="lazy" style="object-position:55% 50%"></button>
     <div class="pr-min"><button type="button" data-g="pryzmet" data-i="1" aria-label="Pryzmet, zdjęcie 2"><img src="img/r/pryzmet-02-m.webp" alt="" loading="lazy"></button><button type="button" data-g="pryzmet" data-i="2" aria-label="Pryzmet, zdjęcie 3"><img src="img/r/pryzmet-03-m.webp" alt="" loading="lazy"></button><button type="button" data-g="pryzmet" data-i="3" aria-label="Pryzmet, zdjęcie 4"><img src="img/r/pryzmet-04-m.webp" alt="" loading="lazy"></button><button type="button" data-g="pryzmet" data-i="4" aria-label="Pryzmet, zdjęcie 5"><img src="img/r/pryzmet-05-m.webp" alt="" loading="lazy"><span>+9</span></button></div>
    </div>
    <div class="pr-opis">
     <h2>Pryzmet</h2>
-    <p class="gdz">Lublin · przemysł</p>
+    <p class="gdz"><span class="msc">Lublin</span><span class="lata"></span></p>
     
     <button type="button" class="lnk" data-g="pryzmet" data-i="0">Otwórz galerię <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     
    </div>
   </article>
-  <article class="pr odw" id="bury" data-k="prz">
+  <!-- ===== Bury ===== -->
+  <article class="pr" id="bury" data-k="prz">
    <div class="pr-fot">
-    <button type="button" class="pr-ob odkryj" data-g="bury" data-i="0" aria-label="Otwórz galerię: Bury, 13 zdjęć"><img src="img/r/bury-01-m.webp" srcset="img/r/bury-01-m.webp 900w, img/r/bury-01-l.webp 1400w, img/r/bury-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="1236" alt="Budynek firmy Bury w Lublinie" loading="lazy" style="object-position:50% 45%"><span class="zoom">13 zdjęć</span></button>
+    <button type="button" class="pr-ob odkryj" data-g="bury" data-i="0" aria-label="Otwórz galerię: Bury, 13 zdjęć"><img src="img/r/bury-01-m.webp" srcset="img/r/bury-01-m.webp 900w, img/r/bury-01-l.webp 1400w, img/r/bury-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="1236" alt="Budynek firmy Bury w Lublinie" loading="lazy" style="object-position:50% 45%"></button>
     <div class="pr-min"><button type="button" data-g="bury" data-i="1" aria-label="Bury, zdjęcie 2"><img src="img/r/bury-02-m.webp" alt="" loading="lazy"></button><button type="button" data-g="bury" data-i="2" aria-label="Bury, zdjęcie 3"><img src="img/r/bury-03-m.webp" alt="" loading="lazy"></button><button type="button" data-g="bury" data-i="3" aria-label="Bury, zdjęcie 4"><img src="img/r/bury-04-m.webp" alt="" loading="lazy"></button><button type="button" data-g="bury" data-i="4" aria-label="Bury, zdjęcie 5"><img src="img/r/bury-05-m.webp" alt="" loading="lazy"><span>+9</span></button></div>
    </div>
    <div class="pr-opis">
     <h2>Bury</h2>
-    <p class="gdz">Lublin · przemysł</p>
+    <p class="gdz"><span class="msc">Lublin</span><span class="lata"></span></p>
     
     <button type="button" class="lnk" data-g="bury" data-i="0">Otwórz galerię <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     
    </div>
   </article>
+  <!-- ===== Techsam ===== -->
   <article class="pr" id="techsam" data-k="prz">
    <div class="pr-fot">
-    <button type="button" class="pr-ob odkryj" data-g="techsam" data-i="0" aria-label="Otwórz galerię: Techsam, 5 zdjęć"><img src="img/r/techsam-01-m.webp" srcset="img/r/techsam-01-m.webp 900w, img/r/techsam-01-l.webp 1400w, img/r/techsam-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="992" alt="Budynek firmy Techsam w Lublinie" loading="lazy" style="object-position:50% 50%"><span class="zoom">5 zdjęć</span></button>
+    <button type="button" class="pr-ob odkryj" data-g="techsam" data-i="0" aria-label="Otwórz galerię: Techsam, 5 zdjęć"><img src="img/r/techsam-01-m.webp" srcset="img/r/techsam-01-m.webp 900w, img/r/techsam-01-l.webp 1400w, img/r/techsam-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="992" alt="Budynek firmy Techsam w Lublinie" loading="lazy" style="object-position:50% 50%"></button>
     <div class="pr-min"><button type="button" data-g="techsam" data-i="1" aria-label="Techsam, zdjęcie 2"><img src="img/r/techsam-02-m.webp" alt="" loading="lazy"></button><button type="button" data-g="techsam" data-i="2" aria-label="Techsam, zdjęcie 3"><img src="img/r/techsam-03-m.webp" alt="" loading="lazy"></button><button type="button" data-g="techsam" data-i="3" aria-label="Techsam, zdjęcie 4"><img src="img/r/techsam-04-m.webp" alt="" loading="lazy"></button><button type="button" data-g="techsam" data-i="4" aria-label="Techsam, zdjęcie 5"><img src="img/r/techsam-05-m.webp" alt="" loading="lazy"></button></div>
    </div>
    <div class="pr-opis">
     <h2>Techsam</h2>
-    <p class="gdz">Lublin · przemysł</p>
+    <p class="gdz"><span class="msc">Lublin</span><span class="lata"></span></p>
     
     <button type="button" class="lnk" data-g="techsam" data-i="0">Otwórz galerię <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     
    </div>
   </article>
-  <article class="pr odw" id="mieszk" data-k="mie">
+  <!-- ===== Budynki mieszkaniowe ===== -->
+  <article class="pr" id="mieszk2" data-k="mie">
    <div class="pr-fot">
-    <button type="button" class="pr-ob odkryj" data-g="mieszk" data-i="0" aria-label="Otwórz galerię: Budynek mieszkalny, 2 zdjęcia"><img src="img/r/mieszk-01-m.webp" srcset="img/r/mieszk-01-m.webp 900w, img/r/mieszk-01-l.webp 1400w, img/r/mieszk-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="1554" alt="Elewacje budynku mieszkalnego, rysunek projektowy" loading="lazy" style="object-position:50% 50%"><span class="zoom">2 zdjęcia</span></button>
+    <button type="button" class="pr-ob odkryj" data-g="mieszk2" data-i="0" aria-label="Otwórz galerię: Budynki mieszkaniowe, 3 zdjęcia"><img src="img/r/mieszk2-01-m.webp" srcset="img/r/mieszk2-01-m.webp 900w, img/r/mieszk2-01-l.webp 1400w, img/r/mieszk2-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="1238" alt="Budynki mieszkaniowe" loading="lazy" style="object-position:50% 55%"></button>
+    <div class="pr-min"><button type="button" data-g="mieszk2" data-i="1" aria-label="Budynki mieszkaniowe, zdjęcie 2"><img src="img/r/mieszk2-02-m.webp" alt="" loading="lazy"></button><button type="button" data-g="mieszk2" data-i="2" aria-label="Budynki mieszkaniowe, zdjęcie 3"><img src="img/r/mieszk2-03-m.webp" alt="" loading="lazy"></button></div>
+   </div>
+   <div class="pr-opis">
+    <h2>Budynki mieszkaniowe</h2>
+    <p class="gdz"><span class="msc"></span><span class="lata"></span></p>
+    
+    <button type="button" class="lnk" data-g="mieszk2" data-i="0">Otwórz galerię <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    
+   </div>
+  </article>
+  <!-- ===== Budynek mieszkalny ===== -->
+  <article class="pr" id="mieszk" data-k="mie">
+   <div class="pr-fot">
+    <button type="button" class="pr-ob odkryj" data-g="mieszk" data-i="0" aria-label="Otwórz galerię: Budynek mieszkalny, 2 zdjęcia"><img src="img/r/mieszk-01-m.webp" srcset="img/r/mieszk-01-m.webp 900w, img/r/mieszk-01-l.webp 1400w, img/r/mieszk-01.webp 2200w" sizes="(max-width:1100px) 100vw, 66vw" width="2200" height="1554" alt="Elewacje budynku mieszkalnego, rysunek projektowy" loading="lazy" style="object-position:50% 50%"></button>
     <div class="pr-min"><button type="button" data-g="mieszk" data-i="1" aria-label="Budynek mieszkalny, zdjęcie 2"><img src="img/r/mieszk-02-m.webp" alt="" loading="lazy"></button></div>
    </div>
    <div class="pr-opis">
     <h2>Budynek mieszkalny</h2>
-    <p class="gdz">Rysunki projektowe · mieszkaniowe</p>
-    <p class="txt">Elewacje i przekrój z projektu. Zdjęcia zrealizowanych budynków mieszkalnych w przygotowaniu.</p>
+    <p class="gdz"><span class="msc">Rysunki projektowe</span><span class="lata"></span></p>
+    <p class="txt">Elewacje i przekrój z projektu.</p>
     <button type="button" class="lnk" data-g="mieszk" data-i="0">Otwórz galerię <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     
    </div>
@@ -248,8 +274,8 @@
   <button class="lb-str p" type="button" aria-label="Następne zdjęcie" id="lbR"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 5l7 7-7 7"/></svg></button></div>
  <div class="lb-mini" id="lbMini"></div>
 </div>
-<script>window.AMRG={"olimp": {"t": "Galeria Olimp", "m": "Lublin", "z": [{"s": "img/r/olimp-01", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-02", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-03", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-04", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-05", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-06", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-07", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-08", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-09", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-10", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-11", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-12", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-13", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-14", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-15", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-16", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-17", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-18", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-19", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-20", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-21", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-22", "l": 1}, {"s": "img/r/olimp-23", "l": 1}, {"s": "img/r/olimp-24", "l": 1}, {"s": "img/r/olimp-25", "l": 1}]}, "dako": {"t": "Drukarnia DAKO", "m": "Lubartów", "z": [{"s": "img/r/dako-01", "l": 1}, {"s": "img/r/dako-02", "l": 1}, {"s": "img/r/dako-03", "l": 1}, {"s": "img/r/dako-04", "l": 1}, {"s": "img/r/dako-05", "l": 1}, {"s": "img/r/dako-06", "l": 1}, {"s": "img/r/dako-07", "l": 1}, {"s": "img/r/dako-08", "l": 1}, {"s": "img/r/dako-09", "l": 1}, {"s": "img/r/dako-10", "l": 1}, {"s": "img/r/dako-11", "l": 1}, {"s": "img/r/dako-12", "l": 1}, {"s": "img/r/dako-13", "l": 1}, {"s": "img/r/dako-14", "l": 1}, {"s": "img/r/dako-15", "l": 1}, {"s": "img/r/dako-16", "l": 1}, {"s": "img/r/dako-17", "l": 1}, {"s": "img/r/dako-18", "l": 1}, {"s": "img/r/dako-19", "l": 1}, {"s": "img/r/dako-20", "l": 1}, {"s": "img/r/dako-21", "l": 1}, {"s": "img/r/dako-22", "l": 1}, {"s": "img/r/dako-23", "l": 1}, {"s": "img/r/dako-24", "l": 1}, {"s": "img/r/dako-25", "l": 1}, {"s": "img/r/dako-26", "l": 1}, {"s": "img/r/dako-27", "l": 1}, {"s": "img/r/dako-28", "l": 1}, {"s": "img/r/dako-29", "l": 1}, {"s": "img/r/dako-30", "l": 1}, {"s": "img/r/dako-31", "l": 1}, {"s": "img/r/dako-32", "l": 1}, {"s": "img/r/dako-33", "l": 1}, {"s": "img/r/dako-34", "l": 1}, {"s": "img/r/dako-35", "l": 1}]}, "venus": {"t": "Galeria Venus", "m": "Świdnik", "z": [{"s": "img/r/venus-01", "l": 1}, {"s": "img/r/venus-02", "l": 1}, {"s": "img/r/venus-03", "l": 1}, {"s": "img/r/venus-04", "l": 1}, {"s": "img/r/venus-05", "l": 1}, {"s": "img/r/venus-06", "l": 1}, {"s": "img/r/venus-07", "l": 1}, {"s": "img/r/venus-08", "l": 1}, {"s": "img/r/venus-09", "l": 1}, {"s": "img/r/venus-10", "l": 1}, {"s": "img/r/venus-11", "l": 1}, {"s": "img/r/venus-12", "l": 1}, {"s": "img/r/venus-13", "l": 1}, {"s": "img/r/venus-14", "l": 1}]}, "michal": {"t": "Kościół pw. św. Michała Archanioła", "m": "Lublin", "z": [{"s": "img/r/michal-01", "l": 1}, {"s": "img/r/michal-02", "l": 1}, {"s": "img/r/michal-03", "l": 1}, {"s": "img/r/michal-04", "l": 1}, {"s": "img/r/michal-05", "l": 1}, {"s": "img/r/michal-06", "l": 1}, {"s": "img/r/michal-07", "l": 1}, {"s": "img/r/michal-08", "l": 1}, {"s": "img/r/michal-09", "l": 1}, {"s": "img/r/michal-10", "l": 1}, {"s": "img/r/michal-11", "l": 1}, {"s": "img/r/michal-12", "l": 1}, {"s": "img/r/michal-13", "l": 1}]}, "pryzmet": {"t": "Pryzmet", "m": "Lublin", "z": [{"s": "img/r/pryzmet-01", "l": 1}, {"s": "img/r/pryzmet-02", "l": 1}, {"s": "img/r/pryzmet-03", "l": 1}, {"s": "img/r/pryzmet-04", "l": 1}, {"s": "img/r/pryzmet-05", "l": 1}, {"s": "img/r/pryzmet-06", "l": 1}, {"s": "img/r/pryzmet-07", "l": 1}, {"s": "img/r/pryzmet-08", "l": 1}, {"s": "img/r/pryzmet-09", "l": 1}, {"s": "img/r/pryzmet-10", "l": 1}, {"s": "img/r/pryzmet-11", "l": 1}, {"s": "img/r/pryzmet-12", "l": 1}, {"s": "img/r/pryzmet-13", "l": 1}]}, "bury": {"t": "Bury", "m": "Lublin", "z": [{"s": "img/r/bury-01", "l": 1}, {"s": "img/r/bury-02", "l": 1}, {"s": "img/r/bury-03", "l": 1}, {"s": "img/r/bury-04", "l": 1}, {"s": "img/r/bury-05", "l": 1}, {"s": "img/r/bury-06", "l": 1}, {"s": "img/r/bury-07", "l": 1}, {"s": "img/r/bury-08", "l": 1}, {"s": "img/r/bury-09", "l": 1}, {"s": "img/r/bury-10", "l": 1}, {"s": "img/r/bury-11", "l": 1}, {"s": "img/r/bury-12", "l": 1}, {"s": "img/r/bury-13", "l": 1}]}, "techsam": {"t": "Techsam", "m": "Lublin", "z": [{"s": "img/r/techsam-01", "l": 1}, {"s": "img/r/techsam-02", "l": 1}, {"s": "img/r/techsam-03", "l": 1}, {"s": "img/r/techsam-04", "l": 1}, {"s": "img/r/techsam-05", "l": 1}]}, "mieszk": {"t": "Budynek mieszkalny", "m": "", "z": [{"s": "img/r/mieszk-01", "l": 1, "p": "Elewacja wschodnia i zachodnia"}, {"s": "img/r/mieszk-02", "l": 1, "p": "Przekrój"}]}};</script>
-<script src="js/amr.js?v=4"></script>
+<script>window.AMRG={"olimp": {"t": "Galeria Olimp", "m": "Lublin", "z": [{"s": "img/r/olimp-01", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-02", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-03", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-04", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-05", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-06", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-07", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-08", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-09", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-10", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-11", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-12", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-13", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-14", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-15", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-16", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-17", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-18", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-19", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-20", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-21", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-22", "l": 1}, {"s": "img/r/olimp-23", "l": 1}, {"s": "img/r/olimp-24", "l": 1}, {"s": "img/r/olimp-25", "l": 1}]}, "dako": {"t": "Drukarnia DAKO", "m": "Lubartów", "z": [{"s": "img/r/dako-01", "l": 1}, {"s": "img/r/dako-02", "l": 1}, {"s": "img/r/dako-03", "l": 1}, {"s": "img/r/dako-04", "l": 1}, {"s": "img/r/dako-05", "l": 1}, {"s": "img/r/dako-06", "l": 1}, {"s": "img/r/dako-07", "l": 1}, {"s": "img/r/dako-08", "l": 1}, {"s": "img/r/dako-09", "l": 1}, {"s": "img/r/dako-10", "l": 1}, {"s": "img/r/dako-11", "l": 1}, {"s": "img/r/dako-12", "l": 1}, {"s": "img/r/dako-13", "l": 1}, {"s": "img/r/dako-14", "l": 1}, {"s": "img/r/dako-15", "l": 1}, {"s": "img/r/dako-16", "l": 1}, {"s": "img/r/dako-17", "l": 1}, {"s": "img/r/dako-18", "l": 1}, {"s": "img/r/dako-19", "l": 1}, {"s": "img/r/dako-20", "l": 1}, {"s": "img/r/dako-21", "l": 1}, {"s": "img/r/dako-22", "l": 1}, {"s": "img/r/dako-23", "l": 1}, {"s": "img/r/dako-24", "l": 1}, {"s": "img/r/dako-25", "l": 1}, {"s": "img/r/dako-26", "l": 1}, {"s": "img/r/dako-27", "l": 1}, {"s": "img/r/dako-28", "l": 1}, {"s": "img/r/dako-29", "l": 1}, {"s": "img/r/dako-30", "l": 1}, {"s": "img/r/dako-31", "l": 1}, {"s": "img/r/dako-32", "l": 1}, {"s": "img/r/dako-33", "l": 1}, {"s": "img/r/dako-34", "l": 1}, {"s": "img/r/dako-35", "l": 1}]}, "venus": {"t": "Galeria Venus", "m": "Świdnik", "z": [{"s": "img/r/venus-01", "l": 1}, {"s": "img/r/venus-02", "l": 1}, {"s": "img/r/venus-03", "l": 1}, {"s": "img/r/venus-04", "l": 1}, {"s": "img/r/venus-05", "l": 1}, {"s": "img/r/venus-06", "l": 1}, {"s": "img/r/venus-07", "l": 1}, {"s": "img/r/venus-08", "l": 1}, {"s": "img/r/venus-09", "l": 1}, {"s": "img/r/venus-10", "l": 1}, {"s": "img/r/venus-11", "l": 1}, {"s": "img/r/venus-12", "l": 1}, {"s": "img/r/venus-13", "l": 1}, {"s": "img/r/venus-14", "l": 1}]}, "michal": {"t": "Kościół pw. św. Michała Archanioła", "m": "Lublin", "z": [{"s": "img/r/michal-01", "l": 1}, {"s": "img/r/michal-02", "l": 1}, {"s": "img/r/michal-03", "l": 1}, {"s": "img/r/michal-04", "l": 1}, {"s": "img/r/michal-05", "l": 1}, {"s": "img/r/michal-06", "l": 1}, {"s": "img/r/michal-07", "l": 1}, {"s": "img/r/michal-08", "l": 1}, {"s": "img/r/michal-09", "l": 1}, {"s": "img/r/michal-10", "l": 1}, {"s": "img/r/michal-11", "l": 1}, {"s": "img/r/michal-12", "l": 1}, {"s": "img/r/michal-13", "l": 1}]}, "pryzmet": {"t": "Pryzmet", "m": "Lublin", "z": [{"s": "img/r/pryzmet-01", "l": 1}, {"s": "img/r/pryzmet-02", "l": 1}, {"s": "img/r/pryzmet-03", "l": 1}, {"s": "img/r/pryzmet-04", "l": 1}, {"s": "img/r/pryzmet-05", "l": 1}, {"s": "img/r/pryzmet-06", "l": 1}, {"s": "img/r/pryzmet-07", "l": 1}, {"s": "img/r/pryzmet-08", "l": 1}, {"s": "img/r/pryzmet-09", "l": 1}, {"s": "img/r/pryzmet-10", "l": 1}, {"s": "img/r/pryzmet-11", "l": 1}, {"s": "img/r/pryzmet-12", "l": 1}, {"s": "img/r/pryzmet-13", "l": 1}]}, "bury": {"t": "Bury", "m": "Lublin", "z": [{"s": "img/r/bury-01", "l": 1}, {"s": "img/r/bury-02", "l": 1}, {"s": "img/r/bury-03", "l": 1}, {"s": "img/r/bury-04", "l": 1}, {"s": "img/r/bury-05", "l": 1}, {"s": "img/r/bury-06", "l": 1}, {"s": "img/r/bury-07", "l": 1}, {"s": "img/r/bury-08", "l": 1}, {"s": "img/r/bury-09", "l": 1}, {"s": "img/r/bury-10", "l": 1}, {"s": "img/r/bury-11", "l": 1}, {"s": "img/r/bury-12", "l": 1}, {"s": "img/r/bury-13", "l": 1}]}, "techsam": {"t": "Techsam", "m": "Lublin", "z": [{"s": "img/r/techsam-01", "l": 1}, {"s": "img/r/techsam-02", "l": 1}, {"s": "img/r/techsam-03", "l": 1}, {"s": "img/r/techsam-04", "l": 1}, {"s": "img/r/techsam-05", "l": 1}]}, "mieszk2": {"t": "Budynki mieszkaniowe", "m": "", "z": [{"s": "img/r/mieszk2-01", "l": 1}, {"s": "img/r/mieszk2-02", "l": 1}, {"s": "img/r/mieszk2-03", "l": 1}]}, "mieszk": {"t": "Budynek mieszkalny", "m": "", "z": [{"s": "img/r/mieszk-01", "l": 1, "p": "Elewacja wschodnia i zachodnia"}, {"s": "img/r/mieszk-02", "l": 1, "p": "Przekrój"}]}};</script>
+<script src="js/amr.js?v=5"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>AMRmapa()</script>
 <script>

@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="pl" data-kolor="czern" data-menu="a">
+<html lang="pl" data-kolor="bez" data-menu="a">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>AMR Architekci &amp; Partnerzy · pracownia architektoniczna · Lublin</title>
-<meta name="description" content="AMR Architekci &amp; Partnerzy, rodzinna pracownia architektoniczna z Lublina, od 1997 roku. Galerie handlowe, obiekty usługowe i przemysłowe. Realizacje, nie wizualizacje.">
-<meta name="theme-color" content="#0A0A0A">
+<meta name="description" content="AMR Architekci &amp; Partnerzy, zespół architektów z Lublina, od 1997 roku. Galerie handlowe, obiekty usługowe i przemysłowe. Realizacje, nie wizualizacje.">
+<meta name="theme-color" content="#080706">
 <link rel="icon" href="data:,">
-<script>try{var d=document.documentElement,k=localStorage.getItem('amr-kolor'),m=localStorage.getItem('amr-menu');if(k)d.setAttribute('data-kolor',k);if(m)d.setAttribute('data-menu',m)}catch(e){}</script>
+<script>try{var d=document.documentElement,q=location.search.match(/[?&]rossa=([01])/),k=localStorage.getItem('amr-kolor2'),m=localStorage.getItem('amr-menu'),r=localStorage.getItem('amr-rossa');if(q){r=q[1];localStorage.setItem('amr-rossa',r)}if(k)d.setAttribute('data-kolor',k);if(m)d.setAttribute('data-menu',m);d.setAttribute('data-rossa',r==='1'?'1':'0')}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <link rel="preload" as="image" imagesrcset="img/r/dako-03-m.webp 900w, img/r/dako-03-l.webp 1400w, img/r/dako-03.webp 2200w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="css/amr.css?v=4">
+<link rel="stylesheet" href="css/amr.css?v=5">
 <style>
 
 .start{position:relative;height:100vh;height:100svh;min-height:560px;background:var(--pas);overflow:hidden;padding:0;--pd:64px}
@@ -24,13 +24,13 @@
 .slajd img{width:100%;height:100%;object-fit:cover}
 .kadr::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.14) 36%,rgba(0,0,0,0) 56%),linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,0) 50%);pointer-events:none}
 .haslo{position:absolute;left:0;right:0;bottom:calc(var(--pd) + 60px);z-index:2}
-.haslo h1{font-size:clamp(44px,6vw,98px);line-height:.98;letter-spacing:-.028em;color:var(--foto)}
+.haslo h1{font-size:var(--f1);line-height:.98;color:var(--foto)}
 .haslo h1 span{display:block}
-.haslo p{margin-top:20px;font-size:18px;color:var(--foto2)}
+.haslo p{margin-top:20px;font-size:var(--f4);color:var(--foto2)}
 .pas-d{position:absolute;left:0;right:0;bottom:0;height:var(--pd);background:var(--pas);z-index:3;border-top:1px solid var(--linia);transition:background-color .4s}
 .postep{position:absolute;left:0;top:-1px;height:2px;background:var(--akcent);width:0}
-.pas-d .wrap{height:100%;display:flex;align-items:center;gap:20px;font-size:15px;color:var(--tekst)}
-.pas-d .nr{font-variant-numeric:tabular-nums;letter-spacing:.1em;color:var(--szary);min-width:62px}
+.pas-d .wrap{height:100%;display:flex;align-items:center;gap:20px;font-size:var(--f5);color:var(--tekst)}
+.pas-d .nr{font-variant-numeric:tabular-nums;color:var(--szary);min-width:62px}
 .pas-d .nr b{font-weight:400;color:var(--jasny)}
 .strz{display:flex;gap:2px}
 .strz button{width:44px;height:44px;display:grid;place-items:center;color:var(--tekst)}
@@ -48,16 +48,16 @@
 .kaf .ob img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--e)}
 .kaf .ob:hover img{transform:scale(1.03)}
 .podp{display:flex;justify-content:space-between;align-items:baseline;gap:6px 20px;flex-wrap:wrap;padding-top:18px}
-.podp h3{font-size:clamp(24px,2vw,30px);line-height:1.2}
-.podp span{font-size:16px;color:var(--szary)}
+.podp h3{font-size:var(--f3);line-height:1.2}
+.podp span{font-size:var(--f4);color:var(--szary)}
 .dalej-r{margin-top:60px}
 .lista{border-top:1px solid var(--linia2)}
 .wiersz{display:grid;grid-template-columns:130px minmax(0,1fr) 180px 120px;gap:24px;padding:18px 0;border-bottom:1px solid var(--linia);align-items:baseline}
-.wiersz .rok{font-variant-numeric:tabular-nums;color:var(--szary);font-size:15px}
-.wiersz .naz{color:var(--jasny);font-size:18px}
-.wiersz .naz small{display:block;font-size:15px;color:var(--szary);margin-top:2px}
-.wiersz .msc{font-size:16px}
-.wiersz .st{font-size:15px;color:var(--szary);text-align:right}
+.wiersz .rok{font-variant-numeric:tabular-nums;color:var(--szary);font-size:var(--f5)}
+.wiersz .naz{color:var(--jasny);font-size:var(--f4)}
+.wiersz .naz small{display:block;font-size:var(--f5);color:var(--szary);margin-top:2px}
+.wiersz .msc{font-size:var(--f4)}
+.wiersz .st{font-size:var(--f5);color:var(--szary);text-align:right}
 .wiersz .st.r{color:var(--tekst)}
 .lista .wiersz.dalej{display:none}
 .lista.cala .wiersz.dalej{display:grid}
@@ -67,7 +67,7 @@
 .dwie .ob img{width:100%;height:100%;object-fit:cover}
 .dwie .lead{margin-top:26px}
 .linki{display:flex;gap:16px 36px;flex-wrap:wrap;margin-top:30px}
-@media (min-width:761px) and (max-height:820px){.haslo h1{font-size:clamp(42px,5.2vw,80px)}.haslo{bottom:calc(var(--pd) + 40px)}}
+@media (min-width:761px) and (max-height:820px){.haslo h1{font-size:var(--f1)}.haslo{bottom:calc(var(--pd) + 40px)}}
 @media (max-width:1100px){
  .wstep,.dwie{grid-template-columns:1fr;gap:40px}
  .wiersz{grid-template-columns:110px minmax(0,1fr) 140px}.wiersz .st{display:none}
@@ -77,8 +77,8 @@
  .kadr{position:relative;top:auto;bottom:auto;margin-top:var(--pg);flex:1 1 0;min-height:min(60vw,30svh)}
  .kadr::after{background:linear-gradient(0deg,var(--pas) 0%,transparent 30%)}
  .haslo{position:relative;bottom:auto;flex:0 0 auto;padding:2px 0 26px}
- .haslo h1{color:var(--jasny);font-size:clamp(38px,11.4vw,54px);line-height:1.02}
- .haslo p{color:var(--tekst);font-size:16px;margin-top:12px}
+ .haslo h1{color:var(--jasny);font-size:var(--f1);line-height:1.02}
+ .haslo p{color:var(--tekst);font-size:var(--f4);margin-top:12px}
  .pas-d{position:relative;flex:0 0 var(--pd)}
  .pas-d .podp{display:none}
  .pas-d .wrap{gap:8px}
@@ -87,8 +87,8 @@
  .kaf .ob,.kaf.w12 .ob{height:auto;aspect-ratio:4/3}
  .podp{padding-top:14px}
  .wiersz{grid-template-columns:84px minmax(0,1fr);gap:2px 14px;padding:15px 0}
- .wiersz .msc{grid-column:2;font-size:15px;color:var(--szary)}
- .wiersz .naz{font-size:17px}
+ .wiersz .msc{grid-column:2;font-size:var(--f5);color:var(--szary)}
+ .wiersz .naz{font-size:var(--f4)}
 }
 @media (max-width:760px) and (max-height:700px){.haslo p{display:none}}
 
@@ -115,7 +115,6 @@
  <div class="pas-d">
   <div class="postep" id="postep"></div>
   <div class="wrap">
-   <span class="nr" id="nr"><b>01</b> / 07</span>
    <div class="strz"><button type="button" aria-label="Poprzednie zdjęcie" id="sL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" aria-label="Następne zdjęcie" id="sP"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 5l7 7-7 7"/></svg></button></div>
    <span class="podp" id="podp">Drukarnia DAKO · Lubartów · ogród na dachu</span>
    <a class="tel" href="tel:+48501061258">+48 501 061 258</a>
@@ -126,7 +125,7 @@
 <section id="o-nas">
  <div class="wrap wstep">
   <h2 class="duzy">Projektujemy budynki, które potem stoją i pracują.</h2>
-  <p class="lead">Rodzinna pracownia z Lublina. Od 1997 roku projektujemy galerie handlowe, zakłady produkcyjne, biurowce i budynki mieszkalne, od pierwszej koncepcji po projekt wykonawczy. Na tej stronie pokazujemy tylko to, co zostało zbudowane.</p>
+  <p class="lead">Zespół architektów z Lublina. Od 1997 roku projektujemy galerie handlowe, zakłady produkcyjne, biurowce i budynki mieszkalne. Przez wiele lat prowadziliśmy kolejne etapy dużych obiektów: Galerii Olimp, Drukarni DAKO i Galerii Venus. Pokazujemy tylko to, co zostało zbudowane.</p>
  </div>
 </section>
 
@@ -149,7 +148,7 @@
  <div class="wrap dwie">
   <div class="ob odkryj"><img src="img/r/pracownia-04-m.webp" srcset="img/r/pracownia-04-m.webp 900w, img/r/pracownia-04-l.webp 1400w, img/r/pracownia-04.webp 2200w" sizes="(max-width:1100px) 100vw, 52vw" width="2200" height="1238" alt="Pracownia AMR przy ul. Zbożowej 6 w Lublinie" loading="lazy"></div>
   <div>
-   <h2 class="duzy">Rodzinna pracownia, stałe zespoły.</h2>
+   <h2 class="duzy">Zespół architektów i stali branżyści.</h2>
    <p class="lead">Pracownia powstała w 1997 roku, samodzielnie działa od listopada 1998. Przy każdym projekcie współpracujemy ze stałymi zespołami konstruktorów, instalatorów, elektryków i teletechników oraz z rzeczoznawcami.</p>
    <div class="linki"><a class="lnk" href="pracownia.html">O pracowni <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="lnk" href="agnieszka-rossa.html">Prace Agnieszki Rossy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
   </div>
@@ -190,18 +189,18 @@
  <div class="lb-mini" id="lbMini"></div>
 </div>
 <script>window.AMRG={"olimp": {"t": "Galeria Olimp", "m": "Lublin · 1999-2013", "z": [{"s": "img/r/olimp-01", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-02", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-03", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-04", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-05", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-06", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-07", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-08", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-09", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-10", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-11", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-12", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-13", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-14", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-15", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-16", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-17", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-18", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-19", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-20", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-21", "a": "fot. Marcin Tarkowski / Piximo", "l": 1}, {"s": "img/r/olimp-22", "l": 1}, {"s": "img/r/olimp-23", "l": 1}, {"s": "img/r/olimp-24", "l": 1}, {"s": "img/r/olimp-25", "l": 1}]}, "dako": {"t": "Drukarnia DAKO", "m": "Lubartów · 2004-2013", "z": [{"s": "img/r/dako-01", "l": 1}, {"s": "img/r/dako-02", "l": 1}, {"s": "img/r/dako-03", "l": 1}, {"s": "img/r/dako-04", "l": 1}, {"s": "img/r/dako-05", "l": 1}, {"s": "img/r/dako-06", "l": 1}, {"s": "img/r/dako-07", "l": 1}, {"s": "img/r/dako-08", "l": 1}, {"s": "img/r/dako-09", "l": 1}, {"s": "img/r/dako-10", "l": 1}, {"s": "img/r/dako-11", "l": 1}, {"s": "img/r/dako-12", "l": 1}, {"s": "img/r/dako-13", "l": 1}, {"s": "img/r/dako-14", "l": 1}, {"s": "img/r/dako-15", "l": 1}, {"s": "img/r/dako-16", "l": 1}, {"s": "img/r/dako-17", "l": 1}, {"s": "img/r/dako-18", "l": 1}, {"s": "img/r/dako-19", "l": 1}, {"s": "img/r/dako-20", "l": 1}, {"s": "img/r/dako-21", "l": 1}, {"s": "img/r/dako-22", "l": 1}, {"s": "img/r/dako-23", "l": 1}, {"s": "img/r/dako-24", "l": 1}, {"s": "img/r/dako-25", "l": 1}, {"s": "img/r/dako-26", "l": 1}, {"s": "img/r/dako-27", "l": 1}, {"s": "img/r/dako-28", "l": 1}, {"s": "img/r/dako-29", "l": 1}, {"s": "img/r/dako-30", "l": 1}, {"s": "img/r/dako-31", "l": 1}, {"s": "img/r/dako-32", "l": 1}, {"s": "img/r/dako-33", "l": 1}, {"s": "img/r/dako-34", "l": 1}, {"s": "img/r/dako-35", "l": 1}]}, "venus": {"t": "Galeria Venus", "m": "Świdnik · 2005-2012", "z": [{"s": "img/r/venus-01", "l": 1}, {"s": "img/r/venus-02", "l": 1}, {"s": "img/r/venus-03", "l": 1}, {"s": "img/r/venus-04", "l": 1}, {"s": "img/r/venus-05", "l": 1}, {"s": "img/r/venus-06", "l": 1}, {"s": "img/r/venus-07", "l": 1}, {"s": "img/r/venus-08", "l": 1}, {"s": "img/r/venus-09", "l": 1}, {"s": "img/r/venus-10", "l": 1}, {"s": "img/r/venus-11", "l": 1}, {"s": "img/r/venus-12", "l": 1}, {"s": "img/r/venus-13", "l": 1}, {"s": "img/r/venus-14", "l": 1}]}, "michal": {"t": "Kościół pw. św. Michała Archanioła", "m": "Lublin", "z": [{"s": "img/r/michal-01", "l": 1}, {"s": "img/r/michal-02", "l": 1}, {"s": "img/r/michal-03", "l": 1}, {"s": "img/r/michal-04", "l": 1}, {"s": "img/r/michal-05", "l": 1}, {"s": "img/r/michal-06", "l": 1}, {"s": "img/r/michal-07", "l": 1}, {"s": "img/r/michal-08", "l": 1}, {"s": "img/r/michal-09", "l": 1}, {"s": "img/r/michal-10", "l": 1}, {"s": "img/r/michal-11", "l": 1}, {"s": "img/r/michal-12", "l": 1}, {"s": "img/r/michal-13", "l": 1}]}, "pryzmet": {"t": "Pryzmet", "m": "Lublin", "z": [{"s": "img/r/pryzmet-01", "l": 1}, {"s": "img/r/pryzmet-02", "l": 1}, {"s": "img/r/pryzmet-03", "l": 1}, {"s": "img/r/pryzmet-04", "l": 1}, {"s": "img/r/pryzmet-05", "l": 1}, {"s": "img/r/pryzmet-06", "l": 1}, {"s": "img/r/pryzmet-07", "l": 1}, {"s": "img/r/pryzmet-08", "l": 1}, {"s": "img/r/pryzmet-09", "l": 1}, {"s": "img/r/pryzmet-10", "l": 1}, {"s": "img/r/pryzmet-11", "l": 1}, {"s": "img/r/pryzmet-12", "l": 1}, {"s": "img/r/pryzmet-13", "l": 1}]}};</script>
-<script src="js/amr.js?v=4"></script>
+<script src="js/amr.js?v=5"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>AMRmapa()</script>
 <script>
 (function(){
  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,PIXT=' · fot. Marcin Tarkowski / Piximo';
- var s=[].slice.call(document.querySelectorAll('.slajd')),i=0,nr=document.getElementById('nr'),pd=document.getElementById('podp'),pg=document.getElementById('postep'),CZAS=6500,tm;
+ var s=[].slice.call(document.querySelectorAll('.slajd')),i=0,pd=document.getElementById('podp'),pg=document.getElementById('postep'),CZAS=6500,tm;
  function d2(n){return n<10?'0'+n:''+n}
  function wczytaj(e){var im=e&&e.querySelector('img[data-srcset]');if(im){im.srcset=im.dataset.srcset;im.removeAttribute('data-srcset')}}
  function txt(e){return e.dataset.p+(e.dataset.a?PIXT:'')}
  function postep(){if(RM)return;pg.style.transition='none';pg.style.width='0';void pg.offsetWidth;pg.style.transition='width '+CZAS+'ms linear';pg.style.width='100%'}
- function pokaz(n){s[i].classList.remove('on');i=(n+s.length)%s.length;wczytaj(s[i]);s[i].classList.add('on');nr.innerHTML='<b>'+d2(i+1)+'</b> / '+d2(s.length);pd.style.opacity=0;setTimeout(function(){pd.textContent=txt(s[i]);pd.style.opacity=1},300);wczytaj(s[(i+1)%s.length]);start()}
+ function pokaz(n){s[i].classList.remove('on');i=(n+s.length)%s.length;wczytaj(s[i]);s[i].classList.add('on');pd.style.opacity=0;setTimeout(function(){pd.textContent=txt(s[i]);pd.style.opacity=1},300);wczytaj(s[(i+1)%s.length]);start()}
  function start(){clearTimeout(tm);if(RM)return;postep();tm=setTimeout(function(){pokaz(i+1)},CZAS)}
  pd.textContent=txt(s[0]);
  document.getElementById('sL').onclick=function(){pokaz(i-1)};document.getElementById('sP').onclick=function(){pokaz(i+1)};

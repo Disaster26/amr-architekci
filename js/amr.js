@@ -1,13 +1,13 @@
 /* AMR - wspolny skrypt: warianty kolorow, menu, odkrywanie zdjec, galeria, mapa (generowany: gen4.py) */
 (function(){
  var H=document.documentElement,RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
- var PAL=[{"id": "czern", "n": "Ciepła czerń", "t": "c", "pas": "#0A0A0A", "tlo": "#151413", "tx": "#C9C4BC", "ak": "#B79C6E"}, {"id": "grafit", "n": "Grafit", "t": "c", "pas": "#0B0B0B", "tlo": "#141414", "tx": "#C7C7C7", "ak": "#BDBDBD"}, {"id": "stal", "n": "Stal", "t": "c", "pas": "#0A0C0E", "tlo": "#131517", "tx": "#C5CACF", "ak": "#93A4B2"}, {"id": "antracyt", "n": "Ciepły antracyt", "t": "c", "pas": "#1A1816", "tlo": "#24211F", "tx": "#D2CCC2", "ak": "#C6A87C"}, {"id": "granat", "n": "Granat nocny", "t": "c", "pas": "#080C14", "tlo": "#0F1521", "tx": "#C3CAD6", "ak": "#C2A770"}, {"id": "oliwka", "n": "Oliwka", "t": "c", "pas": "#0B0C09", "tlo": "#151712", "tx": "#C8CABD", "ak": "#A9B27F"}, {"id": "mosiadz", "n": "Czerń i mosiądz", "t": "c", "pas": "#050505", "tlo": "#0D0D0C", "tx": "#CFC8BA", "ak": "#C9A45C"}, {"id": "papier", "n": "Ciepły papier", "t": "j", "pas": "#E2DCD1", "tlo": "#EBE6DD", "tx": "#3A352F", "ak": "#765B2C"}, {"id": "beton", "n": "Jasny beton", "t": "j", "pas": "#D8D9D8", "tlo": "#E2E3E2", "tx": "#353738", "ak": "#475763"}, {"id": "piasek", "n": "Piasek", "t": "j", "pas": "#DCD2C1", "tlo": "#E7DECE", "tx": "#3A3228", "ak": "#6E4C22"}],DOM='czern';
+ var PAL=[{"id": "bez", "n": "Czerń i ciepły beż", "t": "c", "pas": "#080706", "tlo": "#100E0C", "tx": "#D8CCB8", "ak": "#C9AE84"}, {"id": "czern", "n": "Ciepła czerń", "t": "c", "pas": "#0A0A0A", "tlo": "#151413", "tx": "#C9C4BC", "ak": "#B79C6E"}, {"id": "grafit", "n": "Grafit", "t": "c", "pas": "#0B0B0B", "tlo": "#141414", "tx": "#C7C7C7", "ak": "#BDBDBD"}, {"id": "stal", "n": "Stal", "t": "c", "pas": "#0A0C0E", "tlo": "#131517", "tx": "#C5CACF", "ak": "#93A4B2"}, {"id": "antracyt", "n": "Ciepły antracyt", "t": "c", "pas": "#1A1816", "tlo": "#24211F", "tx": "#D2CCC2", "ak": "#C6A87C"}, {"id": "granat", "n": "Granat nocny", "t": "c", "pas": "#080C14", "tlo": "#0F1521", "tx": "#C3CAD6", "ak": "#C2A770"}, {"id": "oliwka", "n": "Oliwka", "t": "c", "pas": "#0B0C09", "tlo": "#151712", "tx": "#C8CABD", "ak": "#A9B27F"}, {"id": "mosiadz", "n": "Czerń i mosiądz", "t": "c", "pas": "#050505", "tlo": "#0D0D0C", "tx": "#CFC8BA", "ak": "#C9A45C"}, {"id": "papier", "n": "Ciepły papier", "t": "j", "pas": "#E2DCD1", "tlo": "#EBE6DD", "tx": "#3A352F", "ak": "#765B2C"}, {"id": "beton", "n": "Jasny beton", "t": "j", "pas": "#D8D9D8", "tlo": "#E2E3E2", "tx": "#353738", "ak": "#475763"}, {"id": "piasek", "n": "Piasek", "t": "j", "pas": "#DCD2C1", "tlo": "#E7DECE", "tx": "#3A3228", "ak": "#6E4C22"}],DOM='bez';
  function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
  function d2(n){return n<10?'0'+n:''+n}
  function pal(id){for(var i=0;i<PAL.length;i++)if(PAL[i].id===id)return PAL[i];return null}
  if(!pal(H.dataset.kolor))H.dataset.kolor=DOM;
  var meta=document.querySelector('meta[name=theme-color]');
- function koloruj(id){var p=pal(id)||pal(DOM);H.dataset.kolor=p.id;ls('amr-kolor',p.id);if(meta)meta.content=p.pas;zazn()}
+ function koloruj(id){var p=pal(id)||pal(DOM);H.dataset.kolor=p.id;ls('amr-kolor2',p.id);if(meta)meta.content=p.pas;zazn()}
 
  /* menu */
  var przel=document.querySelector('[data-otw]');
@@ -21,7 +21,7 @@
  var W=document.createElement('div');W.className='warianty';W.id='warianty';
  var h='<button type="button" class="w-przel" aria-expanded="false" aria-controls="wPanel"><b class="wz-akt"></b><span class="w-t">Kolory</span></button><div class="w-panel" id="wPanel" role="dialog" aria-label="Do wyboru: kolory i menu"><h3>Kolory strony</h3><div class="w-k">';
  PAL.forEach(function(p){h+='<button type="button" data-c="'+p.id+'">'+sw(p)+p.n+'</button>'});
- h+='</div><div class="w-sep"></div><h3>Menu</h3><div class="w-m"><button type="button" data-m="a" aria-label="Menu A: w pasku">A</button><button type="button" data-m="b" aria-label="Menu B: na cały ekran">B</button><button type="button" data-m="c" aria-label="Menu C: z boku">C</button></div></div>';
+ h+='</div><div class="w-sep"></div><h3>Menu</h3><div class="w-m"><button type="button" data-m="a" aria-label="Menu A: w pasku">A</button><button type="button" data-m="b" aria-label="Menu B: na cały ekran">B</button><button type="button" data-m="c" aria-label="Menu C: z boku">C</button></div><div class="w-sep"></div><h3>Logo w prawym dolnym rogu</h3><button type="button" class="w-r" id="wRossa" aria-pressed="false"><img src="img/logo-rossa.png" alt="" width="720" height="244"><span>pokaż</span></button></div>';
  W.innerHTML=h;var HW=document.querySelector('.pas-g .wrap');(HW||document.body).appendChild(W);
  var WP=W.querySelector('.w-przel');
  function pan(o){W.classList.toggle('otw',o);WP.setAttribute('aria-expanded',o?'true':'false')}
@@ -33,6 +33,12 @@
  W.querySelectorAll('[data-c]').forEach(function(b){b.addEventListener('click',function(){koloruj(b.dataset.c)})});
  W.querySelectorAll('[data-m]').forEach(function(b){b.addEventListener('click',function(){menu(false);H.dataset.menu=b.dataset.m;ls('amr-menu',b.dataset.m);zazn();pan(false);if(b.dataset.m!=='a')setTimeout(function(){menu(true)},150)})});
  if(['a','b','c'].indexOf(H.dataset.menu)<0)H.dataset.menu='a';
+ /* opcja: logo "rossa" na czarnym tle w prawym dolnym rogu, domyslnie wylaczone */
+ var RL=document.createElement('div');RL.className='rossa-logo';RL.innerHTML='<img src="img/logo-rossa.png" alt="rossa architekt" width="720" height="244">';document.body.appendChild(RL);
+ var WR=W.querySelector('#wRossa');
+ function rossa(on){H.dataset.rossa=on?'1':'0';ls('amr-rossa',on?'1':'0');WR.setAttribute('aria-pressed',on?'true':'false');WR.querySelector('span').textContent=on?'włączone':'pokaż'}
+ WR.addEventListener('click',function(){rossa(H.dataset.rossa!=='1')});
+ rossa(H.dataset.rossa==='1');
  koloruj(H.dataset.kolor);
 
  /* odkrywanie zdjec (tylko clip-path) */
